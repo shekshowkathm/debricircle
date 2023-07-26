@@ -1,0 +1,101 @@
+<div class="register-container">
+  <div class="register-area">
+    <div class="img-logo">
+      <img src="assets/logo/debri.jpeg" alt="logo">
+    </div>
+    <div class="register-form">
+      <p id="heading">Register</p >
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name of the business</mat-label>
+            <input matInput placeholder="Name of the business" formControlName="businessName">
+            <mat-icon matSuffix>business</mat-icon>
+            <mat-error *ngIf="registrationForm.get('businessName')!.invalid && (registrationForm.get('businessName')!.dirty || registrationForm.get('businessName')!.touched)">
+              Business name is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter your name" formControlName="name">
+            <mat-icon matSuffix>person_outline</mat-icon>
+            <mat-error *ngIf="registrationForm.get('name')!.invalid && (registrationForm.get('name')!.dirty || registrationForm.get('name')!.touched)">
+              Name is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile number</mat-label>
+            <input matInput placeholder="Enter your mobile number" formControlName="mobileNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="registrationForm.get('mobileNumber')!.invalid && (registrationForm.get('mobileNumber')!.dirty || registrationForm.get('mobileNumber')!.touched)">
+              Mobile number is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Enter your address" formControlName="address">
+            <mat-icon matSuffix>person_pin_circle</mat-icon>
+            <mat-error *ngIf="registrationForm.get('address')!.invalid && (registrationForm.get('address')!.dirty || registrationForm.get('address')!.touched)">
+              Address is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Type of business</mat-label>
+            <mat-select formControlName="businessType" required>
+              <mat-option value="scrap_dealer">Scrap Dealer</mat-option>
+              <mat-option value="building_contractor">Building Contractor</mat-option>
+              <mat-option value="demolition_contractor">Demolition Contractor</mat-option>
+              <mat-option value="builder">Builder</mat-option>
+              <mat-option value="architect">Architect</mat-option>
+              <mat-option value="engineer">Engineer</mat-option>
+              <mat-option value="other">Other</mat-option>
+            </mat-select>
+            <mat-error *ngIf="registrationForm.get('businessType')!.invalid && (registrationForm.get('businessType')!.dirty || registrationForm.get('businessType')!.touched)">
+              Business Type is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter your email" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="registrationForm.get('email')!.invalid && (registrationForm.get('email')!.dirty || registrationForm.get('email')!.touched)">
+              Email is required and should be a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" formControlName="password">
+            <mat-icon matSuffix>security</mat-icon>
+            <mat-error *ngIf="registrationForm.get('password')!.invalid && (registrationForm.get('password')!.dirty || registrationForm.get('password')!.touched)">
+              Password: 8 characters minimum required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <div *ngIf="registrationForm.invalid && (registrationForm.dirty || registrationForm.touched)" id="all-field">
+          <mat-error>
+            Please fill in all the required fields.
+          </mat-error>
+        </div>
+        <div class="forgot">
+          <p routerLink="" id="login">Already registered ?</p>
+        </div>
+        <div id="register-submit">
+          <button mat-raised-button color="primary" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

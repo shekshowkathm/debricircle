@@ -1,0 +1,160 @@
+.buymaterials-container{
+  width: 100%;
+  height: 190vh;
+  background-color: #d3eaf2b2;
+  .headers{
+    width: 100%;
+    height: 20vh;
+    background-color: #fff;
+  }
+  .material-card{
+    width: 100%;
+    height: 170vh;
+    .card-area{
+      width: 100%;
+      height: 170vh;
+      // border: 2px solid red;
+
+      .filter-area{
+        width: 100%;
+        height: 20vh;
+        // border: 5px dotted brown;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        mat-form-field{
+          width: 15%;
+          height: 55px;
+          background-color: #fff;
+        }
+      }
+      .card-area{
+        width: 100%;
+        height: 150vh;
+        // border: 3px solid blueviolet;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        .cards{
+          width: 75%;
+          height: 55vh;
+          border-radius: 25px;
+          padding-left: 10px;
+          background-color: #fff;
+
+          .card-like{
+            width: 6%;
+            height: 7.5vh;
+            // border: 2px solid red;
+            float: right;
+            margin-right: 30px;
+            margin-top: 15px;
+            mat-icon{
+              width: 100%;
+              height: 7.5vh;
+              font-size: 40px;
+              color: #F09431;
+            }
+          }
+          .main-cards{
+            width: 90%;
+            height: 48vh;
+            display: flex;
+            // border: 2px solid blue;
+            .image-area{
+              width: 35%;
+              height: 48vh;
+              // border: 2px solid red;
+              img{
+                width: 90%;
+                height: 40vh;
+                margin-left: 15px;
+                margin-top: 24px;
+                border-radius: 5px;
+              }
+            }
+            .product-details{
+              width: 65%;
+              height: 48vh;
+              // border: 2px solid yellow;
+              .sub-product{
+                width: 100%;
+                height: 38vh;
+                // border: 2px solid green;
+                display: flex;
+                #details1{
+                  width: 50%;
+                  height: 38vh;
+                  // border: 2px solid darkmagenta;
+                  padding-left: 12px;
+                  padding-top: 20px;
+                  h1{
+                    font-size: 28px;
+                  }
+                  p{
+                    font-size: 22px;
+                    font-weight: lighter;
+                    margin-top: 30px;
+                  }
+                }
+                #details2{
+                  width: 50%;
+                  height: 38vh;
+                  padding-top: 50px;
+                  p{
+                    font-size: 22px;
+                    font-weight: lighter;
+                    margin-top: 30px;
+                  }
+                  #rupee{
+                    margin-top: 85px;
+                    b{
+                      font-size: 25px;
+                    }
+                  }
+                }
+              }
+              .products-button{
+                display: flex;
+                justify-content: space-around;
+                margin-top: 10px;
+                button{
+                  width: 30%;
+                  font-size: 13px;
+                }
+                #phone-button{
+                  border: 1px solid orange;
+                  background-color: transparent;
+                }
+                #cart-button{
+                  background-color: rgba(255, 166, 0, 0.836);
+                }
+                #buy-now{
+                  background-color: #F09431;
+                }
+              }
+            }
+          }
+          .verify-card{
+            float: right;
+
+            width: 7.5%;
+            height: 7vh;
+            // border: 3px solid red;
+            mat-icon{
+              width: 100%;
+              height: 7vh;
+              // border: 1px solid yellow;
+              color: green;
+              font-size: 30px;
+            }
+
+          }
+        }
+
+      }
+    }
+
+
+  }
+}

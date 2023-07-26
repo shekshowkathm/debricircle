@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div class="login-area">
+    <div class="img-logo">
+      <img src="assets/logo/debri.jpeg" alt="logo">
+    </div>
+    <div class="login-form">
+      <p id="heading">Login</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter your email" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="loginForm.get('email')!.invalid && (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)">
+              Email is required and should be a valid email address.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" formControlName="password">
+            <mat-icon matSuffix>security</mat-icon>
+            <mat-error *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
+              Password: 8 characters minimum required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <div *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)" id="all-field">
+          <mat-error>
+            Please fill in all the required fields.
+          </mat-error>
+        </div>
+        <div class="forgot">
+          <p id="forgot-password">Forgot password ?</p>
+          <p routerLink="/registers" id="register">Are you new user ?</p>
+        </div>
+        <div id="register-submit">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

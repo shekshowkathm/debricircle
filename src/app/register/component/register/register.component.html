@@ -1,0 +1,9 @@
+<p>register works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type="text" placeholder="Enter your name" formControlName="user">
+  <input type="text" placeholder="Enter your age  " formControlName="age">
+  <button>Submit</button>
+</form>
+<button routerLink="/register/registerlist" >get data</button>
+
+

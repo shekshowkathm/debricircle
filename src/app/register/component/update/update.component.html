@@ -1,0 +1,6 @@
+<p>update works!</p>
+<form [formGroup]="updateForm" (ngSubmit)="onEdit()">
+  <input type="text" placeholder="Enter your name" formControlName="user">
+  <input type="text" placeholder="Enter your age  " formControlName="age">
+  <button>update</button>
+</form>

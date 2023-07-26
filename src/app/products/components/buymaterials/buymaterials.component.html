@@ -1,0 +1,94 @@
+<div class="buymaterials-container">
+  <div class="headers">
+    <app-header></app-header>
+  </div>
+  <div class="material-card">
+    <div class="card-area">
+      <div class="filter-area">
+        <mat-form-field appearance="outline">
+          <mat-label>Material type</mat-label>
+          <mat-select>
+            <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
+            <mat-option value="Fine aggregate">Fine aggregate</mat-option>
+            <mat-option value="Bricks">Bricks</mat-option>
+            <mat-option value="Blocks">Blocks</mat-option>
+            <mat-option value="Wood">Wood</mat-option>
+            <mat-option value="Steel">Steel</mat-option>
+            <mat-option value="Plastics">Plastics</mat-option>
+            <mat-option value="Cement Bag">Cement Bag</mat-option>
+            <mat-option value="Cardboard and other packaging waste">Cardboard and other packaging waste</mat-option>
+            <mat-option value="Pipes and plastics">Pipes and plastics</mat-option>
+            <mat-option value="Tiles">Tiles</mat-option>
+            <mat-option value="Granite">Granite</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select>
+            <mat-option value="Recycled">Recycled</mat-option>
+            <mat-option value="Used">Used</mat-option>
+            <mat-option value="New/Surplus">New/Surplus</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Location</mat-label>
+          <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Quality</mat-label>
+          <mat-select>
+            <mat-option value="verified">Verified</mat-option>
+            <mat-option value="denied">Denied</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="card-area">
+        <div class="cards">
+          <div class="card-like">
+            <mat-icon>favorite_border</mat-icon>
+          </div>
+          <div class="main-cards">
+            <div class="image-area">
+              <img src="assets/logo/productsample.jpg" alt="product-image">
+            </div>
+            <div class="product-details">
+              <div class="sub-product">
+                <div id="details1">
+                  <h1>Bricks</h1>
+                  <p>Category : Recycled</p>
+                  <p>Quality tested : Yes</p>
+                  <p>Availability : Immediate</p>
+                </div>
+                <div id="details2">
+                  <p>Address : Adayar, Chennai</p>
+                  <p id="rupee"> &#8377; <b>1000/ton</b></p>
+                </div>
+              </div>
+              <div class="products-button">
+                <button mat-raised-button  id="phone-button"> <mat-icon> phone</mat-icon>Show number</button>
+                <button mat-raised-button color="primary" id="cart-button"><mat-icon>shopping_cart</mat-icon>Add to cart</button>
+                <button mat-raised-button color="primary" id="buy-now"><mat-icon>shopping_cart</mat-icon>Buy now</button>
+              </div>
+            </div>
+          </div>
+          <div class="verify-card">
+            <mat-icon>verified_user</mat-icon>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

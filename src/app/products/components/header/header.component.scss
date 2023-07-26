@@ -1,0 +1,76 @@
+.header-containers {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+
+  .logo-area {
+    width: 25%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .navigation {
+    width: 75%;
+    height: 20vh;
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+
+      li {
+        color: #F5922D;
+        font-size: 24px;
+      }
+      li:hover{
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Media query for tablet view (up to 768px)
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .logo-area {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px; /* Add some spacing between logo and navigation */
+    }
+
+    .navigation {
+      width: 100%;
+      height: auto;
+
+      ul {
+        flex-direction: column; /* Stack li elements vertically */
+        text-align: center; /* Center li elements horizontally */
+        li {
+          font-size: 18px; /* Decrease font size for better mobile layout */
+        }
+      }
+    }
+  }
+
+  // Media query for mobile view (up to 480px)
+  @media (max-width: 480px) {
+    .navigation {
+      ul {
+        li {
+          font-size: 16px; /* Further decrease font size for smaller mobile devices */
+        }
+      }
+    }
+  }
+}

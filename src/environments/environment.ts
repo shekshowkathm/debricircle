@@ -1,0 +1,10 @@
+export const environment = {
+  firebase: {
+    projectId: 'debricircle',
+    appId: '1:875478465511:web:4f901d357cc7d5eaf85b42',
+    storageBucket: 'debricircle.appspot.com',
+    apiKey: 'AIzaSyDF78_g7SWUzslyXNZpG7r0ys9e44qrumA',
+    authDomain: 'debricircle.firebaseapp.com',
+    messagingSenderId: '875478465511',
+  },
+};

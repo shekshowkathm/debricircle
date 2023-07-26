@@ -1,0 +1,11 @@
+<p>imageconverter works!</p>
+<input type="file" (change)="onFileSelected($event)" accept="image/*">
+<div *ngIf="selectedImage">
+  <img [src]="previewImage" alt="Preview" style="max-width: 200px;">
+</div>
+<button (click)="convertToBase64()">Convert to Base64</button>
+<!-- Image preview using base64 -->
+<div *ngIf="convertedBase64">
+  <img [src]="convertedBase64" alt="Converted Preview" style="max-width: 200px;">
+</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>

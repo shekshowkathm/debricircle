@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>user</th>
+    <th>age</th>
+    <th>id</th>
+
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let item of getAllData">
+    <td>{{ item.user }}</td>
+    <td>{{ item.age }}</td>
+    <td>{{ item.id }}</td>
+    <td>
+      <button (click)="deleteStudent(item)">Delete</button>
+      <button routerLink="/register/update/{{item.id}}" >Update</button>
+      <button (click)="getById(item.id)">Get by Id</button>
+    </td>
+  </tr>
+
+</table>
