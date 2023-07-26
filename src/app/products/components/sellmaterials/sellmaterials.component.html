@@ -56,8 +56,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Quality</mat-label>
           <mat-select placeholder="Enter your quality here" formControlName="quality">
-            <mat-option value="verified">Verified</mat-option>
-            <mat-option value="denied">Denied</mat-option>
+            <mat-option value="Verified">Verified</mat-option>
+            <mat-option value="Denied">Denied</mat-option>
           </mat-select>
           <mat-error *ngIf="sellMaterialForm.get('quality')!.invalid && (sellMaterialForm.get('quality')!.dirty || sellMaterialForm.get('quality')!.touched)">
             Quality is required
@@ -66,8 +66,24 @@
         </p>
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>Location of product</mat-label>
-            <input matInput placeholder="Enter your product location" formControlName="location">
+            <mat-label>Location</mat-label>
+            <mat-select placeholder="Enter your product location" formControlName="location">
+              <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
+              <mat-option value="Manali">Manali</mat-option>
+              <mat-option value="Madhavaram">Madhavaram</mat-option>
+              <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+              <mat-option value="Royapuram">Royapuram</mat-option>
+              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+              <mat-option value="Ambattur">Ambattur</mat-option>
+              <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+              <mat-option value="Teynampet">TEYNAMPET</mat-option>
+              <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+              <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+              <mat-option value="Alandur">Alandur</mat-option>
+              <mat-option value="Adyar">Adyar</mat-option>
+              <mat-option value="Perungudi">Perungudi</mat-option>
+              <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
+            </mat-select>
             <mat-error *ngIf="sellMaterialForm.get('location')!.invalid && (sellMaterialForm.get('location')!.dirty || sellMaterialForm.get('location')!.touched)">
               Location is required
             </mat-error>

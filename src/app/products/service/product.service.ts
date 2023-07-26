@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -7,7 +8,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductService {
 
-  constructor(private angularFireStore: AngularFirestore) { }
+  constructor(private angularFireStore: AngularFirestore,private router:Router,) { }
   getProductById(id: any) {
     return this.angularFireStore
       .collection('products')
@@ -32,6 +33,7 @@ export class ProductService {
               'Your product uploaded successfully!',
               'success'
             )
+            this.router.navigate(['/products/buymaterials'])
           },
           (error) => {
             Swal.fire({
