@@ -16,10 +16,13 @@ selectedPrice!: string;       // To store the selected Price
 selectedLocation!: string;    // To store the selected Location
 selectedQuality!: string;     // To store the selected Quality
 filteredProducts: any[] = [];
+products!: any[];
 
-  constructor(private productsService: ProductService) {}
+  constructor(private productsService: ProductService) { }
   ngOnInit() {
     this.getAllProductsDetails();
+
+
   }
 
   getAllProductsDetails() {
@@ -43,6 +46,8 @@ filteredProducts: any[] = [];
       console.log(this.getAllProducts);
       console.log(this.getAllProducts[1].selectedDate);
       this.filteredProducts=this.getAllProducts
+      this.products=this.getAllProducts
+    console.log(this.products);
     });
   }
 
@@ -55,37 +60,9 @@ filteredProducts: any[] = [];
     }
   }
 
-  onFilterChange() {
-    console.log("hello");
 
-    // Filter the cards based on the selected values
-    this.filteredProducts = this.getAllProducts.filter((product) =>
-      this.matchesFilters(product)
-    );
-    console.log(this.filteredProducts);
 
-  }
 
-  matchesFilters(product: any): boolean {
-    const materialTypeFilter =
-      !this.selectedMaterial || this.selectedMaterial === product.category;
-    const categoryFilter =
-      !this.selectedCategory || this.selectedCategory === product.quality;
-    const priceFilter =
-      !this.selectedPrice || this.selectedPrice === 'one' /* Modify this condition based on your actual Price filter */;
-    const locationFilter =
-      !this.selectedLocation || this.selectedLocation === product.location;
-    const qualityFilter =
-      !this.selectedQuality || this.selectedQuality === product.quality;
-
-    return (
-      materialTypeFilter &&
-      categoryFilter &&
-      priceFilter &&
-      locationFilter &&
-      qualityFilter
-    );
-  }
 
 
 }

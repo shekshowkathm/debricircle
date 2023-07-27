@@ -39,7 +39,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FilterPipe } from './pipe/filter.pipe'; // Import MatNativeDateModule
+import { FilterPipe } from './pipe/filter.pipe';
+import { DisposewasteComponent } from './components/disposewaste/disposewaste.component'; // Import MatNativeDateModule
 
 
 
@@ -48,7 +49,8 @@ import { FilterPipe } from './pipe/filter.pipe'; // Import MatNativeDateModule
     HeaderComponent,
     SellmaterialsComponent,
     BuymaterialsComponent,
-    FilterPipe
+    FilterPipe,
+    DisposewasteComponent
   ],
   imports: [
     CommonModule,

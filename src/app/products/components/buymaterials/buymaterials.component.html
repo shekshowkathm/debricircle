@@ -7,7 +7,7 @@
       <div class="filter-area">
         <mat-form-field appearance="outline">
           <mat-label>Material type</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedMaterial">
             <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
             <mat-option value="Fine aggregate">Fine aggregate</mat-option>
             <mat-option value="Bricks">Bricks</mat-option>
@@ -29,7 +29,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
-          <mat-select [(value)]="selectedCategory">
+          <mat-select [(ngModel)]="selectedCategory">
             <mat-option value="Recycled">Recycled</mat-option>
             <mat-option value="Used">Used</mat-option>
             <mat-option value="New/Surplus">New/Surplus</mat-option>
@@ -44,7 +44,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedLocation">
             <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
               <mat-option value="Manali">Manali</mat-option>
               <mat-option value="Madhavaram">Madhavaram</mat-option>
@@ -64,16 +64,16 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Quality</mat-label>
-          <mat-select [(value)]="selectedQuality">
-            <mat-option value="verified">Verified</mat-option>
-            <mat-option value="denied">Denied</mat-option>
+          <mat-select [(ngModel)]="selectedQuality">
+            <mat-option value="Verified">Verified</mat-option>
+            <mat-option value="Denied">Denied</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="card-areas" >
         <div class="center">
 
-          <div class="cards"  *ngFor="let product of getAllProducts | filter: 'category' : selectedCategory | filter: 'quality' : selectedQuality; let i = index">
+          <div class="cards"  *ngFor="let product of products | filter: { quality: selectedQuality, category: selectedCategory, location: selectedLocation, materialtype:selectedMaterial  } let i = index">
             <div class="card-like">
               <mat-icon>favorite_border</mat-icon>
             </div>
@@ -91,6 +91,7 @@
                   </div>
                   <div id="details2">
                     <p>Address : {{ product.location }}</p>
+                    <p>Type : {{ product.materialtype }}</p>
                     <p id="rupee">
                       &#8377; <b>{{ product.productPrice }}</b>
                     </p>

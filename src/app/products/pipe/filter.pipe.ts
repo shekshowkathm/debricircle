@@ -5,30 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any[], field: string, value: any): any[] {
-    if (!items || !field || value === null || value === undefined) {
+  transform(items: any[], filter: any): any {
+    if (!items || !filter) {
       return items;
     }
-    return items.filter(item => item[field] === value);
+
+    return items.filter(item => {
+      // Implement your filtering logic here based on the filter object
+      // For example:
+      const qualityMatch = filter.quality ? item.quality === filter.quality : true;
+      const categoryMatch = filter.category ? item.category === filter.category : true;
+      const locationMatch = filter.location ? item.location === filter.location : true;
+      const materialtypeMatch = filter.materialtype ? item.materialtype === filter.materialtype : true;
+
+      return qualityMatch && categoryMatch && locationMatch && materialtypeMatch;
+    });
   }
-  // transform(items: any[], field: string, value: any): any[] {
-  //   if (!items || !field || value === null || value === undefined) {
-  //     return items;
-  //   }
 
-  //   // Apply the first filter based on 'category' if selectedCategory has a value
-  //   let filteredItems = items;
-  //   if (field === 'category' && value) {
-  //     filteredItems = items.filter(item => item[field].toLowerCase() === value.toLowerCase());
-  //   }
-
-  //   // Apply the second filter based on 'quality' if selectedQuality has a value
-  //   if (field === 'quality' && value) {
-  //     filteredItems = filteredItems.filter(item => item[field] === value);
-  //   }
-
-  //   return filteredItems;
-  // }
 
 
 }
