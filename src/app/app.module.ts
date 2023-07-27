@@ -55,6 +55,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativ
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +99,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativ
     MatSortModule,MatNativeDateModule,
     MatPaginatorModule,HomeModule,ProductsModule
   ],
-  providers: [RegisterService],
+  providers: [RegisterService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,12 @@ export class BuymaterialsComponent {
   getAllProducts: any[] = []; // Initialize as an empty array
   showPhoneNumber = false; // Add this variable
   activeCardIndices: number[] = []; // Array to store the indices of active cards
+  selectedMaterial!: string;    // To store the selected Material type
+selectedCategory!: string;    // To store the selected Category
+selectedPrice!: string;       // To store the selected Price
+selectedLocation!: string;    // To store the selected Location
+selectedQuality!: string;     // To store the selected Quality
+filteredProducts: any[] = [];
 
   constructor(private productsService: ProductService) {}
   ngOnInit() {
@@ -36,6 +42,7 @@ export class BuymaterialsComponent {
       });
       console.log(this.getAllProducts);
       console.log(this.getAllProducts[1].selectedDate);
+      this.filteredProducts=this.getAllProducts
     });
   }
 
@@ -47,4 +54,38 @@ export class BuymaterialsComponent {
       this.activeCardIndices.push(index);
     }
   }
+
+  onFilterChange() {
+    console.log("hello");
+
+    // Filter the cards based on the selected values
+    this.filteredProducts = this.getAllProducts.filter((product) =>
+      this.matchesFilters(product)
+    );
+    console.log(this.filteredProducts);
+
+  }
+
+  matchesFilters(product: any): boolean {
+    const materialTypeFilter =
+      !this.selectedMaterial || this.selectedMaterial === product.category;
+    const categoryFilter =
+      !this.selectedCategory || this.selectedCategory === product.quality;
+    const priceFilter =
+      !this.selectedPrice || this.selectedPrice === 'one' /* Modify this condition based on your actual Price filter */;
+    const locationFilter =
+      !this.selectedLocation || this.selectedLocation === product.location;
+    const qualityFilter =
+      !this.selectedQuality || this.selectedQuality === product.quality;
+
+    return (
+      materialTypeFilter &&
+      categoryFilter &&
+      priceFilter &&
+      locationFilter &&
+      qualityFilter
+    );
+  }
+
+
 }

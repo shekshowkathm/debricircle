@@ -29,7 +29,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
-          <mat-select >
+          <mat-select [(value)]="selectedCategory">
             <mat-option value="Recycled">Recycled</mat-option>
             <mat-option value="Used">Used</mat-option>
             <mat-option value="New/Surplus">New/Surplus</mat-option>
@@ -45,13 +45,26 @@
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+            <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
+              <mat-option value="Manali">Manali</mat-option>
+              <mat-option value="Madhavaram">Madhavaram</mat-option>
+              <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+              <mat-option value="Royapuram">Royapuram</mat-option>
+              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+              <mat-option value="Ambattur">Ambattur</mat-option>
+              <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+              <mat-option value="Teynampet">TEYNAMPET</mat-option>
+              <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+              <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+              <mat-option value="Alandur">Alandur</mat-option>
+              <mat-option value="Adyar">Adyar</mat-option>
+              <mat-option value="Perungudi">Perungudi</mat-option>
+              <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Quality</mat-label>
-          <mat-select>
+          <mat-select [(value)]="selectedQuality">
             <mat-option value="verified">Verified</mat-option>
             <mat-option value="denied">Denied</mat-option>
           </mat-select>
@@ -60,7 +73,7 @@
       <div class="card-areas" >
         <div class="center">
 
-          <div class="cards" *ngFor="let product of getAllProducts; let i = index">
+          <div class="cards"  *ngFor="let product of getAllProducts | filter: 'category' : selectedCategory | filter: 'quality' : selectedQuality; let i = index">
             <div class="card-like">
               <mat-icon>favorite_border</mat-icon>
             </div>
