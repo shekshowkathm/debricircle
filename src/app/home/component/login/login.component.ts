@@ -45,7 +45,7 @@ export class LoginComponent {
           console.log("Account available");
           Swal.fire(
             'Good job!',
-            'You clicked the button!',
+            'Your login success',
             'success'
           )
           localStorage.setItem('email', this.loginForm.value.email);

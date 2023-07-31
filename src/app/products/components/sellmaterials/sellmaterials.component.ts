@@ -74,9 +74,9 @@ export class SellmaterialsComponent {
   }
 
   onSellSubmit() {
-    // Object.keys(this.sellMaterialForm.controls).forEach((controlName) => {
-    //   this.sellMaterialForm.controls[controlName].markAsTouched();
-    // });
+    Object.keys(this.sellMaterialForm.controls).forEach(controlName => {
+      this.sellMaterialForm.controls[controlName].markAsTouched();
+    });
     if (this.sellMaterialForm.valid) {
       // Handle form submission here
 

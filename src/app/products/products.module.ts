@@ -40,7 +40,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FilterPipe } from './pipe/filter.pipe';
-import { DisposewasteComponent } from './components/disposewaste/disposewaste.component'; // Import MatNativeDateModule
+import { DisposewasteComponent } from './components/disposewaste/disposewaste.component';
+import { LogoutDialogComponent } from './components/logout-dialog/logout-dialog.component';
+import { TippingSegregatedComponent } from './components/tipping-segregated/tipping-segregated.component';
+import { TippingNonSegregatedComponent } from './components/tipping-non-segregated/tipping-non-segregated.component'; // Import MatNativeDateModule
 
 
 
@@ -50,7 +53,10 @@ import { DisposewasteComponent } from './components/disposewaste/disposewaste.co
     SellmaterialsComponent,
     BuymaterialsComponent,
     FilterPipe,
-    DisposewasteComponent
+    DisposewasteComponent,
+    LogoutDialogComponent,
+    TippingSegregatedComponent,
+    TippingNonSegregatedComponent
   ],
   imports: [
     CommonModule,

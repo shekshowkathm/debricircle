@@ -5,7 +5,183 @@
   <div class="main">
     <div class="main-area">
       <div class="form-area">
-        
+        <mat-tab-group animationDuration="1500ms">
+          <mat-tab label="Non-segregated waste">
+            <div class="non-segregated-form">
+              <form [formGroup]="nonsegregaredForm" (ngSubmit)="onNonSegregatedSubmit()">
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Location</mat-label>
+                    <mat-select placeholder="Enter your product location" formControlName="location">
+                      <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
+                      <mat-option value="Manali">Manali</mat-option>
+                      <mat-option value="Madhavaram">Madhavaram</mat-option>
+                      <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+                      <mat-option value="Royapuram">Royapuram</mat-option>
+                      <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+                      <mat-option value="Ambattur">Ambattur</mat-option>
+                      <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+                      <mat-option value="Teynampet">TEYNAMPET</mat-option>
+                      <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+                      <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+                      <mat-option value="Alandur">Alandur</mat-option>
+                      <mat-option value="Adyar">Adyar</mat-option>
+                      <mat-option value="Perungudi">Perungudi</mat-option>
+                      <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="nonsegregaredForm.get('location')!.invalid && (nonsegregaredForm.get('location')!.dirty || nonsegregaredForm.get('location')!.touched)">
+                      Location type is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contact number</mat-label>
+                    <input matInput placeholder="Enter your contact number" formControlName="number">
+                    <mat-error *ngIf="nonsegregaredForm.get('number')!.invalid && (nonsegregaredForm.get('number')!.dirty || nonsegregaredForm.get('number')!.touched)">
+                      Contact number type is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Volume</mat-label>
+                    <input matInput placeholder="Enter your volume" formControlName="volume">
+                    <mat-error *ngIf="nonsegregaredForm.get('volume')!.invalid && (nonsegregaredForm.get('volume')!.dirty || nonsegregaredForm.get('volume')!.touched)">
+                      Volume type is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tipping fees</mat-label>
+                    <input matInput placeholder="Your tipping fees">
+                  </mat-form-field>
+                </p>
+                <div *ngIf="nonsegregaredForm.invalid && (nonsegregaredForm.dirty || nonsegregaredForm.touched)" id="all-field">
+                  <mat-error>
+                    Please fill in all the required fields.
+                  </mat-error>
+                </div>
+                <button mat-raised-button type="submit">Submit</button>
+              </form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Segregated-waste">
+            <div class="segregated-form">
+              <form [formGroup]="segregaredForm" (ngSubmit)="onSegregatedSubmit()">
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Location</mat-label>
+                    <mat-select placeholder="Enter your product location" formControlName="location">
+                      <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
+                      <mat-option value="Manali">Manali</mat-option>
+                      <mat-option value="Madhavaram">Madhavaram</mat-option>
+                      <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+                      <mat-option value="Royapuram">Royapuram</mat-option>
+                      <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+                      <mat-option value="Ambattur">Ambattur</mat-option>
+                      <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+                      <mat-option value="Teynampet">TEYNAMPET</mat-option>
+                      <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+                      <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+                      <mat-option value="Alandur">Alandur</mat-option>
+                      <mat-option value="Adyar">Adyar</mat-option>
+                      <mat-option value="Perungudi">Perungudi</mat-option>
+                      <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="segregaredForm.get('location')!.invalid && (segregaredForm.get('location')!.dirty || segregaredForm.get('location')!.touched)">
+                      Location is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contact number</mat-label>
+                    <input matInput placeholder="Enter your contact number" formControlName="number">
+                    <mat-error *ngIf="segregaredForm.get('number')!.invalid && (segregaredForm.get('number')!.dirty || segregaredForm.get('number')!.touched)">
+                      Contact number is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Concrete volume</mat-label>
+                    <input matInput placeholder="Enter concrete volume in tonne" formControlName="concrete">
+                    <mat-error *ngIf="segregaredForm.get('concrete')!.invalid && (segregaredForm.get('concrete')!.dirty || segregaredForm.get('concrete')!.touched)">
+                      Concrete volume is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Soil volume</mat-label>
+                    <input matInput placeholder="Enter soil volume in tonne" formControlName="soil">
+                    <mat-error *ngIf="segregaredForm.get('soil')!.invalid && (segregaredForm.get('soil')!.dirty || segregaredForm.get('soil')!.touched)">
+                      Soil volume is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Packaging volume</mat-label>
+                    <input matInput placeholder="Enter packaging volume in tonne" formControlName="packaging">
+                    <mat-error *ngIf="segregaredForm.get('packaging')!.invalid && (segregaredForm.get('packaging')!.dirty || segregaredForm.get('packaging')!.touched)">
+                      Packaging volume is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Other volume</mat-label>
+                    <input matInput placeholder="Enter other volume in tonne" formControlName="other">
+                    <mat-error *ngIf="segregaredForm.get('other')!.invalid && (segregaredForm.get('other')!.dirty || segregaredForm.get('other')!.touched)">
+                      Other volume is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Brick volume</mat-label>
+                    <input matInput placeholder="Enter brick volume in tonne" formControlName="brick">
+                    <mat-error *ngIf="segregaredForm.get('brick')!.invalid && (segregaredForm.get('brick')!.dirty || segregaredForm.get('brick')!.touched)">
+                      Brick volume is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Steel volume</mat-label>
+                    <input matInput placeholder="Enter steel volume in tonne" formControlName="steel">
+                    <mat-error *ngIf="segregaredForm.get('steel')!.invalid && (segregaredForm.get('steel')!.dirty || segregaredForm.get('steel')!.touched)">
+                      Steel volume is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Wood volume</mat-label>
+                    <input matInput placeholder="Enter wood volume in tonne" formControlName="wood">
+                    <mat-error *ngIf="segregaredForm.get('wood')!.invalid && (segregaredForm.get('wood')!.dirty || segregaredForm.get('wood')!.touched)">
+                      Wood volume is required
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Plastics volume</mat-label>
+                    <input matInput placeholder="Enter plastics volume in tonne" formControlName="plastic">
+                    <mat-error *ngIf="segregaredForm.get('plastic')!.invalid && (segregaredForm.get('plastic')!.dirty || segregaredForm.get('plastic')!.touched)">
+                      Plastic volume is required
+                    </mat-error>
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Tipping fees</mat-label>
+                    <input matInput placeholder="Your tipping fees">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" id="hidden-form">
+                    <mat-label>Tipping fees</mat-label>
+                    <input matInput placeholder="Your tipping fees">
+                  </mat-form-field>
+                </p>
+                <div *ngIf="segregaredForm.invalid && (segregaredForm.dirty || segregaredForm.touched)" id="all-field">
+                  <mat-error>
+                    Please fill in all the required fields.
+                  </mat-error>
+                </div>
+                <button mat-raised-button type="submit">Submit</button>
+              </form>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </div>
