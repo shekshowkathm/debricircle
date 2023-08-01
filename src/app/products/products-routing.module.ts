@@ -15,9 +15,9 @@ const routes: Routes = [
 
   },
   {
-    path: 'buymaterials',
+    path: '',
     component: BuymaterialsComponent,
-    canActivate:[AuthGuard]
+
   },
   {
     path: 'disposewaste',

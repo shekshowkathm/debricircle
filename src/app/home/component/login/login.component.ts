@@ -49,7 +49,7 @@ export class LoginComponent {
             'success'
           )
           localStorage.setItem('email', this.loginForm.value.email);
-          this.router.navigate(['/products/buymaterials'])
+          this.router.navigate([''])
 
         } else {
           console.log("Account not available");

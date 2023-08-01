@@ -5,7 +5,7 @@ import { DebriregisterComponent } from './component/debriregister/debriregister.
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginComponent,
   },
   {

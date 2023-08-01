@@ -8,12 +8,12 @@ const routes: Routes = [
       import('./register/register-routing.module').then((m) => m.RegisterRoutingModule),
   },
   {
-    path: '',
+    path: 'home',
     loadChildren: () =>
       import('./home/home-routing.module').then((m) => m.HomeRoutingModule),
   },
   {
-    path: 'products',
+    path: '',
     loadChildren: () =>
       import('./products/products-routing.module').then((m) => m.ProductsRoutingModule),
   },

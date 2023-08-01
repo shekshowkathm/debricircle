@@ -116,17 +116,17 @@
                 </p>
                 <p>
                   <mat-form-field appearance="outline">
-                    <mat-label>Packaging volume</mat-label>
+                    <mat-label>Packaging waste volume</mat-label>
                     <input matInput placeholder="Enter packaging volume in tonne" formControlName="packaging">
                     <mat-error *ngIf="segregaredForm.get('packaging')!.invalid && (segregaredForm.get('packaging')!.dirty || segregaredForm.get('packaging')!.touched)">
-                      Packaging volume is required
+                      Packaging waste volume is required
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Other volume</mat-label>
-                    <input matInput placeholder="Enter other volume in tonne" formControlName="other">
-                    <mat-error *ngIf="segregaredForm.get('other')!.invalid && (segregaredForm.get('other')!.dirty || segregaredForm.get('other')!.touched)">
-                      Other volume is required
+                    <mat-label>Plastics volume</mat-label>
+                    <input matInput placeholder="Enter plastics volume in tonne" formControlName="plastic">
+                    <mat-error *ngIf="segregaredForm.get('plastic')!.invalid && (segregaredForm.get('plastic')!.dirty || segregaredForm.get('plastic')!.touched)">
+                      Plastic volume is required
                     </mat-error>
                   </mat-form-field>
                 </p>
@@ -155,10 +155,10 @@
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Plastics volume</mat-label>
-                    <input matInput placeholder="Enter plastics volume in tonne" formControlName="plastic">
-                    <mat-error *ngIf="segregaredForm.get('plastic')!.invalid && (segregaredForm.get('plastic')!.dirty || segregaredForm.get('plastic')!.touched)">
-                      Plastic volume is required
+                    <mat-label>Other volume</mat-label>
+                    <input matInput placeholder="Enter other volume in tonne" formControlName="other">
+                    <mat-error *ngIf="segregaredForm.get('other')!.invalid && (segregaredForm.get('other')!.dirty || segregaredForm.get('other')!.touched)">
+                      Other volume is required
                     </mat-error>
                   </mat-form-field>
                 </p>

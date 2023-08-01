@@ -35,7 +35,7 @@ export class HomeService {
               'Your Registration is success!',
               'success'
             )
-            this.router.navigate([''])
+            this.router.navigate(['/home/login'])
 
           },
           (error) => {reject(error)

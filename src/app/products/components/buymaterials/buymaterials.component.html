@@ -46,20 +46,20 @@
           <mat-label>Location</mat-label>
           <mat-select [(ngModel)]="selectedLocation">
             <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
-              <mat-option value="Manali">Manali</mat-option>
-              <mat-option value="Madhavaram">Madhavaram</mat-option>
-              <mat-option value="Tondiarpet">Tondiarpet</mat-option>
-              <mat-option value="Royapuram">Royapuram</mat-option>
-              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
-              <mat-option value="Ambattur">Ambattur</mat-option>
-              <mat-option value="Anna Nagar">Anna Nagar</mat-option>
-              <mat-option value="Teynampet">TEYNAMPET</mat-option>
-              <mat-option value="Kodambakkam">Kodambakkam</mat-option>
-              <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
-              <mat-option value="Alandur">Alandur</mat-option>
-              <mat-option value="Adyar">Adyar</mat-option>
-              <mat-option value="Perungudi">Perungudi</mat-option>
-              <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
+            <mat-option value="Manali">Manali</mat-option>
+            <mat-option value="Madhavaram">Madhavaram</mat-option>
+            <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+            <mat-option value="Royapuram">Royapuram</mat-option>
+            <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+            <mat-option value="Ambattur">Ambattur</mat-option>
+            <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+            <mat-option value="Teynampet">TEYNAMPET</mat-option>
+            <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+            <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+            <mat-option value="Alandur">Alandur</mat-option>
+            <mat-option value="Adyar">Adyar</mat-option>
+            <mat-option value="Perungudi">Perungudi</mat-option>
+            <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -70,10 +70,22 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="card-areas" >
+      <div class="card-areas">
         <div class="center">
-
-          <div class="cards"  *ngFor="let product of products | filter: { quality: selectedQuality, category: selectedCategory, location: selectedLocation, materialtype:selectedMaterial  } let i = index">
+          <div
+            class="cards"
+            *ngFor="
+              let product of products
+                | filter
+                  : {
+                      quality: selectedQuality,
+                      category: selectedCategory,
+                      location: selectedLocation,
+                      materialtype: selectedMaterial
+                    };
+              let i = index
+            "
+          >
             <div class="card-like">
               <mat-icon>favorite_border</mat-icon>
             </div>
@@ -90,7 +102,7 @@
                     <p>Availability : {{ product.selectedDate }}</p>
                   </div>
                   <div id="details2">
-                    <p>Address : {{ product.location }}</p>
+                    <p *ngIf="!localStorageEmpty">Address : {{ product.location }}</p>
                     <p>Type : {{ product.materialtype }}</p>
                     <p id="rupee">
                       &#8377; <b>{{ product.productPrice }}</b>
@@ -98,9 +110,17 @@
                   </div>
                 </div>
                 <div class="products-button">
-                  <button mat-raised-button id="phone-button" (click)="togglePhoneNumber(i)">
+                  <button
+                    mat-raised-button
+                    id="phone-button"
+                    (click)="togglePhoneNumber(i)"
+                  >
                     <mat-icon>phone</mat-icon>
-                    {{ activeCardIndices.includes(i) ? product.mobileNumber : 'Show number' }}
+                    {{
+                      activeCardIndices.includes(i)
+                        ? product.mobileNumber
+                        : "Show number"
+                    }}
                   </button>
                   <button mat-raised-button color="primary" id="cart-button">
                     <mat-icon>shopping_cart</mat-icon>Add to cart
@@ -115,7 +135,7 @@
               <mat-icon>verified_user</mat-icon>
             </div>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   </div>

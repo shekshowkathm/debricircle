@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../service/product.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buymaterials',
@@ -17,11 +19,13 @@ selectedLocation!: string;    // To store the selected Location
 selectedQuality!: string;     // To store the selected Quality
 filteredProducts: any[] = [];
 products!: any[];
+localStorageEmpty!: boolean; // Variable to track whether localStorage is completely clear (empty)
 
-  constructor(private productsService: ProductService) { }
+
+  constructor(private productsService: ProductService,private router:Router) { }
   ngOnInit() {
     this.getAllProductsDetails();
-
+    this.localStorageEmpty = Object.keys(localStorage).length === 0;
 
   }
 
@@ -52,12 +56,45 @@ products!: any[];
   }
 
   togglePhoneNumber(index: number) {
-    // Check if the card index is already active, and toggle it
-    if (this.activeCardIndices.includes(index)) {
-      this.activeCardIndices = this.activeCardIndices.filter((i) => i !== index);
+
+    const localStorageEmpty = Object.keys(localStorage).length === 0;
+
+    if (localStorageEmpty) {
+      this.showRegisterAlert();
+
     } else {
-      this.activeCardIndices.push(index);
+       // Check if the card index is already active, and toggle it
+      if (this.activeCardIndices.includes(index)) {
+        this.activeCardIndices = this.activeCardIndices.filter((i) => i !== index);
+      } else {
+        this.activeCardIndices.push(index);
+      }
     }
+
+  }
+
+  private showRegisterAlert() {
+    Swal.fire({
+      title: 'You need to register',
+      showCancelButton: true,
+      confirmButtonText: 'Register',
+      cancelButtonText: 'Cancel',
+      showClass: {
+        popup: 'swal2-noanimation',
+        backdrop: 'swal2-noanimation',
+      },
+      hideClass: {
+        popup: '',
+        backdrop: '',
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('/registers');
+        // Redirect to login page or show the login page here
+        // For example, you can use Angular Router to navigate to the login page
+        // this.router.navigate(['/login']); // Import Router and uncomment this line if you have a login route
+      }
+    });
   }
 
 
