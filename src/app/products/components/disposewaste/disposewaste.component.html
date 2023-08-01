@@ -12,7 +12,7 @@
                 <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Location</mat-label>
-                    <mat-select placeholder="Enter your product location" formControlName="location">
+                    <mat-select placeholder="Enter your product location" formControlName="location" (input)="calculateTipping()">
                       <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
                       <mat-option value="Manali">Manali</mat-option>
                       <mat-option value="Madhavaram">Madhavaram</mat-option>
@@ -44,14 +44,14 @@
                 <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Volume</mat-label>
-                    <input matInput placeholder="Enter your volume" formControlName="volume">
+                    <input matInput type="number" placeholder="Enter your volume" formControlName="volume" (input)="calculateTipping()">
                     <mat-error *ngIf="nonsegregaredForm.get('volume')!.invalid && (nonsegregaredForm.get('volume')!.dirty || nonsegregaredForm.get('volume')!.touched)">
                       Volume type is required
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Tipping fees</mat-label>
-                    <input matInput placeholder="Your tipping fees">
+                    <input matInput placeholder="Your tipping fees" formControlName="tippingFees" [readonly]="true">
                   </mat-form-field>
                 </p>
                 <div *ngIf="nonsegregaredForm.invalid && (nonsegregaredForm.dirty || nonsegregaredForm.touched)" id="all-field">

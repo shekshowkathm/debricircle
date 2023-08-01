@@ -1,0 +1,42 @@
+.waste-management-container{
+  width: 100%;
+  height: 180vh;
+  background-color: #d3eaf2b2;
+  .headers {
+    width: 100%;
+    height: 20vh;
+    background-color: #fff;
+  }
+  .waste-management-form{
+    width: 100%;
+    height: 160vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-area{
+      width: 70%;
+      height: 130vh;
+      background-color: #fff;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      .form-container{
+        width: 80%;
+        height: 130vh;
+
+        #heading {
+          width: 100%;
+          height: 10vh;
+          margin-top: 20px;
+          // border: 2px solid red;
+          text-align: center;
+          font-size: 28px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
