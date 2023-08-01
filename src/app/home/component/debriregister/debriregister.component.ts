@@ -9,7 +9,7 @@ import { HomeService } from '../../service/home.service';
 })
 export class DebriregisterComponent {
   registrationForm!: FormGroup; // Add the '!' non-null assertion operator here
-
+  hidePassword: boolean = true;
   constructor(private formBuilder: FormBuilder,private homeService:HomeService) { }
 
   ngOnInit() {
@@ -26,6 +26,10 @@ export class DebriregisterComponent {
       email: ['', [Validators.required, Validators.email]], // Using built-in email validator
       password: ['', [Validators.required, Validators.minLength(8)]] // Custom validator for minimum length of 8 characters
     });
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 
   onSubmit() {

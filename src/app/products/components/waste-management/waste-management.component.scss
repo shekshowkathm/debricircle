@@ -1,11 +1,13 @@
 .waste-management-container{
   width: 100%;
   height: 180vh;
-  background-color: #d3eaf2b2;
+  background-color: #ff910009;
   .headers {
     width: 100%;
     height: 20vh;
     background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+
   }
   .waste-management-form{
     width: 100%;
@@ -21,6 +23,10 @@
       border-radius: 20px;
       display: flex;
       justify-content: center;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), /* Top shadow */
+              0 -4px 4px rgba(0, 0, 0, 0.1), /* Bottom shadow */
+              4px 0 4px rgba(0, 0, 0, 0.1), /* Right shadow */
+              -4px 0 4px rgba(0, 0, 0, 0.1); /* Left shadow */
       .form-container{
         width: 80%;
         height: 130vh;

@@ -8,6 +8,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Material type</mat-label>
           <mat-select [(ngModel)]="selectedMaterial">
+            <mat-option value="">None</mat-option>
             <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
             <mat-option value="Fine aggregate">Fine aggregate</mat-option>
             <mat-option value="Bricks">Bricks</mat-option>
@@ -30,6 +31,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
           <mat-select [(ngModel)]="selectedCategory">
+            <mat-option value="">None</mat-option>
             <mat-option value="Recycled">Recycled</mat-option>
             <mat-option value="Used">Used</mat-option>
             <mat-option value="New/Surplus">New/Surplus</mat-option>
@@ -38,6 +40,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Price</mat-label>
           <mat-select>
+            <mat-option value="">None</mat-option>
             <mat-option value="one">First option</mat-option>
             <mat-option value="two">Second option</mat-option>
           </mat-select>
@@ -45,6 +48,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <mat-select [(ngModel)]="selectedLocation">
+            <mat-option value="">None</mat-option>
             <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
             <mat-option value="Manali">Manali</mat-option>
             <mat-option value="Madhavaram">Madhavaram</mat-option>
@@ -65,6 +69,7 @@
         <mat-form-field appearance="outline">
           <mat-label>Quality</mat-label>
           <mat-select [(ngModel)]="selectedQuality">
+            <mat-option value="">None</mat-option>
             <mat-option value="Verified">Verified</mat-option>
             <mat-option value="Denied">Denied</mat-option>
           </mat-select>

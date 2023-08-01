@@ -19,12 +19,15 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Enter your password" formControlName="password">
-            <mat-icon matSuffix>security</mat-icon>
+            <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Enter your password" formControlName="password">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="hidePassword ? 'Hide Password' : 'Show Password'">
+              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
             <mat-error *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
               Password: 8 characters minimum required.
             </mat-error>
           </mat-form-field>
+
         </p>
         <div *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)" id="all-field">
           <mat-error>

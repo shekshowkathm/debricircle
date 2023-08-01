@@ -12,6 +12,8 @@ export class LoginComponent {
 
   loginForm!: FormGroup; // Add the '!' non-null assertion operator here
   getAllData: any;
+  hidePassword: boolean = true;
+
   constructor(private formBuilder: FormBuilder,private homeService:HomeService,private router:Router,) { }
   ngOnInit() {
     this.initForm();
@@ -23,6 +25,10 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]], // Using built-in email validator
       password: ['', [Validators.required, Validators.minLength(8)]] // Custom validator for minimum length of 8 characters
     });
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 
   onLoginSubmit(){

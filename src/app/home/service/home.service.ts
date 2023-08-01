@@ -22,33 +22,91 @@ export class HomeService {
       .collection('debricircle')
       .snapshotChanges();
   }
-  createRegister(registerForm:any){
-    return new Promise<any>((resolve, reject) => {
-      this.angularFireStore
-        .collection('debricircle')
-        .add(registerForm)
-        .then(
-          (response: any) => {
-            console.log(response);
-            Swal.fire(
-              'Good job!',
-              'Your Registration is success!',
-              'success'
-            )
-            this.router.navigate(['/home/login'])
+  // createRegister(registerForm:any){
+  //   return new Promise<any>((resolve, reject) => {
+  //     this.angularFireStore
+  //       .collection('debricircle')
+  //       .add(registerForm)
+  //       .then(
+  //         (response: any) => {
+  //           console.log(response);
+  //           Swal.fire(
+  //             'Good job!',
+  //             'Your Registration is success!',
+  //             'success'
+  //           )
+  //           this.router.navigate(['/home/login'])
 
-          },
-          (error) => {reject(error)
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
+  //         },
+  //         (error) => {reject(error)
+  //           Swal.fire({
+  //             icon: 'error',
+  //             title: 'Oops...',
+  //             text: 'Something went wrong!',
 
-            })
-          }
+  //           })
+  //         }
 
-        );
-    });
+  //       );
+  //   });
+  // }
+  createRegister(registerForm: any) {
+    const email = registerForm.email; // Assuming 'email' is the key for the email field in registerForm
+
+    // Check if the email already exists
+    this.angularFireStore
+      .collection('debricircle', (ref) => ref.where('email', '==', email))
+      .get()
+      .toPromise()
+      .then((querySnapshot) => {
+        if (!querySnapshot) {
+          // Handle the case where querySnapshot is undefined (error occurred)
+          console.error('Error fetching data from Firestore');
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong while fetching data from Firestore!',
+          });
+          return;
+        }
+
+        if (!querySnapshot.empty) {
+          // Email already exists, show an error message
+          Swal.fire({
+            icon: 'error',
+            title: 'Email Already Exists',
+            text: 'The provided email address is already registered.',
+          });
+        } else {
+          // Email is unique, proceed with registration
+          this.angularFireStore
+            .collection('debricircle')
+            .add(registerForm)
+            .then(
+              (response: any) => {
+                console.log(response);
+                Swal.fire('Good job!', 'Your Registration is success!', 'success');
+                this.router.navigate(['/home/login']);
+              },
+              (error) => {
+                console.error(error);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                });
+              }
+            );
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      });
   }
   deleteRegister(registerForm:any){
     return this.angularFireStore
