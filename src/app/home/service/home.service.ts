@@ -22,34 +22,7 @@ export class HomeService {
       .collection('debricircle')
       .snapshotChanges();
   }
-  // createRegister(registerForm:any){
-  //   return new Promise<any>((resolve, reject) => {
-  //     this.angularFireStore
-  //       .collection('debricircle')
-  //       .add(registerForm)
-  //       .then(
-  //         (response: any) => {
-  //           console.log(response);
-  //           Swal.fire(
-  //             'Good job!',
-  //             'Your Registration is success!',
-  //             'success'
-  //           )
-  //           this.router.navigate(['/home/login'])
 
-  //         },
-  //         (error) => {reject(error)
-  //           Swal.fire({
-  //             icon: 'error',
-  //             title: 'Oops...',
-  //             text: 'Something went wrong!',
-
-  //           })
-  //         }
-
-  //       );
-  //   });
-  // }
   createRegister(registerForm: any) {
     const email = registerForm.email; // Assuming 'email' is the key for the email field in registerForm
 
@@ -125,4 +98,12 @@ export class HomeService {
       password:registerForm.password,
     });
   }
+
+  // getBYEmail
+  getByEmail(email: string) {
+    return this.angularFireStore
+      .collection('debricircle', (ref) => ref.where('email', '==', email))
+      .valueChanges();
+  }
+
 }

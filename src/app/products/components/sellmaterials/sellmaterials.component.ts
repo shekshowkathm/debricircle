@@ -32,6 +32,7 @@ export class SellmaterialsComponent {
       quantity: ['', Validators.required],
       location: ['', Validators.required],
       image: ['', Validators.required],
+      address: ['', Validators.required],
       selectedDate: [''] // FormControl for the selected date
     });
   }
@@ -105,4 +106,6 @@ export class SellmaterialsComponent {
     }
 
   }
+
+  
 }

@@ -33,7 +33,7 @@ export class ProductService {
               'Your product uploaded successfully!',
               'success'
             )
-            this.router.navigate(['/products/buymaterials'])
+            this.router.navigate([''])
           },
           (error) => {
             Swal.fire({
