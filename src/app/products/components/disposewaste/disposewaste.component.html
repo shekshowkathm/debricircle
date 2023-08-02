@@ -44,22 +44,35 @@
                 <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Volume</mat-label>
-                    <input matInput type="number" placeholder="Enter your volume" formControlName="volume" (input)="calculateTipping()">
+                    <input matInput type="number" placeholder="Enter your volume in tonne" formControlName="volume" (input)="calculateTipping()">
                     <mat-error *ngIf="nonsegregaredForm.get('volume')!.invalid && (nonsegregaredForm.get('volume')!.dirty || nonsegregaredForm.get('volume')!.touched)">
                       Volume type is required
                     </mat-error>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Tipping fees</mat-label>
-                    <input matInput placeholder="Your tipping fees" formControlName="tippingFees" [readonly]="true">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Enter your address" formControlName="address">
+                    <mat-error *ngIf="nonsegregaredForm.get('address')!.invalid && (nonsegregaredForm.get('address')!.dirty || nonsegregaredForm.get('address')!.touched)">
+                      Address type is required
+                    </mat-error>
                   </mat-form-field>
                 </p>
-                <div *ngIf="nonsegregaredForm.invalid && (nonsegregaredForm.dirty || nonsegregaredForm.touched)" id="all-field">
-                  <mat-error>
-                    Please fill in all the required fields.
-                  </mat-error>
+                <div class="tipping">
+                  <div class="tipping-main">
+                    <mat-form-field appearance="outline">
+                      <mat-label>Tipping fees</mat-label>
+                      <input matInput placeholder="Your tipping fees" formControlName="tippingFees" [readonly]="true">
+                    </mat-form-field>
+                    <div class="button-tipping">
+                      <div *ngIf="nonsegregaredForm.invalid && (nonsegregaredForm.dirty || nonsegregaredForm.touched)" id="all-field">
+                        <mat-error>
+                          Please fill in all the required fields.
+                        </mat-error>
+                      </div>
+                      <button mat-raised-button type="submit">Submit</button>
+                    </div>
+                  </div>
                 </div>
-                <button mat-raised-button type="submit">Submit</button>
               </form>
             </div>
           </mat-tab>
@@ -102,15 +115,13 @@
                   <mat-form-field appearance="outline">
                     <mat-label>Concrete volume</mat-label>
                     <input matInput placeholder="Enter concrete volume in tonne" formControlName="concrete">
-                    <mat-error *ngIf="segregaredForm.get('concrete')!.invalid && (segregaredForm.get('concrete')!.dirty || segregaredForm.get('concrete')!.touched)">
-                      Concrete volume is required
-                    </mat-error>
+
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Soil volume</mat-label>
-                    <input matInput placeholder="Enter soil volume in tonne" formControlName="soil">
-                    <mat-error *ngIf="segregaredForm.get('soil')!.invalid && (segregaredForm.get('soil')!.dirty || segregaredForm.get('soil')!.touched)">
-                      Soil volume is required
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Enter your address" formControlName="address">
+                    <mat-error *ngIf="segregaredForm.get('address')!.invalid && (segregaredForm.get('address')!.dirty || segregaredForm.get('address')!.touched)">
+                      Address is required
                     </mat-error>
                   </mat-form-field>
                 </p>
@@ -118,59 +129,49 @@
                   <mat-form-field appearance="outline">
                     <mat-label>Packaging waste volume</mat-label>
                     <input matInput placeholder="Enter packaging volume in tonne" formControlName="packaging">
-                    <mat-error *ngIf="segregaredForm.get('packaging')!.invalid && (segregaredForm.get('packaging')!.dirty || segregaredForm.get('packaging')!.touched)">
-                      Packaging waste volume is required
-                    </mat-error>
+
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Plastics volume</mat-label>
                     <input matInput placeholder="Enter plastics volume in tonne" formControlName="plastic">
-                    <mat-error *ngIf="segregaredForm.get('plastic')!.invalid && (segregaredForm.get('plastic')!.dirty || segregaredForm.get('plastic')!.touched)">
-                      Plastic volume is required
-                    </mat-error>
+
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Brick volume</mat-label>
                     <input matInput placeholder="Enter brick volume in tonne" formControlName="brick">
-                    <mat-error *ngIf="segregaredForm.get('brick')!.invalid && (segregaredForm.get('brick')!.dirty || segregaredForm.get('brick')!.touched)">
-                      Brick volume is required
-                    </mat-error>
+
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Steel volume</mat-label>
                     <input matInput placeholder="Enter steel volume in tonne" formControlName="steel">
-                    <mat-error *ngIf="segregaredForm.get('steel')!.invalid && (segregaredForm.get('steel')!.dirty || segregaredForm.get('steel')!.touched)">
-                      Steel volume is required
-                    </mat-error>
+
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field appearance="outline">
                     <mat-label>Wood volume</mat-label>
                     <input matInput placeholder="Enter wood volume in tonne" formControlName="wood">
-                    <mat-error *ngIf="segregaredForm.get('wood')!.invalid && (segregaredForm.get('wood')!.dirty || segregaredForm.get('wood')!.touched)">
-                      Wood volume is required
-                    </mat-error>
+
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Other volume</mat-label>
-                    <input matInput placeholder="Enter other volume in tonne" formControlName="other">
-                    <mat-error *ngIf="segregaredForm.get('other')!.invalid && (segregaredForm.get('other')!.dirty || segregaredForm.get('other')!.touched)">
-                      Other volume is required
-                    </mat-error>
+                    <mat-label>Soil volume</mat-label>
+                    <input matInput placeholder="Enter soil volume in tonne" formControlName="soil">
+
                   </mat-form-field>
                 </p>
                 <p>
                   <mat-form-field appearance="outline">
+                    <mat-label>Other volume</mat-label>
+                    <input matInput placeholder="Enter other volume in tonne" formControlName="other">
+
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
                     <mat-label>Tipping fees</mat-label>
                     <input matInput placeholder="Your tipping fees">
                   </mat-form-field>
-                  <mat-form-field appearance="outline" id="hidden-form">
-                    <mat-label>Tipping fees</mat-label>
-                    <input matInput placeholder="Your tipping fees">
-                  </mat-form-field>
+
                 </p>
                 <div *ngIf="segregaredForm.invalid && (segregaredForm.dirty || segregaredForm.touched)" id="all-field">
                   <mat-error>

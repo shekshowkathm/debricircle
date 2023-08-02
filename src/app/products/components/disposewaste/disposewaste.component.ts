@@ -23,6 +23,7 @@ export class DisposewasteComponent {
       location: ['', Validators.required],
       number: ['', Validators.required],
       volume: ['', Validators.required],
+      address: ['', Validators.required],
       tippingFees: [null], // Set default value as null
     });
   }
@@ -31,14 +32,15 @@ export class DisposewasteComponent {
     this.segregaredForm = this.formBuilder.group({
       location: ['', Validators.required],
       number: ['', Validators.required],
-      concrete: ['', Validators.required],
-      soil: ['', Validators.required],
-      packaging: ['', Validators.required],
-      other: ['', Validators.required],
-      brick: ['', Validators.required],
-      steel: ['', Validators.required],
-      wood: ['', Validators.required],
-      plastic: ['', Validators.required],
+      address: ['', Validators.required],
+      concrete: ['', ],
+      soil: ['', ],
+      packaging: ['', ],
+      other: ['', ],
+      brick: ['', ],
+      steel: ['', ],
+      wood: ['', ],
+      plastic: ['', ],
     });
   }
 

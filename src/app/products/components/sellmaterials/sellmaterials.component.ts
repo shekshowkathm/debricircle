@@ -107,5 +107,5 @@ export class SellmaterialsComponent {
 
   }
 
-  
+
 }

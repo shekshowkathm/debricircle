@@ -115,27 +115,36 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Quantity</mat-label>
-            <input matInput placeholder="Enter your quantity" formControlName="quantity">
+            <input matInput placeholder="Enter your quantity in tonne" formControlName="quantity">
             <mat-error *ngIf="sellMaterialForm.get('quantity')!.invalid && (sellMaterialForm.get('quantity')!.dirty || sellMaterialForm.get('quantity')!.touched)">
               Quantity is required
             </mat-error>
           </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput placeholder="Enter your address" formControlName="address">
+            <mat-error *ngIf="sellMaterialForm.get('address')!.invalid && (sellMaterialForm.get('address')!.dirty || sellMaterialForm.get('address')!.touched)">
+              Address is required
+            </mat-error>
+          </mat-form-field>
+
+        </p>
+        <div id="picture-area">
+          <div class="area">
+              <input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="image">
+            <mat-error *ngIf="sellMaterialForm.get('image')!.invalid && (sellMaterialForm.get('image')!.dirty || sellMaterialForm.get('image')!.touched)">
+              Image is required
+            </mat-error>
+            <div *ngIf="errorMessage"><p>{{ errorMessage }}</p></div>
+              <div *ngIf="selectedImage" id="preview">
+                <img [src]="previewImage" alt="Preview" style="max-width: 200px;">
+              </div>
+          </div>
           <mat-form-field appearance="outline" *ngIf="showDatePicker">
             <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="selectedDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-
           </mat-form-field>
-        </p>
-        <div id="picture-area">
-          <input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="image">
-          <mat-error *ngIf="sellMaterialForm.get('image')!.invalid && (sellMaterialForm.get('image')!.dirty || sellMaterialForm.get('image')!.touched)">
-            Image is required
-          </mat-error>
-          <div *ngIf="errorMessage"><p>{{ errorMessage }}</p></div>
-            <div *ngIf="selectedImage" id="preview">
-              <img [src]="previewImage" alt="Preview" style="max-width: 200px;">
-            </div>
         </div>
         <div *ngIf="sellMaterialForm.invalid && (sellMaterialForm.dirty || sellMaterialForm.touched)" id="all-field">
           <mat-error>
@@ -145,6 +154,7 @@
         <div id="register-submit">
           <button mat-raised-button color="primary" type="submit">Submit</button>
         </div>
+
 
       </form>
 
