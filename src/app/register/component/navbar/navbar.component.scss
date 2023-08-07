@@ -1,0 +1,84 @@
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+
+  .logo {
+    img {
+      width: 50px; /* Set the appropriate logo size */
+    }
+  }
+
+  .nav-options {
+    padding-right: 20px; /* Add right padding for better look */
+    ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+
+      li {
+        margin-left: 20px;
+        position: relative;
+
+        a {
+          color: #ccc; /* Use mild color for other navigation options */
+          text-decoration: none;
+          padding: 8px;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        /* Submenu */
+        .submenu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #333;
+          border: 1px solid #555;
+          width: 200px; /* Give more width to the sub-option area */
+
+          li {
+            a {
+              display: block;
+              padding: 8px;
+            }
+          }
+        }
+
+        &:hover {
+          .submenu {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  /* Mobile & Tablet View */
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+
+    .nav-options {
+      padding-right: 0; /* Remove right padding for mobile & tablet views */
+      ul {
+        flex-direction: column;
+
+        li {
+          margin-left: 0;
+          margin-bottom: 10px;
+        }
+      }
+
+      /* Hide submenus in mobile & tablet views */
+      .submenu {
+        display: none;
+      }
+    }
+  }
+}

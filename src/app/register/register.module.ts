@@ -7,6 +7,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RegisterlistComponent } from './component/registerlist/registerlist.component';
 import { UpdateComponent } from './component/update/update.component';
 import { ImageconverterComponent } from './component/imageconverter/imageconverter.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ImageconverterComponent } from './component/imageconverter/imageconvert
     RegisterlistComponent,
     UpdateComponent,
     ImageconverterComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,

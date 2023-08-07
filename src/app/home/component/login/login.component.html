@@ -1,7 +1,7 @@
 <div class="login-container">
   <div class="login-area">
     <div class="img-logo">
-      <img src="assets/logo/debri.jpeg" alt="logo">
+      <img src="assets/logo/debri.png" alt="logo">
     </div>
     <div class="login-form">
       <p id="heading">Login</p>
@@ -12,7 +12,7 @@
             <input matInput placeholder="Enter your email" formControlName="email">
             <mat-icon matSuffix>email</mat-icon>
             <mat-error *ngIf="loginForm.get('email')!.invalid && (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)">
-              Email is required and should be a valid email address.
+              Email required, valid format.
             </mat-error>
           </mat-form-field>
         </p>

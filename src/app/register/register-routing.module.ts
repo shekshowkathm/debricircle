@@ -4,6 +4,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { RegisterlistComponent } from './component/registerlist/registerlist.component';
 import { UpdateComponent } from './component/update/update.component';
 import { ImageconverterComponent } from './component/imageconverter/imageconverter.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'update/:id',
     component: UpdateComponent,
+  },
+  {
+    path: 'nav',
+    component: NavbarComponent,
   },
 ];
 

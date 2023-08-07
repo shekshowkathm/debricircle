@@ -1,15 +1,15 @@
 <div class="register-container">
   <div class="register-area">
     <div class="img-logo">
-      <img src="assets/logo/debri.jpeg" alt="logo">
+      <img src="assets/logo/debri.png" alt="logo">
     </div>
     <div class="register-form">
       <p id="heading">Register</p >
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>Name of the business</mat-label>
-            <input matInput placeholder="Name of the business" formControlName="businessName">
+            <mat-label>Business name</mat-label>
+            <input matInput placeholder="Business name" formControlName="businessName">
             <mat-icon matSuffix>business</mat-icon>
             <mat-error *ngIf="registrationForm.get('businessName')!.invalid && (registrationForm.get('businessName')!.dirty || registrationForm.get('businessName')!.touched)">
               Business name is required.
@@ -70,7 +70,7 @@
             <input matInput placeholder="Enter your email" formControlName="email">
             <mat-icon matSuffix>email</mat-icon>
             <mat-error *ngIf="registrationForm.get('email')!.invalid && (registrationForm.get('email')!.dirty || registrationForm.get('email')!.touched)">
-              Email is required and should be a valid email address.
+              Email is required and must be valid.
             </mat-error>
           </mat-form-field>
         </p>
@@ -85,7 +85,7 @@
               Password: 8 characters minimum required.
             </mat-error>
           </mat-form-field>
- 
+
         </p>
         <div *ngIf="registrationForm.invalid && (registrationForm.dirty || registrationForm.touched)" id="all-field">
           <mat-error>

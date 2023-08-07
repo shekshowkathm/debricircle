@@ -1,13 +1,13 @@
 .register-container{
   width: 100%;
-  height: 190vh;
+  height: 200vh;
   background-color: #d3eaf2b2;
   display: flex;
   justify-content: center; /* Center the child horizontally */
   align-items: center; /* Center the child vertically */
   .register-area{
     width: 40%;
-    height: 140vh;
+    height: 165vh;
     background-color: #fff;
     border-radius: 20px;
     display: flex;
@@ -26,18 +26,18 @@
     }
     .register-form {
       width: 100%;
-      height: 120vh;
+      height: 140vh;
       // border: 3px solid red;
       display: flex;
       flex-direction: column;
       align-items: center;
       #heading {
         text-align: center;
-        font-size: 28px;
+        font-size: 24px;
       }
       form{
         width: 100%;
-        height: 84vh;
+        height: 100%;
         flex-grow: 1; /* Add this line to make the form take up remaining space */
 
         padding-top: 8px;
@@ -45,7 +45,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin-top: 20px;
+          margin-top: 30px;
           mat-form-field{
             width: 80%;
             height: 9vh;
@@ -55,7 +55,7 @@
           }
         }
         #all-field{
-          margin-top: 20px;
+          padding-top: 30px;
           text-align: center;
         }
         mat-error{
@@ -91,3 +91,124 @@
     }
   }
 }
+/* Tablet view */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .register-container {
+    .register-area {
+      width: 60%; /* Reduce the width of the registration area for tablet view */
+      height: 180vh;
+
+
+
+
+      .register-form {
+
+        height: 180vh;
+        form {
+          /* Adjust the height of the form for tablet view */
+          height: 90vh;
+          padding-top: 2px;
+
+          p {
+            margin-top: 35px;
+            /* Adjust the width of the form fields for tablet view */
+            mat-form-field {
+              width: 80%;
+            }
+          }
+        }
+
+        /* Adjust the font size for the heading in tablet view */
+        #heading {
+          font-size: 26px;
+        }
+
+        #all-field{
+
+          padding-top: 30px;
+        }
+
+        /* Adjust the button width for tablet view */
+        #register-submit button {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+
+/* Mobile view */
+@media screen and (max-width: 767px) {
+  .register-container {
+    height: 210vh; /* Adjust the height to fit the content in mobile view */
+    padding: 20px; /* Add some padding for better spacing */
+
+    .register-area {
+      width: 100%; /* Expand the registration area to full width */
+      height: 200vh; /* Adjust the height to fit the content in mobile view */
+      border-radius: 20px; /* Remove border radius for mobile view */
+
+      .img-logo {
+        /* Remove height to allow the logo to adjust automatically */
+        height: 21vh;
+        width: auto;
+        img {
+          height: 100%; /* Set the image height to 100% to fill the container */
+        }
+      }
+
+      .register-form {
+
+        height: 180vh; /* Adjust the height to fit the content in mobile view */
+
+        #heading {
+          font-size: 22px; /* Adjust the font size for the heading in mobile view */
+        }
+
+        form {
+          height: auto; /* Adjust the height to fit the content in mobile view */
+          padding-top: 2px;
+          p {
+            /* Adjust the width of the form fields for mobile view */
+            margin-top: 45px;
+            mat-form-field {
+              width: 75%;
+            }
+          }
+
+          /* Adjust the font size for error messages in mobile view */
+          mat-error {
+            font-size: 12px;
+          }
+
+          .forgot {
+            /* Adjust spacing for mobile view */
+            margin-top: 10px;
+
+            #login:hover {
+              font-size: 14px; /* Adjust font size for better visibility */
+            }
+          }
+          #all-field{
+            padding-top: 50px;
+            text-align: center;
+          }
+
+          #register-submit {
+            /* Adjust spacing for mobile view */
+            margin-top: 10px;
+
+            button {
+              /* Adjust button height for mobile view */
+              height: 50px;
+              font-size: 16px; /* Adjust font size for better visibility */
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
