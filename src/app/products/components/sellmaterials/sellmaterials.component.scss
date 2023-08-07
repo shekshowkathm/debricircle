@@ -5,10 +5,12 @@
 
   .headers {
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     background-color: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-
+    @media (max-width: 425px) {
+      height: 40vh;
+    }
   }
   .sellmaterials-form {
     width: 100%;
@@ -23,10 +25,10 @@
       background-color: #fff;
       border-radius: 20px;
       padding-top: 50px;
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), /* Top shadow */
-              0 -4px 4px rgba(0, 0, 0, 0.1), /* Bottom shadow */
-              4px 0 4px rgba(0, 0, 0, 0.1), /* Right shadow */
-              -4px 0 4px rgba(0, 0, 0, 0.1); /* Left shadow */
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1),
+        /* Top shadow */ 0 -4px 4px rgba(0, 0, 0, 0.1),
+        /* Bottom shadow */ 4px 0 4px rgba(0, 0, 0, 0.1),
+        /* Right shadow */ -4px 0 4px rgba(0, 0, 0, 0.1); /* Left shadow */
       #heading {
         width: 100%;
         height: 10vh;
@@ -42,7 +44,6 @@
         height: 120vh;
         // border: 2px dotted dodgerblue;
 
-
         p {
           margin-top: 15px;
           display: flex;
@@ -50,7 +51,6 @@
           mat-form-field {
             width: 30%;
           }
-
         }
         #picture-area {
           width: 100%;
@@ -59,30 +59,30 @@
           display: flex;
           justify-content: space-around; /* Center the child horizontally */
           align-items: center; /* Center the child vertically */
-          .area{
+          .area {
             padding-left: 30px;
             width: 40%;
             height: 120px;
             // border: 2px solid yellow;
             display: flex;
             align-items: center; /* Center the child vertically */
-            #preview{
+            #preview {
               width: 75%;
               height: 120px;
               // border: 2px dotted palevioletred;
-              img{
+              img {
                 width: 100%;
                 height: 120px;
               }
             }
           }
-          mat-form-field{
+          mat-form-field {
             width: 30%;
             margin-right: 30px;
           }
         }
-        #all-field{
-          mat-error{
+        #all-field {
+          mat-error {
             margin-left: 83px;
           }
         }

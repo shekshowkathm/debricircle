@@ -4,10 +4,12 @@
   background-color: #ff910009;
   .headers {
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     background-color: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-
+    @media (max-width: 425px) {
+      height: 40vh;
+    }
   }
   .main {
     width: 100%;

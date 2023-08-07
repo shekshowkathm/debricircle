@@ -1,15 +1,29 @@
-<div class="header-containers">
-  <div class="logo-area">
-    <img src="assets/logo/debri.png" alt="logo">
-  </div>
-  <div class="navigation">
-    <ul>
-      <li routerLink="">Buy materials</li>
-      <li (click)="sellMaterials()">Sell materials</li>
-      <li (click)="disposeWaste()">Dispose waste </li>
-      <li (click)="waste()">Waste management service</li>
-      <li (click)="openLogoutDialog()"><mat-icon>exit_to_app</mat-icon></li>
-    </ul>
-
-  </div>
-</div>
+<header>
+  <nav>
+    <div class="logo">
+      <img src="assets/logo/debri.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li id="main-list"><a >About US</a></li>
+        <li id="main-list"><a >Marketplace</a>
+          <div class="submenu1">
+            <ul>
+              <li routerLink=""><a >Buy materials</a></li>
+              <li (click)="sellMaterials()"><a >Sell materials</a></li>
+            </ul>
+          </div>
+        </li>
+        <li id="main-list"><a href="">Waste management service</a>
+          <div class="submenu1">
+            <ul>
+              <li (click)="disposeWaste()"><a >Dispose waste</a></li>
+              <li (click)="waste()"><a >Waste Plan</a></li>
+            </ul>
+          </div>
+        </li>
+        <li id="main-list" (click)="openLogoutDialog()"><a ><mat-icon>exit_to_app</mat-icon></a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
