@@ -65,20 +65,22 @@ header {
 
       li {
         height: 15vh;
-        font-size: 18px;
-      }
-      li:hover .submenu1 {
-        display: block;
-
-      }
-
-      a {
+        font-size: 20px;
         color: orange;
         text-decoration: none;
       }
-      a:hover {
+      li:hover .submenu1 {
+        display: block;
         color: darkorange;
+
       }
+
+      // a {
+
+      // }
+      // a:hover {
+
+      // }
       mat-icon:hover{
         cursor: pointer;
       }
