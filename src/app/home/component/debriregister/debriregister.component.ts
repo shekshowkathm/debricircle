@@ -22,6 +22,8 @@ export class DebriregisterComponent {
       name: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       address: ['', Validators.required],
+      location: ['', Validators.required],
+      gst: ['', ],
       businessType: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]], // Using built-in email validator
       password: ['', [Validators.required, Validators.minLength(8)]] // Custom validator for minimum length of 8 characters

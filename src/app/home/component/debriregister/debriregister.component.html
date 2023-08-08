@@ -46,6 +46,16 @@
             </mat-error>
           </mat-form-field>
         </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput placeholder="Enter your location" formControlName="location">
+            <mat-icon matSuffix>person_pin_circle</mat-icon>
+            <mat-error *ngIf="registrationForm.get('location')!.invalid && (registrationForm.get('location')!.dirty || registrationForm.get('location')!.touched)">
+              Location is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
 
         <p>
           <mat-form-field appearance="outline">
@@ -85,7 +95,14 @@
               Password: 8 characters minimum required.
             </mat-error>
           </mat-form-field>
-
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>GST(optional)</mat-label>
+            <input matInput placeholder="Enter your GST.NO" formControlName="gst">
+            <mat-icon matSuffix>person_pin_circle</mat-icon>
+            
+          </mat-form-field>
         </p>
         <div *ngIf="registrationForm.invalid && (registrationForm.dirty || registrationForm.touched)" id="all-field">
           <mat-error>

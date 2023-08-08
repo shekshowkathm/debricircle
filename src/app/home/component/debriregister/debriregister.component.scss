@@ -1,13 +1,13 @@
 .register-container{
   width: 100%;
-  height: 200vh;
+  height: 220vh;
   background-color: #d3eaf2b2;
   display: flex;
   justify-content: center; /* Center the child horizontally */
   align-items: center; /* Center the child vertically */
   .register-area{
     width: 40%;
-    height: 165vh;
+    height: 185vh;
     background-color: #fff;
     border-radius: 20px;
     display: flex;
@@ -26,7 +26,7 @@
     }
     .register-form {
       width: 100%;
-      height: 140vh;
+      height: 160vh;
       // border: 3px solid red;
       display: flex;
       flex-direction: column;
@@ -96,17 +96,17 @@
   .register-container {
     .register-area {
       width: 60%; /* Reduce the width of the registration area for tablet view */
-      height: 180vh;
+      height: 220vh;
 
 
 
 
       .register-form {
 
-        height: 180vh;
+        height: 220vh;
         form {
           /* Adjust the height of the form for tablet view */
-          height: 90vh;
+          height: 130vh;
           padding-top: 2px;
 
           p {
@@ -141,12 +141,12 @@
 /* Mobile view */
 @media screen and (max-width: 767px) {
   .register-container {
-    height: 210vh; /* Adjust the height to fit the content in mobile view */
+    height: 270vh; /* Adjust the height to fit the content in mobile view */
     padding: 20px; /* Add some padding for better spacing */
 
     .register-area {
       width: 100%; /* Expand the registration area to full width */
-      height: 200vh; /* Adjust the height to fit the content in mobile view */
+      height: 250vh; /* Adjust the height to fit the content in mobile view */
       border-radius: 20px; /* Remove border radius for mobile view */
 
       .img-logo {
@@ -160,7 +160,7 @@
 
       .register-form {
 
-        height: 180vh; /* Adjust the height to fit the content in mobile view */
+        height: 220vh; /* Adjust the height to fit the content in mobile view */
 
         #heading {
           font-size: 22px; /* Adjust the font size for the heading in mobile view */
