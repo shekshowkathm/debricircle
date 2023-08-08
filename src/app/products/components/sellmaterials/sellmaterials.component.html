@@ -44,7 +44,7 @@
         <p>
         <mat-form-field appearance="outline">
           <mat-label>Availability</mat-label>
-          <mat-select placeholder="Enter recycle type" formControlName="availability" (selectionChange)="onAvailabilityChange()">
+          <mat-select placeholder="Enter your availability" formControlName="availability" (selectionChange)="onAvailabilityChange()">
             <mat-option value="Immediate">Immediate</mat-option>
             <mat-option value="date">Date</mat-option>
           </mat-select>
@@ -140,7 +140,7 @@
                 <img [src]="previewImage" alt="Preview" style="max-width: 200px;">
               </div>
           </div>
-          <mat-form-field appearance="outline" *ngIf="showDatePicker">
+          <mat-form-field appearance="outline" *ngIf="showDatePicker" id="date">
             <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="selectedDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>

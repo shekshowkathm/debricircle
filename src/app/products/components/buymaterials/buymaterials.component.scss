@@ -1,6 +1,6 @@
 .buymaterials-container{
   width: 100%;
-  height: 190vh;
+  height: 100vh;
   background-color:  #ff910009;
   overflow: hidden;
   .headers{
@@ -15,14 +15,13 @@
   }
   .material-card{
     width: 100%;
-    height: 170vh;
+    height: 85vh;
     overflow: hidden;
     .card-area{
       width: 100%;
-      height: 170vh;
+      height: 85vh;
       // border: 2px solid red;
       overflow: auto !important;
-
       .filter-area{
         width: 100%;
         height: 20vh;
@@ -30,15 +29,22 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        @media (max-width: 768px){
+          flex-direction: column;
+          height: 75vh;
+        }
         mat-form-field{
           width: 15%;
           height: 55px;
           background-color: #fff;
+          @media (max-width: 768px){
+            width: 75%;
+          }
         }
       }
       .card-areas{
         width: 100%;
-        height: 150vh;
+        height: 65vh;
         // border: 3px solid blueviolet;
         display: flex;
         justify-content: center !important;
@@ -47,8 +53,10 @@
 
         .center{
           width: 75%;
-          height: 145vh;
-
+          height: 65vh;
+          @media (max-width: 425px){
+            width: 80%;
+          }
 
           // border: 2px dotted red;
         }
@@ -57,13 +65,21 @@
           height: 55vh;
           border-radius: 25px;
           padding-left: 10px;
-
+          // border: 2px dotted rgb(17, 0, 255);
           background-color: #fff;
           margin-bottom: 30px; // Add some space between each card
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), /* Top shadow */
               0 -4px 4px rgba(0, 0, 0, 0.1), /* Bottom shadow */
               4px 0 4px rgba(0, 0, 0, 0.1), /* Right shadow */
               -4px 0 4px rgba(0, 0, 0, 0.1); /* Left shadow */
+              @media (max-width: 768px){
+                height: 60vh;
+              }
+              @media (max-width: 425px){
+                height: 65vh;
+              }
+
+
 
           .card-like{
             width: 6%;
@@ -72,88 +88,217 @@
             float: right;
             margin-right: 30px;
             margin-top: 15px;
+            @media (max-width: 768px){
+              width: 7%;
+            }
+            @media (max-width: 425px){
+              width: 8.5%;
+              height: 5vh;
+              margin-right: 10px;
+            }
             mat-icon{
               width: 100%;
               height: 7.5vh;
               font-size: 40px;
               color: #F09431;
+              @media (max-width: 768px){
+                font-size: 35px;
+              }
+              @media (max-width: 425px){
+                font-size: 24px;
+              }
+              @media (max-width: 375px){
+                font-size: 20px;
+              }
+              @media (max-width: 320px){
+                font-size: 18px;
+              }
             }
           }
           .main-cards{
             width: 90%;
             height: 48vh;
             display: flex;
-            // border: 2px solid blue;
+            // border: 5px solid blue;
+            @media (max-width: 768px){
+              width: 90%;
+              height: 40vh;
+              margin-top: 10px;
+            }
+            @media (max-width: 425px){
+              width: 95%;
+            }
             .image-area{
               width: 35%;
               height: 48vh;
-              // border: 2px solid red;
+              // border: 2px solid yellow;
+              @media (max-width: 768px){
+                width: 40%;
+                height: 38vh;
+              }
+
               img{
                 width: 90%;
                 height: 40vh;
                 margin-left: 15px;
                 margin-top: 24px;
                 border-radius: 5px;
+                @media (max-width: 768px){
+                  width: 80%;
+                  height: 30vh;
+                }
+                @media (max-width: 425px){
+                  width: 95%;
+                  margin-left: 1px;
+                }
               }
             }
             .product-details{
               width: 65%;
               height: 48vh;
-              // border: 2px solid yellow;
+              // border: 2px solid wheat;
+              @media (max-width: 768px){
+                width: 60%;
+                height: 55vh;
+              }
+              @media (max-width: 425px){
+
+              }
               .sub-product{
                 width: 100%;
                 height: 38vh;
                 // border: 2px solid green;
                 display: flex;
+
                 #details1{
                   width: 50%;
                   height: 38vh;
                   // border: 2px solid darkmagenta;
                   padding-left: 12px;
                   padding-top: 20px;
+                  @media (max-width: 768px){
+                    padding-top: 22px;
+                  }
+                  @media (max-width: 425px){
+                    padding-top: 1px;
+                  }
                   h1{
                     font-size: 28px;
+                    @media (max-width: 768px){
+                      font-size: 17px;
+                    }
+                    @media (max-width: 425px){
+                      font-size: 14px;
+                    }
                   }
                   p{
                     font-size: 22px;
                     font-weight: lighter;
                     margin-top: 30px;
+                    @media (max-width: 768px){
+                      font-size: 13px;
+                      margin-top: 10px;
+                    }
+                    @media (max-width: 425px){
+                      font-size: 10px;
+                      margin-top: 1px;
+                    }
                   }
                 }
                 #details2{
                   width: 50%;
                   height: 38vh;
                   padding-top: 50px;
+                  // border: 2px dotted purple;
+                  @media (max-width: 768px){
+                    padding-top: 60px;
+                  }
+                  @media (max-width: 425px){
+                    padding-top: 50px;
+                  }
                   p{
                     font-size: 22px;
                     font-weight: lighter;
                     margin-top: 30px;
+                    @media (max-width: 768px){
+                      font-size: 15px;
+                      margin-top: 10px;
+                    }
+                    @media (max-width: 425px){
+                      margin-top: 1px;
+                      font-size: 10px;
+                    }
                   }
                   #rupee{
                     margin-top: 27px;
+                    @media (max-width: 768px){
+                      margin-top: 20px;
+                    }
+                    @media (max-width: 425px){
+                      margin-top: 12px;
+                    }
                     b{
                       font-size: 25px;
+                      @media (max-width: 768px){
+                        font-size: 20px;
+                      }
+                      @media (max-width: 425px){
+                        font-size: 14px;
+                      }
                     }
                   }
                 }
               }
               .products-button{
                 display: flex;
+
                 justify-content: space-around;
                 margin-top: 10px;
+                @media (max-width: 768px){
+                  margin-top: 5px;
+                }
+                @media (max-width: 425px){
+                  margin-top: 10px;
+                  flex-direction: column;
+
+                }
                 button{
                   width: 30%;
                   font-size: 13px;
+                  @media (max-width: 768px){
+                    font-size: 10px;
+                  }
+                  @media (max-width: 425px){
+                    width: 100%;
+                    height: 20px;
+                    margin-top: 5px;
+                  }
+
                 }
                 #phone-button{
                   border: 1px solid orange;
                   background-color: transparent;
+                  @media (max-width: 768px){
+                    mat-icon{
+                      display: none;
+                    }
+                  }
                 }
                 #cart-button{
                   background-color: rgba(255, 166, 0, 0.836);
+                  @media (max-width: 768px){
+                    mat-icon{
+                      display: none;
+                    }
+                  }
                 }
                 #buy-now{
                   background-color: #F09431;
+                  @media (max-width: 768px){
+                    mat-icon{
+                      display: none;
+                    }
+                  }
                 }
               }
             }
@@ -164,20 +309,35 @@
             width: 7.5%;
             height: 7vh;
             // border: 3px solid red;
+            @media (max-width: 768px){
+              margin-top: 13px;
+            }
+            @media (max-width: 425px){
+              margin-top: 12px;
+              padding: 2px;
+            }
             mat-icon{
               width: 100%;
               height: 7vh;
               // border: 1px solid yellow;
               color: green;
               font-size: 30px;
+              @media (max-width: 425px){
+                margin-top: 28px;
+                font-size: 20px;
+                margin-left: 5px;
+              }
+              @media (max-width: 375px){
+                font-size: 15px;
+              }
+              @media (max-width: 320px){
+                font-size: 12px;
+              }
             }
 
           }
         }
-
       }
     }
-
-
   }
 }

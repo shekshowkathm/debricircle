@@ -101,14 +101,14 @@
               <div class="product-details">
                 <div class="sub-product">
                   <div id="details1">
-                    <h1>{{ product.description }}</h1>
+                    <h1>{{ product.materialtype }}</h1>
                     <p>Category : {{ product.category }}</p>
-                    <p>Quality tested : {{ product.quality }}</p>
+                    <p>Quality : {{ product.quality }}</p>
                     <p>Availability : {{ product.selectedDate }}</p>
                   </div>
                   <div id="details2">
                     <p *ngIf="!localStorageEmpty">Address : {{ product.location }}</p>
-                    <p>Type : {{ product.materialtype }}</p>
+                    <p>Quantity : {{ product.quantity }}</p>
                     <p id="rupee">
                       &#8377; <b>{{ product.productPrice }}</b>
                     </p>
