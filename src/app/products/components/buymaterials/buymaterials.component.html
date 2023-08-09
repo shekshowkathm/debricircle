@@ -104,7 +104,7 @@
                     <h1>{{ product.materialtype }}</h1>
                     <p>Category : {{ product.category }}</p>
                     <p>Quality : {{ product.quality }}</p>
-                    <p>Availability : {{ product.selectedDate }}</p>
+                    <p>Availability: {{ product.selectedDate ? (product.selectedDate === '1/1/1970' ? 'Immediate' : product.selectedDate) : 'Immediate' }}</p>
                   </div>
                   <div id="details2">
                     <p *ngIf="!localStorageEmpty">Address : {{ product.location }}</p>

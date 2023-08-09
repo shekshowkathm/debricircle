@@ -21,16 +21,16 @@ export class BuymaterialsComponent {
   filteredProducts: any[] = [];
   products!: any[];
   localStorageEmpty!: boolean; // Variable to track whether localStorage is completely clear (empty)
-
+  sellMaterilasproducts: any[] = [];
   constructor(
     private productsService: ProductService,
     private router: Router,
     private homeService: HomeService
   ) {}
   ngOnInit() {
-    this.getAllProductsDetails();
+    // this.getAllProductsDetails();
     this.localStorageEmpty = Object.keys(localStorage).length === 0;
-    this.getByEmailDetails();
+    this.getAllSellMaterials();
   }
 
   // getAllProductsDetails() {
@@ -43,14 +43,26 @@ export class BuymaterialsComponent {
   //         ? docData.selectedDate.toDate()
   //         : 'Immediate';
 
-  //       // If selectedDate is a valid Date object, format it to get only the date string
+  //       // If selectedDate is a valid Date object, format it to get the dd/mm/yyyy string
   //       const formattedDate =
   //         selectedDate instanceof Date
-  //           ? selectedDate.toLocaleDateString()
+  //           ? this.formatDate(selectedDate)
   //           : selectedDate;
 
   //       return { id, ...docData, selectedDate: formattedDate }; // Include the formatted date in the returned object
   //     });
+
+  //     // Sort the products based on selectedDate in descending order (most recent first)
+  //     this.getAllProducts.sort((a: any, b: any) => {
+  //       if (a.selectedDate > b.selectedDate) {
+  //         return -1;
+  //       } else if (a.selectedDate < b.selectedDate) {
+  //         return 1;
+  //       } else {
+  //         return 0;
+  //       }
+  //     });
+
   //     console.log(this.getAllProducts);
   //     console.log(this.getAllProducts[1].selectedDate);
   //     this.filteredProducts = this.getAllProducts;
@@ -58,43 +70,6 @@ export class BuymaterialsComponent {
   //     console.log(this.products);
   //   });
   // }
-  getAllProductsDetails() {
-    this.productsService.getProductList().subscribe((data: any) => {
-      this.getAllProducts = data.map((item: any) => {
-        const id = item.payload.doc.id;
-        const docData = item.payload.doc.data();
-        // Check if selectedDate is not null before converting it to a Date object
-        const selectedDate = docData.selectedDate
-          ? docData.selectedDate.toDate()
-          : 'Immediate';
-
-        // If selectedDate is a valid Date object, format it to get the dd/mm/yyyy string
-        const formattedDate =
-          selectedDate instanceof Date
-            ? this.formatDate(selectedDate)
-            : selectedDate;
-
-        return { id, ...docData, selectedDate: formattedDate }; // Include the formatted date in the returned object
-      });
-
-      // Sort the products based on selectedDate in descending order (most recent first)
-      this.getAllProducts.sort((a: any, b: any) => {
-        if (a.selectedDate > b.selectedDate) {
-          return -1;
-        } else if (a.selectedDate < b.selectedDate) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-
-      console.log(this.getAllProducts);
-      console.log(this.getAllProducts[1].selectedDate);
-      this.filteredProducts = this.getAllProducts;
-      this.products = this.getAllProducts;
-      console.log(this.products);
-    });
-  }
 
 
 formatDate(date: Date): string {
@@ -172,4 +147,28 @@ formatDate(date: Date): string {
       }
     }
   }
+
+  getAllSellMaterials(){
+    this.productsService.getAllProducts().subscribe((response:any)=>{
+      this.sellMaterilasproducts=this.formatDates(response);
+      console.log(this.sellMaterilasproducts);
+      this.products = this.sellMaterilasproducts;
+      console.log(this.products);
+    },
+    (error: any) => {
+      console.error(error);
+    }
+    )
+  }
+  formatDates(data: any[]): any[] {
+    return data.map(item => {
+      const date = new Date(item.selectedDate);
+      const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+      return {
+        ...item,
+        selectedDate: formattedDate
+      };
+    });
+  }
+
 }

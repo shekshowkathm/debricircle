@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
@@ -15,11 +16,12 @@ export class ProductService {
     .set('Authorization', `Bearer ${this.gettingToken()}`);
 
   sellMaterialsCreateURL = environment.localdomain + '/sellmaterials/createsellmaterials';
+  getAllProductsURL=environment.localdomain + '/sellmaterials/claimsellmaterials';
 
 
   constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
   gettingToken() {
-    console.log(localStorage.getItem('token'));
+
     return localStorage.getItem('token');
   }
   getProductById(id: any) {
@@ -72,9 +74,15 @@ export class ProductService {
     });
   }
   createSellMaterials(sellMaterialsData:any){
-    console.log(this.sellMaterialsCreateURL);
+
     return this.http.post(`${this.sellMaterialsCreateURL}`,sellMaterialsData,{
       headers: this.headers,
     })
+  }
+
+  getAllProducts(): Observable<any> {
+    return this.http.get(`${this.getAllProductsURL}`,{
+      headers: this.headers,
+    });
   }
 }
