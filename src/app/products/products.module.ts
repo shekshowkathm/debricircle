@@ -45,6 +45,7 @@ import { LogoutDialogComponent } from './components/logout-dialog/logout-dialog.
 import { TippingSegregatedComponent } from './components/tipping-segregated/tipping-segregated.component';
 import { TippingNonSegregatedComponent } from './components/tipping-non-segregated/tipping-non-segregated.component';
 import { WasteManagementComponent } from './components/waste-management/waste-management.component'; // Import MatNativeDateModule
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -92,7 +93,7 @@ import { WasteManagementComponent } from './components/waste-management/waste-ma
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,MatNativeDateModule,
-    MatPaginatorModule,FormsModule,ReactiveFormsModule
+    MatPaginatorModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ]
 })
 export class ProductsModule { }

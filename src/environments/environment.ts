@@ -1,4 +1,5 @@
 export const environment = {
+  production: true,
   firebase: {
     projectId: 'debricircle',
     appId: '1:875478465511:web:4f901d357cc7d5eaf85b42',
@@ -7,4 +8,7 @@ export const environment = {
     authDomain: 'debricircle.firebaseapp.com',
     messagingSenderId: '875478465511',
   },
+  localdomain: 'http://localhost:8080',
+
+
 };

@@ -52,7 +52,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -97,7 +97,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativ
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,MatNativeDateModule,
-    MatPaginatorModule,HomeModule,ProductsModule
+    MatPaginatorModule,HomeModule,ProductsModule,HttpClientModule
   ],
   providers: [RegisterService,],
   bootstrap: [AppComponent]

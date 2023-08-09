@@ -9,9 +9,9 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter your email" formControlName="email">
+            <input matInput placeholder="Enter your email" formControlName="userName">
             <mat-icon matSuffix>email</mat-icon>
-            <mat-error *ngIf="loginForm.get('email')!.invalid && (loginForm.get('email')!.dirty || loginForm.get('email')!.touched)">
+            <mat-error *ngIf="loginForm.get('userName')!.invalid && (loginForm.get('userName')!.dirty || loginForm.get('userName')!.touched)">
               Email required, valid format.
             </mat-error>
           </mat-form-field>
@@ -20,7 +20,7 @@
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Enter your password" formControlName="password">
-            <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" [attr.aria-label]="hidePassword ? 'Hide Password' : 'Show Password'">
+            <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="hidePassword ? 'Hide Password' : 'Show Password'">
               <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
             <mat-error *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">

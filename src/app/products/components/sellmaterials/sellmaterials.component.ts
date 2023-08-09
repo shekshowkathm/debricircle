@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sellmaterials',
@@ -15,7 +17,7 @@ export class SellmaterialsComponent {
   showDatePicker: boolean = false;
 
   sellMaterialForm!: FormGroup; // Add the '!' non-null assertion operator here
-  constructor(private formBuilder: FormBuilder,private productsService:ProductService) {}
+  constructor(private formBuilder: FormBuilder,private productsService:ProductService,private router: Router) {}
   ngOnInit() {
     this.initForm();
   }
@@ -33,8 +35,16 @@ export class SellmaterialsComponent {
       location: ['', Validators.required],
       image: ['', Validators.required],
       address: ['', Validators.required],
-      selectedDate: [''] // FormControl for the selected date
+      selectedDate: [''], // FormControl for the selected date
+      userId: ['']
+
     });
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.sellMaterialForm.patchValue({
+        userId: userId
+      });
+    }
   }
 
   // below method image preview
@@ -101,8 +111,29 @@ export class SellmaterialsComponent {
       setTimeout (() => {
         console.log(this.sellMaterialForm.value);
         console.log(this.sellMaterialForm.value.image);
-        this.productsService.createProduct(this.sellMaterialForm.value);
-     }, 400);
+        this.productsService.createSellMaterials(this.sellMaterialForm.value).subscribe((response:any)=>{
+          console.log(response);
+          Swal.fire(
+            'Good job!',
+            'Your product uploaded successfully!',
+            'success'
+          )
+          this.router.navigate(['']);
+        },
+        (error) => {
+          console.log('Error:', error);
+          if (error.status==403) {
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong !',
+
+            })
+          }
+        }
+        )
+     }, 250);
     }
 
   }

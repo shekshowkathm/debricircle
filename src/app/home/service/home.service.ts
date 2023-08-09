@@ -1,14 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-
-  constructor(private angularFireStore: AngularFirestore,private router:Router,) { }
+  registerCreateURL = environment.localdomain + '/register/createregister';
+  loginURL = environment.localdomain + '/authenticate/login';
+  constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
 
   getRegisterById(id:any){
     return this.angularFireStore
@@ -106,4 +110,13 @@ export class HomeService {
       .valueChanges();
   }
 
+  registerCreate(formData: any): Observable<any>{
+    return this.http.post(this.registerCreateURL, formData);
+  }
+
+  loginAuthenticate(data: any){
+    return this.http.post(`${this.loginURL}`, data, {
+      headers: { 'content-Type': 'application/json' },
+    });
+  }
 }

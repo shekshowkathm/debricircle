@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from '../../service/home.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-debriregister',
@@ -10,7 +12,7 @@ import { HomeService } from '../../service/home.service';
 export class DebriregisterComponent {
   registrationForm!: FormGroup; // Add the '!' non-null assertion operator here
   hidePassword: boolean = true;
-  constructor(private formBuilder: FormBuilder,private homeService:HomeService) { }
+  constructor(private formBuilder: FormBuilder,private homeService:HomeService,private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -30,7 +32,8 @@ export class DebriregisterComponent {
     });
   }
 
-  togglePasswordVisibility() {
+  togglePasswordVisibility(event: Event) {
+    event.preventDefault();
     this.hidePassword = !this.hidePassword;
   }
 
@@ -42,7 +45,30 @@ export class DebriregisterComponent {
     if (this.registrationForm.valid) {
       // Handle form submission here
       console.log(this.registrationForm.value);
-      this.homeService.createRegister(this.registrationForm.value);
+      // this.homeService.createRegister(this.registrationForm.value);
+      this.homeService.registerCreate(this.registrationForm.value).subscribe((response:any)=>{
+        console.log(response);
+        Swal.fire(
+          'Good job!',
+          'Your registration has been success!',
+          'success'
+        )
+        this.router.navigate(['/home/login']);
+      },
+      (error) => {
+        console.log('Error:', error);
+        if (error.status==400) {
+          console.log("Email already exists");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Email already exists!',
+
+          })
+        }
+      }
+
+      )
     }
 
   }
