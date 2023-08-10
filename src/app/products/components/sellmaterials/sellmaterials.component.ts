@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../service/product.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Storage,ref,uploadBytesResumable,getDownloadURL } from "@angular/fire/storage";
 
 @Component({
   selector: 'app-sellmaterials',
@@ -17,7 +18,7 @@ export class SellmaterialsComponent {
   showDatePicker: boolean = false;
 
   sellMaterialForm!: FormGroup; // Add the '!' non-null assertion operator here
-  constructor(private formBuilder: FormBuilder,private productsService:ProductService,private router: Router) {}
+  constructor(private formBuilder: FormBuilder,private productsService:ProductService,private router: Router,private storage:Storage) {}
   ngOnInit() {
     this.initForm();
   }
@@ -90,50 +91,93 @@ export class SellmaterialsComponent {
     });
     if (this.sellMaterialForm.valid) {
       // Handle form submission here
+      // if (this.selectedImage) {
+      //   console.log(this.selectedImage);
 
+      //   const reader = new FileReader();
+      //   reader.onload = () => {
+      //     this.convertedBase64 = reader.result as string;
+      //     console.log(this.convertedBase64);
+      //     this.sellMaterialForm.value.image=this.convertedBase64
+      //     console.log(this.sellMaterialForm.value.image);
 
+      //     console.log('Base64 String:', this.convertedBase64.split(',')[1]);
+      //   };
+      //   reader.readAsDataURL(this.selectedImage);
+      //   console.log(this.sellMaterialForm.value);
+      //   console.log(this.sellMaterialForm.value.image)
+      // }
       if (this.selectedImage) {
-        console.log(this.selectedImage);
-
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.convertedBase64 = reader.result as string;
-          console.log(this.convertedBase64);
-          this.sellMaterialForm.value.image=this.convertedBase64
-          console.log(this.sellMaterialForm.value.image);
-
-          console.log('Base64 String:', this.convertedBase64.split(',')[1]);
-        };
-        reader.readAsDataURL(this.selectedImage);
-        console.log(this.sellMaterialForm.value);
-        console.log(this.sellMaterialForm.value.image)
-      }
-      setTimeout (() => {
-        console.log(this.sellMaterialForm.value);
-        console.log(this.sellMaterialForm.value.image);
-        this.productsService.createSellMaterials(this.sellMaterialForm.value).subscribe((response:any)=>{
-          console.log(response);
-          Swal.fire(
-            'Good job!',
-            'Your product uploaded successfully!',
-            'success'
-          )
-          this.router.navigate(['']);
+        const storageRef=ref(this.storage,`sellmaterials/${this.selectedImage.name}`);
+        const uploadTask=uploadBytesResumable(storageRef,this.selectedImage);
+        uploadTask.on('state_changed',
+        (snapshot)=>{
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log(progress);
         },
-        (error) => {
-          console.log('Error:', error);
-          if (error.status==403) {
+        (err) => {},
+        ()=>{
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+            console.log(downloadURL);
+            this.sellMaterialForm.value.image=downloadURL
+            console.log(this.sellMaterialForm.value.image);
+            setTimeout (() => {
+              console.log(this.sellMaterialForm.value);
+              console.log(this.sellMaterialForm.value.image);
+              this.productsService.createSellMaterials(this.sellMaterialForm.value).subscribe((response:any)=>{
+                console.log(response);
+                Swal.fire(
+                  'Good job!',
+                  'Your product uploaded successfully!',
+                  'success'
+                )
+                this.router.navigate(['']);
+              },
+              (error) => {
+                console.log('Error:', error);
+                if (error.status==403) {
 
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong !',
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong !',
 
-            })
-          }
+                  })
+                }
+              }
+              )
+           }, 300);
+          })
         }
         )
-     }, 250);
+      }
+    //   setTimeout (() => {
+    //     console.log(this.sellMaterialForm.value);
+    //     console.log(this.sellMaterialForm.value.image);
+    //     this.productsService.createSellMaterials(this.sellMaterialForm.value).subscribe((response:any)=>{
+    //       console.log(response);
+    //       Swal.fire(
+    //         'Good job!',
+    //         'Your product uploaded successfully!',
+    //         'success'
+    //       )
+    //       this.router.navigate(['']);
+    //     },
+    //     (error) => {
+    //       console.log('Error:', error);
+    //       if (error.status==403) {
+
+    //         Swal.fire({
+    //           icon: 'error',
+    //           title: 'Oops...',
+    //           text: 'Something went wrong !',
+
+    //         })
+    //       }
+    //     }
+    //     )
+    //  }, 1000);
     }
 
   }

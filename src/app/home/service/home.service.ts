@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 export class HomeService {
   registerCreateURL = environment.localdomain + '/register/createregister';
   loginURL = environment.localdomain + '/authenticate/login';
+  updatePasswordURL = environment.localdomain + '/register/updatepassword';
+
   constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
 
   getRegisterById(id:any){
@@ -118,5 +120,10 @@ export class HomeService {
     return this.http.post(`${this.loginURL}`, data, {
       headers: { 'content-Type': 'application/json' },
     });
+  }
+
+  updatePassword(updatedData: any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put(this.updatePasswordURL, updatedData, { headers });
   }
 }

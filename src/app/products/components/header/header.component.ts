@@ -59,6 +59,14 @@ export class HeaderComponent {
     }
   }
 
+  addtocart(){
+    const localStorageEmpty = Object.keys(localStorage).length === 0;
+    if (localStorageEmpty) {
+      this.showRegisterAlert();
+    } else {
+      this.router.navigateByUrl('/addtocart')
+    }
+  }
 
   private showRegisterAlert() {
     Swal.fire({

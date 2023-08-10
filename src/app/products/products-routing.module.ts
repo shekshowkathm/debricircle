@@ -5,6 +5,7 @@ import { BuymaterialsComponent } from './components/buymaterials/buymaterials.co
 import { DisposewasteComponent } from './components/disposewaste/disposewaste.component';
 import { AuthGuard } from '../shared/auth.guard';
 import { WasteManagementComponent } from './components/waste-management/waste-management.component';
+import { AddtocartComponent } from './components/addtocart/addtocart.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'waste-management',
     component: WasteManagementComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'addtocart',
+    component: AddtocartComponent,
     canActivate:[AuthGuard]
   },
 ];

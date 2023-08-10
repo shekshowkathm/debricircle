@@ -46,6 +46,8 @@ import { TippingSegregatedComponent } from './components/tipping-segregated/tipp
 import { TippingNonSegregatedComponent } from './components/tipping-non-segregated/tipping-non-segregated.component';
 import { WasteManagementComponent } from './components/waste-management/waste-management.component'; // Import MatNativeDateModule
 import { HttpClientModule } from '@angular/common/http';
+import { SearchtextPipe } from './pipe/searchtext.pipe';
+import { AddtocartComponent } from './components/addtocart/addtocart.component';
 
 
 
@@ -59,7 +61,9 @@ import { HttpClientModule } from '@angular/common/http';
     LogoutDialogComponent,
     TippingSegregatedComponent,
     TippingNonSegregatedComponent,
-    WasteManagementComponent
+    WasteManagementComponent,
+    SearchtextPipe,
+    AddtocartComponent
   ],
   imports: [
     CommonModule,

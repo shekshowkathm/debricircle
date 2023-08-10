@@ -37,14 +37,11 @@
             <mat-option value="New/Surplus">New/Surplus</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Price</mat-label>
-          <mat-select>
-            <mat-option value="">None</mat-option>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Search here...</mat-label>
+          <input matInput placeholder="" [(ngModel)]="filterText" (input)="applyFilter()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field> -->
         <mat-form-field appearance="outline">
           <mat-label>Location</mat-label>
           <mat-select [(ngModel)]="selectedLocation">
@@ -107,7 +104,7 @@
                     <p>Availability: {{ product.selectedDate ? (product.selectedDate === '1/1/1970' ? 'Immediate' : product.selectedDate) : 'Immediate' }}</p>
                   </div>
                   <div id="details2">
-                    <p *ngIf="!localStorageEmpty">Address : {{ product.location }}</p>
+                    <p *ngIf="!localStorageEmpty" matTooltip="{{ product.address }}">Address : {{ product.location }}</p>
                     <p>Quantity : {{ product.quantity }}</p>
                     <p id="rupee">
                       &#8377; <b>{{ product.productPrice }}</b>

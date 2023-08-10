@@ -10,6 +10,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { RegisterModule } from './register/register.module';
@@ -66,6 +68,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
+
     AngularFireDatabaseModule,
     AngularFirestoreModule,AngularFireAuthModule,AngularFireStorageModule,AngularFireModule.initializeApp(environment.firebase), BrowserAnimationsModule,
     MatCheckboxModule,

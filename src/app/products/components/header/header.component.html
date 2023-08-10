@@ -9,7 +9,7 @@
         <li id="main-list">Marketplace
           <div class="submenu1">
             <ul>
-              <li routerLink="">Buy materials</li>
+              <li routerLink="">Buy materials </li>
               <li (click)="sellMaterials()">Sell materials</li>
             </ul>
           </div>
@@ -22,6 +22,7 @@
             </ul>
           </div>
         </li>
+        <li id="main-list" (click)="addtocart()"><mat-icon>add_shopping_cart</mat-icon></li>
         <li id="main-list" (click)="openLogoutDialog()"><mat-icon>exit_to_app</mat-icon></li>
       </ul>
     </div>
