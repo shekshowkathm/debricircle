@@ -1,7 +1,7 @@
 .addtocart-container{
   width: 100%;
-  height: 180vh;
-  background-color: #ff910009;
+  height: 100vh;
+  background-color:  #F5F6F7;
   @media (max-width: 768px){
     height: 210vh;
   }
@@ -15,6 +15,21 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     @media (max-width: 425px) {
       height: 40vh;
+    }
+  }
+
+  .carts-area{
+    width: 100%;
+    height: 85vh;
+    // border: 1px solid salmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    .center{
+      width: 95%;
+      height: 85vh;
+      // border: 2px double dodgerblue;
     }
   }
 }

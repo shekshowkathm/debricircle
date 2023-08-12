@@ -48,6 +48,7 @@ import { WasteManagementComponent } from './components/waste-management/waste-ma
 import { HttpClientModule } from '@angular/common/http';
 import { SearchtextPipe } from './pipe/searchtext.pipe';
 import { AddtocartComponent } from './components/addtocart/addtocart.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -63,7 +64,8 @@ import { AddtocartComponent } from './components/addtocart/addtocart.component';
     TippingNonSegregatedComponent,
     WasteManagementComponent,
     SearchtextPipe,
-    AddtocartComponent
+    AddtocartComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

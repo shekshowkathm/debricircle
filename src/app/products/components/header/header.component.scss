@@ -57,21 +57,29 @@ header {
       }
       // border: 2px solid red;
       #main-list {
-        margin-top: 80px;
+        padding-top: 40px;
+        // border: 2px solid yellow;
+        height: 15vh;
+
         @media (max-width: 425px) {
           margin-top: 10px; // Adjust margin for mobile view
         }
       }
 
       li {
-        height: 15vh;
+
+        // border: 1px solid red;
         font-size: 20px;
-        color: orange;
+        color: #0B0B0B;
         text-decoration: none;
+
+      }
+      li:hover{
+        color: #F4922D;
       }
       li:hover .submenu1 {
         display: block;
-        color: darkorange;
+        color: #F4922D;
 
       }
 
@@ -86,18 +94,21 @@ header {
           height: 13vh;
           flex-direction: column;
           // margin-left: 10px;
-          margin-top: 5px;
+          margin-top: 15px;
           padding: 5px;
-          border-radius: 5px;
+          border-radius: 2px;
           // background-color: #ffd8b521;
           border: 1px solid #E3E3E3;
           background-color: #fff;
           box-shadow: 0 5px 5px rgba(0, 0, 0, 0.205);
 
+
           li {
+            width: 100%;
             float: right;
             // border: 2px dotted darkblue;
             height: 5vh;
+            font-size: 18px;
           }
           li:hover{
             cursor: pointer;

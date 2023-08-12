@@ -147,4 +147,33 @@ formatDate(date: Date): string {
     );
   }
 
+  addtocart(i:any){
+    const selectedProduct = this.products[i];
+    console.log('Selected Product:', selectedProduct);
+
+    const userIdUser = localStorage.getItem('userId');
+    selectedProduct.userId=userIdUser;
+    console.log("User id setted "+selectedProduct);
+
+
+    this.productsService.createCart(selectedProduct).subscribe((response:any)=>{
+      console.log(response);
+      this.router.navigateByUrl('/addtocart');
+    },
+    (error) => {
+      console.log('Error:', error);
+      if (error.status==403) {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong !',
+
+        })
+      }
+    }
+
+    )
+  }
+
 }

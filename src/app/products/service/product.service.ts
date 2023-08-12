@@ -12,16 +12,17 @@ import Swal from 'sweetalert2';
 export class ProductService {
 
   headers = new HttpHeaders()
-    .set('content-Type', 'application/json')
+    .set('Content-Type', 'application/json')
     .set('Authorization', `Bearer ${this.gettingToken()}`);
 
   sellMaterialsCreateURL = environment.localdomain + '/sellmaterials/createsellmaterials';
   getAllProductsURL=environment.localdomain + '/sellmaterials/claimsellmaterials';
+  createCartURL=environment.localdomain + '/addtocart/createcart';
 
 
   constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
   gettingToken() {
-
+    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
   getProductById(id: any) {
@@ -74,6 +75,8 @@ export class ProductService {
     });
   }
   createSellMaterials(sellMaterialsData:any){
+    console.log(sellMaterialsData);
+
 
     return this.http.post(`${this.sellMaterialsCreateURL}`,sellMaterialsData,{
       headers: this.headers,
@@ -82,7 +85,14 @@ export class ProductService {
 
   getAllProducts(): Observable<any> {
     return this.http.get(`${this.getAllProductsURL}`,{
+
+    });
+  }
+
+  createCart(cartDetails:any){
+    return this.http.post(`${this.createCartURL}`,cartDetails,{
       headers: this.headers,
     });
   }
+
 }

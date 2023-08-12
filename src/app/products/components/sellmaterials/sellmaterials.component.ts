@@ -152,32 +152,7 @@ export class SellmaterialsComponent {
         }
         )
       }
-    //   setTimeout (() => {
-    //     console.log(this.sellMaterialForm.value);
-    //     console.log(this.sellMaterialForm.value.image);
-    //     this.productsService.createSellMaterials(this.sellMaterialForm.value).subscribe((response:any)=>{
-    //       console.log(response);
-    //       Swal.fire(
-    //         'Good job!',
-    //         'Your product uploaded successfully!',
-    //         'success'
-    //       )
-    //       this.router.navigate(['']);
-    //     },
-    //     (error) => {
-    //       console.log('Error:', error);
-    //       if (error.status==403) {
-
-    //         Swal.fire({
-    //           icon: 'error',
-    //           title: 'Oops...',
-    //           text: 'Something went wrong !',
-
-    //         })
-    //       }
-    //     }
-    //     )
-    //  }, 1000);
+    
     }
 
   }

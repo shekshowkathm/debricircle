@@ -5,72 +5,71 @@
   <div class="material-card">
     <div class="card-area">
       <div class="filter-area">
-        <mat-form-field appearance="outline">
-          <mat-label>Material type</mat-label>
-          <mat-select [(ngModel)]="selectedMaterial">
-            <mat-option value="">None</mat-option>
-            <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
-            <mat-option value="Fine aggregate">Fine aggregate</mat-option>
-            <mat-option value="Bricks">Bricks</mat-option>
-            <mat-option value="Blocks">Blocks</mat-option>
-            <mat-option value="Wood">Wood</mat-option>
-            <mat-option value="Steel">Steel</mat-option>
-            <mat-option value="Plastics">Plastics</mat-option>
-            <mat-option value="Cement Bag">Cement Bag</mat-option>
-            <mat-option value="Cardboard and other packaging waste"
-              >Cardboard and other packaging waste</mat-option
-            >
-            <mat-option value="Pipes and plastics"
-              >Pipes and plastics</mat-option
-            >
-            <mat-option value="Tiles">Tiles</mat-option>
-            <mat-option value="Granite">Granite</mat-option>
-            <mat-option value="Others">Others</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Category</mat-label>
-          <mat-select [(ngModel)]="selectedCategory">
-            <mat-option value="">None</mat-option>
-            <mat-option value="Recycled">Recycled</mat-option>
-            <mat-option value="Used">Used</mat-option>
-            <mat-option value="New/Surplus">New/Surplus</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>Search here...</mat-label>
-          <input matInput placeholder="" [(ngModel)]="filterText" (input)="applyFilter()">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field> -->
-        <mat-form-field appearance="outline">
-          <mat-label>Location</mat-label>
-          <mat-select [(ngModel)]="selectedLocation">
-            <mat-option value="">None</mat-option>
-            <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
-            <mat-option value="Manali">Manali</mat-option>
-            <mat-option value="Madhavaram">Madhavaram</mat-option>
-            <mat-option value="Tondiarpet">Tondiarpet</mat-option>
-            <mat-option value="Royapuram">Royapuram</mat-option>
-            <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
-            <mat-option value="Ambattur">Ambattur</mat-option>
-            <mat-option value="Anna Nagar">Anna Nagar</mat-option>
-            <mat-option value="Teynampet">TEYNAMPET</mat-option>
-            <mat-option value="Kodambakkam">Kodambakkam</mat-option>
-            <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
-            <mat-option value="Alandur">Alandur</mat-option>
-            <mat-option value="Adyar">Adyar</mat-option>
-            <mat-option value="Perungudi">Perungudi</mat-option>
-            <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Quality</mat-label>
-          <mat-select [(ngModel)]="selectedQuality">
-            <mat-option value="">None</mat-option>
-            <mat-option value="Verified">Verified</mat-option>
-            <mat-option value="Denied">Denied</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="filter-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Material type</mat-label>
+            <mat-select [(ngModel)]="selectedMaterial">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
+              <mat-option value="Fine aggregate">Fine aggregate</mat-option>
+              <mat-option value="Bricks">Bricks</mat-option>
+              <mat-option value="Blocks">Blocks</mat-option>
+              <mat-option value="Wood">Wood</mat-option>
+              <mat-option value="Steel">Steel</mat-option>
+              <mat-option value="Plastics">Plastics</mat-option>
+              <mat-option value="Cement Bag">Cement Bag</mat-option>
+              <mat-option value="Cardboard and other packaging waste"
+                >Cardboard and other packaging waste</mat-option
+              >
+              <mat-option value="Pipes and plastics"
+                >Pipes and plastics</mat-option
+              >
+              <mat-option value="Tiles">Tiles</mat-option>
+              <mat-option value="Granite">Granite</mat-option>
+              <mat-option value="Others">Others</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="selectedCategory">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Recycled">Recycled</mat-option>
+              <mat-option value="Used">Used</mat-option>
+              <mat-option value="New/Surplus">New/Surplus</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <mat-select [(ngModel)]="selectedLocation">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
+              <mat-option value="Manali">Manali</mat-option>
+              <mat-option value="Madhavaram">Madhavaram</mat-option>
+              <mat-option value="Tondiarpet">Tondiarpet</mat-option>
+              <mat-option value="Royapuram">Royapuram</mat-option>
+              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+              <mat-option value="Ambattur">Ambattur</mat-option>
+              <mat-option value="Anna Nagar">Anna Nagar</mat-option>
+              <mat-option value="Teynampet">TEYNAMPET</mat-option>
+              <mat-option value="Kodambakkam">Kodambakkam</mat-option>
+              <mat-option value="Valasaravakkam">Valasaravakkam</mat-option>
+              <mat-option value="Alandur">Alandur</mat-option>
+              <mat-option value="Adyar">Adyar</mat-option>
+              <mat-option value="Perungudi">Perungudi</mat-option>
+              <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Quality</mat-label>
+            <mat-select [(ngModel)]="selectedQuality">
+              <mat-option value="">None</mat-option>
+              <mat-option value="Verified">Verified</mat-option>
+              <mat-option value="Denied">Denied</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
       </div>
       <div class="card-areas">
         <div class="center">
@@ -124,7 +123,7 @@
                         : "Show number"
                     }}
                   </button>
-                  <button mat-raised-button color="primary" id="cart-button">
+                  <button mat-raised-button color="primary" id="cart-button" (click)="addtocart(i)">
                     <mat-icon>shopping_cart</mat-icon>Add to cart
                   </button>
                   <button mat-raised-button color="primary" id="buy-now">
