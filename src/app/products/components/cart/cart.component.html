@@ -1,44 +1,78 @@
 <div class="cart-container">
-  <div class="order-summary">
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Your order summary
-      </mat-panel-title>
-      <mat-panel-description>
-        &nbsp; &nbsp; &nbsp; Total items : 4&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        Your products total cost : 412
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <h4>Your shipping cost : 120 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;Sales tax : 223</h4>
-    <button mat-raised-button color="primary">Proceed to order</button>
-  </mat-expansion-panel>
-  </div>
-  <div class="cart-products">
-    <mat-card class="example-card" *ngFor="let item of cartItems">
-      <mat-card-header>
-        <mat-card-title>{{ item.materialtype }}</mat-card-title>
-        <mat-card-subtitle>
-          <h3>Category : {{item.category}}</h3>
-          <p *ngIf="item.quality !== 'Denied'"><mat-icon>verified_user</mat-icon></p>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="item.image" alt="Photo of a Shiba Inu">
-      <mat-card-content>
-        <div class="cart-rate">
-          <h3>Quantity : {{item.quantity}}</h3>
-          <h1>&#8377; {{item.productPrice}}</h1>
+  <div class="carts">
+    <div class="cart-area" >
+      <div class="location">
+        <div class="address">
+          <p>Deliver to : <b>Shek Showkath, 606707</b></p>
+          <p>90(1), Mettu Street, Thandarampet, Tiruvannamalai</p>
         </div>
-        <div class="piece">
-          <h2><mat-icon>remove_circle_outline</mat-icon>
-          </h2>
-          <h2 id="piece-count">{{item.piece}}</h2>
-          <h2><mat-icon>add_circle_outline</mat-icon></h2>
+        <div class="change-button">
+          <button mat-stroked-button color="primary">Change</button>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>
+      <div class="cart-products" *ngFor="let item of cartItems">
+        <div class="products1">
+          <div class="product-image">
+            <img [src]="item.image" alt="product image">
+          </div>
+          <div class="product-data">
+            <p id="materialtype">{{ item.materialtype }}</p>
+            <p id="category">Category : {{item.category}}</p>
+            <h5 >Availability : Immediate</h5>
+            <h4>Quantity : {{item.quantity}} <h3>&#8377; {{item.productPrice}}</h3></h4>
+          </div>
+        </div>
 
+        <div class="products2">
+          <div class="piece">
+            <mat-icon (click)="decrementProductPiece(item)" *ngIf="item.piece > 1">remove_circle_outline</mat-icon>
+            <h2>{{item.piece}}</h2>
+            <mat-icon (click)="incrementProductPiece(item)" >add_circle_outline</mat-icon>
+
+          </div>
+          <div class="remove">
+            <button mat-stroked-button color="warn" (click)="removeFromCart(item.userId,item.productID)">Remove</button>
+          </div>
+
+        </div>
+        <div class="verified">
+          <mat-icon *ngIf="item.quality !== 'Denied'">verified_user</mat-icon>
+        </div>
+
+      </div>
+      <div class="place-order">
+        <button mat-raised-button color="primary">Place order</button>
+      </div>
+
+    </div>
+    <div class="order-summary">
+      <div class="details">
+        <p id="title">Price details</p>
+        <mat-divider></mat-divider>
+        <div class="items">
+          <div class="items1">
+            <p>Price items({{totalItems}})</p>
+            <p>&#8377; {{ totalPrice }}</p>
+          </div>
+          <div class="items1">
+            <p>Sales tax</p>
+            <p>&#8377; 230</p>
+          </div>
+          <div class="items1">
+            <p>Delivery charges</p>
+            <p>&#8377; 560</p>
+          </div>
+        <mat-divider></mat-divider>
+
+        </div>
+        <div class="total">
+          <p id="total-amount">Total amount</p>
+          <p id="amount">&#8377; 1990</p>
+        </div>
+        <div class="delivery-notes">
+          <p>The cost of delivery is contingent on your specific location.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

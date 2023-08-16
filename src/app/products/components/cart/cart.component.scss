@@ -1,74 +1,228 @@
-.cart-container{
+.cart-container {
   width: 100%;
   height: 85vh;
-
   // border: 2px double darkblue;
-  .order-summary{
-    padding-top: 15px;
+  display: flex;
+  align-items: center;
+  .carts{
     width: 100%;
-    height: auto;
-    // border: 2px solid red;
-    mat-expansion-panel{
-      button{
-        float: right;
-        background-color: #F09431;
-
-      }
-    }
-  }
-  .cart-products{
-    width: 100%;
-    height: auto;
-    // border: 2px solid yellow;
+    height: 80vh;
+    // border: 2px solid sandybrown;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
-
-    .example-card{
-      flex: 1 1 calc(50% - 20px); /* Two cards in a row with spacing */
-      // max-width: calc(50% - 20px); /* Prevent cards from getting too wide */
-      margin-top: 20px;
-      justify-content: space-evenly;
-      max-width: 35%;
+    .cart-area{
+      width: 65%;
       height: auto;
+      // border: 2px dotted darkblue;
 
-      mat-card-subtitle{
-        width: 175%;
-        // border: 2px solid green;
+
+      .location{
+        width: 100%;
+        height: 13vh;
+        // border: 2px solid red;
+        background-color: #fff;
+        border-radius: 5px;
         display: flex;
-        justify-content: space-between;
-        p{
-
-          mat-icon{
-            color: green;
+        justify-content: space-around;
+        align-items: center;
+        .address{
+          width: 70%;
+          // border: 2px solid red;
+          p{
+            font-size: 16px;
+            b{
+              font-weight: 550;
+            }
           }
         }
       }
-      img{
-        width: 100%;
-        height: 35vh;
-      }
-      mat-card-content{
-        padding-top: 10px;
-        .cart-rate{
-          display: flex;
-          justify-content: space-around;
-        }
-        .piece{
-          display: flex;
-          float: right;
-          height: 40px;
-          justify-content: space-around;
 
-          h2{
+      .cart-products{
+        margin-top: 15px;
+        border-radius: 5px 5px 0 0;
+        width: 100%;
+        height: 40vh;
+        background-color: #fff;
+        padding-top: 30px;
+        padding-bottom: 20px;
+
+        .products1{
+          width: 100%;
+          height: 20vh;
+          // border: 1px solid grey;
+          display: flex;
+          justify-content: space-around;
+          .product-image{
+            width: 30%;
+            height: 20vh;
+            // border: 2px dotted goldenrod;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+              width: 95px;
+              height: 112px;
+            }
+
+          }
+          .product-data{
+            width: 60%;
+            height: 20vh;
+            // border: 2px dotted rgb(73, 56, 12);
+            #materialtype{
+              font-size: 20px;
+              font-weight: 500;
+            }
+            #category{
+              font-size: 18px;
+              color: #878787;
+            }
+            h5{
+              font-size: 18px;
+              color: #000;
+              font-weight: 400;
+            }
+            h4{
+              font-size: 18px;
+              color: #000;
+              font-weight: 400;
+            }
+            h3{
+              float: right;
+              font-size: 24px;
+              font-family: sans-serif;
+              font-weight: 500;
+            }
+          }
+        }
+        .products2{
+          width: 100%;
+          height: 10vh;
+          // border: 1px solid rgb(128, 128, 128);
+          display: flex;
+          align-items: center;
+          .piece{
+            width: 35%;
+            height: auto;
+            // border: 2px solid yellow;
+            display: flex;
+            justify-content: center;
             mat-icon{
               margin-top: 5px;
+              
             }
             mat-icon:hover{
-              color: orange;
+              cursor: pointer;
             }
-            padding: 10px;
+            h2{
+              margin-left: 16px;
+              margin-right: 16px;
+            }
+          }
+          .remove{
+            width: 20%;
+            height: auto;
+            // border: 2px solid pink;
+            margin-left: 22px;
+            button{
+              color: black;
+            }
+            button:hover{
+              border-color: red;
+            }
+          }
 
+        }
+        .verified{
+          float: right;
+          mat-icon{
+            font-size: 19px;
+            margin-right: 20px;
+            color: rgba(0, 128, 0, 0.767);
+          }
+        }
+
+
+      }
+      .place-order{
+        width: 100%;
+        height: 10vh;
+        background-color: #fff;
+        box-shadow: 0px -4px 6px -1px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        button{
+          margin-right: 20px;
+          float: right;
+          width: 25%;
+          height: 40px;
+          background-color: #FB641B;
+          color: #fff;
+        }
+      }
+    }
+
+    .order-summary{
+      width: 30%;
+      height: 55vh;
+      background-color: #fff;
+      border-radius: 5px;
+      // border: 2px solid red;
+
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      .details{
+        width: 100%;
+        height: 50vh;
+
+        #title{
+          color: #878787;
+          font-weight: 400;
+          font-size: 22px;
+          margin-left: 20px;
+        }
+        .items{
+          width: 100%;
+          height: 30vh;
+          // border: 2px solid red;
+
+          .items1{
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p{
+              font-size: 16px;
+              font-weight: 400;
+            }
+          }
+        }
+        .total{
+          width: 100%;
+          height: 10vh;
+          // border: 2px solid red;
+          padding-left: 20px;
+          padding-right: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          p{
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+        .delivery-notes{
+          width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          p{
+            color: #878787;
+            font-size: 13px;
+            font-weight: 300;
           }
         }
       }

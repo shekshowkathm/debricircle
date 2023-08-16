@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogoutDialogComponent } from '../logout-dialog/logout-dialog.component';
+
 import { Router } from '@angular/router';
+import { LogoutDialogComponent } from 'src/app/products/components/logout-dialog/logout-dialog.component';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-debriheader',
+  templateUrl: './debriheader.component.html',
+  styleUrls: ['./debriheader.component.scss']
 })
-export class HeaderComponent {
+export class DebriheaderComponent {
   userName: string | null = null;
   constructor(private dialog: MatDialog,private router:Router) {
     this.userName = localStorage.getItem('name');
   }
-
 
   // LOGOUT METHOD
   openLogoutDialog(): void {
@@ -104,5 +104,10 @@ export class HeaderComponent {
         // this.router.navigate(['/login']); // Import Router and uncomment this line if you have a login route
       }
     });
+  }
+  homePage(){
+    this.router.navigateByUrl('');
+    console.log("home page");
+
   }
 }

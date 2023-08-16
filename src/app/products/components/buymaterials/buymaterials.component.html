@@ -1,6 +1,7 @@
 <div class="buymaterials-container">
   <div class="headers">
-    <app-header></app-header>
+    <app-debriheader></app-debriheader>
+
   </div>
   <div class="material-card">
     <div class="card-area">
@@ -48,7 +49,9 @@
               <mat-option value="Madhavaram">Madhavaram</mat-option>
               <mat-option value="Tondiarpet">Tondiarpet</mat-option>
               <mat-option value="Royapuram">Royapuram</mat-option>
-              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+              <mat-option value="THIRU-VI-KA Nagar"
+                >THIRU-VI-KA Nagar</mat-option
+              >
               <mat-option value="Ambattur">Ambattur</mat-option>
               <mat-option value="Anna Nagar">Anna Nagar</mat-option>
               <mat-option value="Teynampet">TEYNAMPET</mat-option>
@@ -69,7 +72,6 @@
             </mat-select>
           </mat-form-field>
         </div>
-
       </div>
       <div class="card-areas">
         <div class="center">
@@ -100,10 +102,24 @@
                     <h1>{{ product.materialtype }}</h1>
                     <p>Category : {{ product.category }}</p>
                     <p>Quality : {{ product.quality }}</p>
-                    <p>Availability: {{ product.selectedDate ? (product.selectedDate === '1/1/1970' ? 'Immediate' : product.selectedDate) : 'Immediate' }}</p>
+                    <p>
+                      Availability:
+                      {{
+                        product.selectedDate
+                          ? product.selectedDate === "1/1/1970"
+                            ? "Immediate"
+                            : product.selectedDate
+                          : "Immediate"
+                      }}
+                    </p>
                   </div>
                   <div id="details2">
-                    <p *ngIf="!localStorageEmpty" matTooltip="{{ product.address }}">Address : {{ product.location }}</p>
+                    <p
+                      *ngIf="!localStorageEmpty"
+                      matTooltip="{{ product.address }}"
+                    >
+                      Address : {{ product.location }}
+                    </p>
                     <p>Quantity : {{ product.quantity }}</p>
                     <p id="rupee">
                       &#8377; <b>{{ product.productPrice }}</b>
@@ -123,9 +139,42 @@
                         : "Show number"
                     }}
                   </button>
-                  <button mat-raised-button color="primary" id="cart-button" (click)="addtocart(i)">
+                  <!-- <button mat-raised-button color="primary" id="cart-button" (click)="addtocart(i)">
                     <mat-icon>shopping_cart</mat-icon>Add to cart
+                  </button> -->
+
+                  <!-- <button
+                    mat-raised-button
+                    color="primary"
+                    id="cart-button"
+                    *ngIf="!isProductInCart(product.id)"
+                    (click)="addtocart(i)"
+                  >
+                    <mat-icon>shopping_cart</mat-icon>
+                    Add to cart
+                  </button> -->
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    id="cart-button"
+                    *ngIf="isProductInCart(product.id)"
+                    routerLink="/addtocart"
+                  >
+                    <mat-icon>shopping_cart</mat-icon>
+                    Go to cart
                   </button>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    id="cart-button"
+                    *ngIf="!isProductInCart(product.id)"
+                    (click)="addtocart(product)"
+
+                  >
+                    <mat-icon>shopping_cart</mat-icon>
+                    Add to cart
+                  </button>
+
                   <button mat-raised-button color="primary" id="buy-now">
                     <mat-icon>shopping_cart</mat-icon>Buy now
                   </button>

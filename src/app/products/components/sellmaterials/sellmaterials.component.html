@@ -1,6 +1,7 @@
 <div class="sellmaterials-container">
   <div class="headers">
-    <app-header></app-header>
+    <app-debriheader></app-debriheader>
+
   </div>
   <div class="sellmaterials-form">
     <div class="form-area">
@@ -106,7 +107,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Product price</mat-label>
-            <input matInput placeholder="Enter your product price" formControlName="productPrice">
+            <input matInput type="number" step="0.01" placeholder="Enter your product price" formControlName="productPrice">
             <mat-error *ngIf="sellMaterialForm.get('productPrice')!.invalid && (sellMaterialForm.get('productPrice')!.dirty || sellMaterialForm.get('productPrice')!.touched)">
               Product Price is required
             </mat-error>
@@ -159,5 +160,7 @@
       </form>
 
     </div>
+
   </div>
+  
 </div>

@@ -55,12 +55,16 @@ import { HomeModule } from './home/home.module';
 import { ProductsModule } from './products/products.module';
 import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileModule } from './profile/profile.module';
+import { DebriheaderComponent } from './common components/debriheader/debriheader.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -101,7 +105,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,MatNativeDateModule,
-    MatPaginatorModule,HomeModule,ProductsModule,HttpClientModule
+    MatPaginatorModule,HomeModule,HttpClientModule,
   ],
   providers: [RegisterService,],
   bootstrap: [AppComponent]

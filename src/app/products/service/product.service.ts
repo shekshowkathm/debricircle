@@ -76,11 +76,13 @@ export class ProductService {
   }
   createSellMaterials(sellMaterialsData:any){
     console.log(sellMaterialsData);
+    const token = this.gettingToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
 
-
-    return this.http.post(`${this.sellMaterialsCreateURL}`,sellMaterialsData,{
-      headers: this.headers,
-    })
+    return this.http.post(`${this.sellMaterialsCreateURL}`,sellMaterialsData,{ headers })
   }
 
   getAllProducts(): Observable<any> {

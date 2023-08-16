@@ -13,6 +13,11 @@ const routes: Routes = [
       import('./home/home-routing.module').then((m) => m.HomeRoutingModule),
   },
   {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile-routing.module').then((m) => m.ProfileRoutingModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./products/products-routing.module').then((m) => m.ProductsRoutingModule),

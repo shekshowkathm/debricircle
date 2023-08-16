@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { HomeService } from 'src/app/home/service/home.service';
+import { AddtocartService } from '../../service/addtocart.service';
 
 @Component({
   selector: 'app-buymaterials',
@@ -24,15 +27,21 @@ export class BuymaterialsComponent {
   sellMaterilasproducts: any[] = [];
   searchInput: string = '';
   filterText: string = '';
+  cartItems: any[] = []; // Declare an array to store cart items
+  productIDOfCarts: string[] = [];
   constructor(
     private productsService: ProductService,
     private router: Router,
-    private homeService: HomeService
+    private homeService: HomeService,
+    private addToCart:AddtocartService,
+    private snackBar:MatSnackBar
   ) {}
   ngOnInit() {
     // this.getAllProductsDetails();
     this.localStorageEmpty = Object.keys(localStorage).length === 0;
+    this.getCarts();
     this.getAllSellMaterials();
+
   }
 
 
@@ -147,33 +156,85 @@ formatDate(date: Date): string {
     );
   }
 
-  addtocart(i:any){
-    const selectedProduct = this.products[i];
+  addtocart(product:any){
+    const selectedProduct = product;
     console.log('Selected Product:', selectedProduct);
 
     const userIdUser = localStorage.getItem('userId');
     selectedProduct.userId=userIdUser;
     console.log("User id setted "+selectedProduct);
 
+    const localStorageEmpty = Object.keys(localStorage).length === 0;
+    if (localStorageEmpty) {
+      this.showRegisterAlert();
+    } else {
+      console.log("create cart trigger");
 
-    this.productsService.createCart(selectedProduct).subscribe((response:any)=>{
-      console.log(response);
-      this.router.navigateByUrl('/addtocart');
-    },
-    (error) => {
-      console.log('Error:', error);
-      if (error.status==403) {
+      this.productsService.createCart(selectedProduct).subscribe((response:any)=>{
+        let snackBarRef=this.snackBar.open("Product added to your cart !", "Close",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
+        this.router.navigateByUrl('/addtocart');
+        console.log(response);
 
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong !',
+      snackBarRef.onAction().subscribe(()=>{
+        console.log("the undo action is triggered");
 
-        })
+
+      });
+      snackBarRef.afterDismissed().subscribe(()=>{
+        console.log("the snack bar dismissed");
+      })
+
+      },
+      (error) => {
+        console.log('Error:', error);
+        if (error.status==403) {
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong !',
+
+          })
+        }
       }
+
+      )
     }
 
+
+
+  }
+
+
+
+  getCarts(){
+
+    const localStorageEmpty = Object.keys(localStorage).length === 0;
+    if (localStorageEmpty) {
+      console.log("Not login to get carts");
+
+    } else {
+      const userIdUser = localStorage.getItem('userId');
+    this.addToCart.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
+      console.log(response);
+      this.cartItems = response.reverse();
+      console.log(this.cartItems);
+      this.productIDOfCarts=this.cartItems.map(item => item.productID);
+      console.log(this.productIDOfCarts);
+
+
+    },
+    (error) => {
+      console.error('Error fetching product details:', error);
+    }
     )
+    }
+
+
+  }
+
+  isProductInCart(id: string): boolean {
+    return this.productIDOfCarts.includes(id);
   }
 
 }

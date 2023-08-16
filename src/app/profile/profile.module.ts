@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductsRoutingModule } from './products-routing.module';
-import { HeaderComponent } from './components/header/header.component';
-import { SellmaterialsComponent } from './components/sellmaterials/sellmaterials.component';
-import { BuymaterialsComponent } from './components/buymaterials/buymaterials.component';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 // Angular material import codes
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -39,16 +36,11 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FilterPipe } from './pipe/filter.pipe';
-import { DisposewasteComponent } from './components/disposewaste/disposewaste.component';
-import { LogoutDialogComponent } from './components/logout-dialog/logout-dialog.component';
-import { TippingSegregatedComponent } from './components/tipping-segregated/tipping-segregated.component';
-import { TippingNonSegregatedComponent } from './components/tipping-non-segregated/tipping-non-segregated.component';
-import { WasteManagementComponent } from './components/waste-management/waste-management.component'; // Import MatNativeDateModule
 import { HttpClientModule } from '@angular/common/http';
-import { SearchtextPipe } from './pipe/searchtext.pipe';
-import { AddtocartComponent } from './components/addtocart/addtocart.component';
-import { CartComponent } from './components/cart/cart.component';
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+
+import { ProductsModule } from '../products/products.module';
+import { HeaderComponent } from '../products/components/header/header.component';
 import { DebriheaderComponent } from '../common components/debriheader/debriheader.component';
 import { SharedModule } from '../shared.module';
 
@@ -56,23 +48,12 @@ import { SharedModule } from '../shared.module';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    SellmaterialsComponent,
-    BuymaterialsComponent,
-    FilterPipe,
-    DisposewasteComponent,
-    LogoutDialogComponent,
-    TippingSegregatedComponent,
-    TippingNonSegregatedComponent,
-    WasteManagementComponent,
-    SearchtextPipe,
-    AddtocartComponent,
-    CartComponent,
+    PersonaldetailsComponent,
 
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    ProfileRoutingModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -105,4 +86,4 @@ import { SharedModule } from '../shared.module';
     MatPaginatorModule,FormsModule,ReactiveFormsModule,HttpClientModule,SharedModule
   ]
 })
-export class ProductsModule { }
+export class ProfileModule { }

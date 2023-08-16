@@ -1,0 +1,16 @@
+.personaldetails-container{
+  width: 100%;
+  height: 100vh;
+  background-color:  #F5F6F7;
+  overflow: hidden;
+  .headers{
+    width: 100%;
+    height: 15vh;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    // border: 2px solid red;
+    @media (max-width: 425px) {
+      height: 40vh;
+    }
+  }
+}
