@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Router } from '@angular/router';
 import { LogoutDialogComponent } from 'src/app/products/components/logout-dialog/logout-dialog.component';
+import { AddtocartService } from 'src/app/products/service/addtocart.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,8 +13,26 @@ import Swal from 'sweetalert2';
 })
 export class DebriheaderComponent {
   userName: string | null = null;
-  constructor(private dialog: MatDialog,private router:Router) {
+  badgeCount=0;
+  constructor(private dialog: MatDialog,private router:Router,private addToCartService:AddtocartService) {
     this.userName = localStorage.getItem('name');
+  }
+
+  ngOnInit(): void {
+    this.getBadgeCount();
+  }
+
+  getBadgeCount(){
+    const userIdUser = localStorage.getItem('userId');
+    this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
+      console.log(response);
+      console.log(response.length);
+      this.badgeCount=response.length
+    },
+    (error) => {
+      console.error('Error fetching product details:', error);
+    }
+    )
   }
 
   // LOGOUT METHOD

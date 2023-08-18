@@ -1,0 +1,74 @@
+.personalinfo-container{
+  width: 100%;
+  height: 80vh;
+  // border: 2px solid yellow;
+  padding-top: 30px;
+  .heading{
+    width: 100%;
+    height: 5vh;
+    // border: 2px solid red;
+    display: flex;
+
+    h2{
+      margin-left: 40px;
+      font-weight: 400;
+    }
+    h3{
+      font-size: 15px;
+      margin-top: 5px;
+      margin-left: 30px;
+      font-weight: 500;
+      color: #F5922A;
+    }
+    h3:hover{
+      cursor: pointer;
+    }
+  }
+  .form-area{
+    width: 100%;
+    height: 70vh;
+    // border: 1px double darkblue;
+padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    form{
+      width: 90%;
+      // border: 1px solid red;
+
+    }
+    p{
+      display: flex;
+      justify-content: space-around;
+      mat-form-field{
+        width: 40%;
+      }
+      mat-icon{
+        color: #F5922D;
+      }
+
+    }
+    .register-sunmit{
+      float: right;
+      display: flex;
+      // border: 2px solid red;
+      #all-field{
+        margin-right: 30px;
+      }
+      button{
+        // width: 40%;
+        // height:53px;
+        float: right;
+        color: #F5922A;
+        background-color: #fff;
+        border: 1px solid #F5922A;
+      }
+      button:hover{
+        cursor: pointer;
+        background-color: #F5922D;
+        color: #fff;
+      }
+    }
+
+
+  }
+}

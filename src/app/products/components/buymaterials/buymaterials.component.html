@@ -1,7 +1,6 @@
 <div class="buymaterials-container">
   <div class="headers">
     <app-debriheader></app-debriheader>
-
   </div>
   <div class="material-card">
     <div class="card-area">
@@ -101,7 +100,7 @@
                   <div id="details1">
                     <h1>{{ product.materialtype }}</h1>
                     <p>Category : {{ product.category }}</p>
-                    <p>Quality : {{ product.quality }}</p>
+                    <p *ngIf="product.quality !== 'Denied'">Quality : {{ product.quality }}</p>
                     <p>
                       Availability:
                       {{

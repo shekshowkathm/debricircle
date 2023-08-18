@@ -1,6 +1,51 @@
 <div class="personaldetails-container">
   <div class="headers">
     <app-debriheader></app-debriheader>
+  </div>
+  <div class="profile-content">
+    <div class="profile-area">
+      <div class="profile-side-content">
+        <mat-expansion-panel expanded="true">
+          <mat-expansion-panel-header>
 
+            <mat-panel-title><img src="assets/logo/prof.png" alt="Logo">
+              &nbsp;&nbsp;&nbsp;&nbsp;Hello {{userName}} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item role="listitem" (click)="personalInfo()"
+              > Personal informations</mat-list-item
+            >
+            <mat-list-item role="listitem" (click)="manageAddress()"
+              >
+              Manage address</mat-list-item
+            >
+            <mat-list-item role="listitem" (click)="userCredentials()"
+              >
+              User Credentials</mat-list-item
+            >
+            <mat-list-item role="listitem" (click)="myOrder()"
+              >My orders</mat-list-item
+            >
+            <mat-list-item role="listitem" (click)="confirmLogout()"
+              >Logout</mat-list-item
+            >
+          </mat-list>
+        </mat-expansion-panel>
+      </div>
+      <div class="profile-information" [ngSwitch]="listItem">
+        <div class="personal-info" *ngSwitchCase="'personalinfo'">
+          <app-personalinfo></app-personalinfo>
+        </div>
+        <div class="manage-address" *ngSwitchCase="'manageaddress'">
+          <app-manageaddress></app-manageaddress>
+        </div>
+        <div class="user-credentials" *ngSwitchCase="'usercredentials'">
+          <app-usercredentials></app-usercredentials>
+        </div>
+        <div class="myorders" *ngSwitchCase="'myorders'">
+          <p>my orders</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

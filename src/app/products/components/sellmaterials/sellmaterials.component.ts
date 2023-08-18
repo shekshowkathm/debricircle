@@ -53,13 +53,13 @@ export class SellmaterialsComponent {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       const file = inputElement.files[0];
-      if (this.checkFileSize(file, 500)) {
-        // Check if file size is within 500KB
+      if (this.checkFileSize(file, 50000)) {
+        // Check if file size is within 50MB (50000KB)
         this.errorMessage = null;
         this.selectedImage = file;
         this.previewSelectedImage(file);
       } else {
-        this.errorMessage = 'Image size should be less than 500KB.';
+        this.errorMessage = 'Image size should be less than 50MB.';
         this.selectedImage = null;
         this.previewImage = null;
         this.convertedBase64 = null;
@@ -152,7 +152,7 @@ export class SellmaterialsComponent {
         }
         )
       }
-    
+
     }
 
   }

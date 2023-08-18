@@ -1,0 +1,133 @@
+<div class="manageaddress-containers">
+  <div class="heading">
+    <h2>Manage address</h2>
+  </div>
+  <div class="address-form" [ngSwitch]="address">
+    <div class="add-address" *ngSwitchCase="'addAddress'" >
+      <mat-icon (click)="addAddress()">add</mat-icon>
+      <h4 (click)="addAddress()">Add new address</h4>
+    </div>
+    <div class="add-address-form" *ngSwitchCase="'addforms'">
+      <div class="header">
+        <h4 >Add new address</h4>
+      </div>
+      <div class="forms">
+        <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="" formControlName="name">
+              <mat-error *ngIf="addressForm.get('name')!.invalid && (addressForm.get('name')!.dirty || addressForm.get('name')!.touched)">
+                Name is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Contact </mat-label>
+              <input matInput placeholder="" formControlName="mobileNumber">
+              <mat-error *ngIf="addressForm.get('mobileNumber')!.invalid && (addressForm.get('mobileNumber')!.dirty || addressForm.get('mobileNumber')!.touched)">
+                Contact number is required.
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Pincode</mat-label>
+              <input type="number" matInput placeholder="" formControlName="pincode">
+              <mat-error *ngIf="addressForm.get('pincode')!.invalid && (addressForm.get('pincode')!.dirty || addressForm.get('pincode')!.touched)">
+                Pincode is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Locality</mat-label>
+              <input matInput placeholder="" formControlName="locality">
+              <mat-error *ngIf="addressForm.get('locality')!.invalid && (addressForm.get('locality')!.dirty || addressForm.get('locality')!.touched)">
+                Locality is required.
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="" formControlName="address">
+              <mat-error *ngIf="addressForm.get('address')!.invalid && (addressForm.get('address')!.dirty || addressForm.get('address')!.touched)">
+                Address is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="" formControlName="city">
+              <mat-error *ngIf="addressForm.get('city')!.invalid && (addressForm.get('city')!.dirty || addressForm.get('city')!.touched)">
+                City is required.
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>Landmart(Optional)</mat-label>
+              <input matInput placeholder="" formControlName="landmark">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Alternate contact(Optional)</mat-label>
+              <input matInput placeholder="" formControlName="alternateContact">
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select formControlName="state"  required>
+                <mat-option *ngFor="let state of states" [value]="state.value">{{state.viewValue}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="addressForm.get('state')!.invalid && (addressForm.get('state')!.dirty || addressForm.get('state')!.touched)">
+                State is required.
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Address type</mat-label>
+              <mat-select formControlName="addressType" required>
+                <mat-option value="Home">Home</mat-option>
+                <mat-option value="Work">Work</mat-option>
+              </mat-select>
+              <mat-error *ngIf="addressForm.get('addressType')!.invalid && (addressForm.get('addressType')!.dirty || addressForm.get('addressType')!.touched)">
+                AddressType is required.
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <div class="form-submit">
+            <div *ngIf="addressForm.invalid && (addressForm.dirty || addressForm.touched)" id="all-field">
+              <mat-error>
+                Please fill in all the required fields.
+              </mat-error>
+            </div>
+            <button mat-raised-button color="primary" type="submit" id="submit" *ngIf="!showEditButton">Submit</button>
+            <button mat-raised-button color="primary" type="button" id="update" (click)="updateAddress()"  *ngIf="showEditButton">Update</button>
+            <button mat-raised-button color="warn" type="button" (click)="cancelButton()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="user-address" *ngFor="let address of userAddress">
+    <div class="address">
+      <div class="address1">
+        <div class="head">
+          <h4>{{address.addressType}}</h4>
+        </div>
+        <div class="icons">
+          <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editAddress(address)">Edit<mat-icon>edit</mat-icon></button>
+            <button mat-menu-item (click)="deleteAddress(address)">Delete<mat-icon>delete</mat-icon></button>
+          </mat-menu>
+        </div>
+      </div>
+      <div class="address2">
+        <h3>{{address.name}}</h3>
+        <h3>{{address.mobileNumber}}</h3>
+      </div>
+      <div class="address3">
+        <h5> {{address.locality}},{{address.address}} , {{address.city}}, {{address.state}}</h5>
+        <h5>{{address.pincode}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

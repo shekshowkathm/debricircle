@@ -1,0 +1,78 @@
+<div class="personalinfo-container">
+  <div class="heading">
+    <h2>Personal information </h2>
+    <h3 (click)="toggleReadonly()">{{ isEditMode ? 'Cancel' : 'Edit' }}</h3>
+  </div>
+  <div class="form-area">
+    <form [formGroup]="updatePersonalInfoForm" (ngSubmit)="onUpdateSubmit()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="" formControlName="name" [readonly]="!isReadonly">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-error *ngIf="updatePersonalInfoForm.get('name')!.invalid && (updatePersonalInfoForm.get('name')!.dirty || updatePersonalInfoForm.get('name')!.touched)">
+            Name is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Business name</mat-label>
+          <input matInput placeholder="" formControlName="businessName" [readonly]="!isReadonly">
+          <mat-icon matSuffix>business</mat-icon>
+          <mat-error *ngIf="updatePersonalInfoForm.get('businessName')!.invalid && (updatePersonalInfoForm.get('businessName')!.dirty || updatePersonalInfoForm.get('businessName')!.touched)">
+            Business name is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Location</mat-label>
+          <input matInput placeholder="" formControlName="location" [readonly]="!isReadonly">
+          <mat-icon matSuffix>person_pin_circle</mat-icon>
+          <mat-error *ngIf="updatePersonalInfoForm.get('location')!.invalid && (updatePersonalInfoForm.get('location')!.dirty || updatePersonalInfoForm.get('location')!.touched)">
+            Location is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Contact</mat-label>
+          <input matInput placeholder="" formControlName="mobileNumber" [readonly]="!isReadonly">
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="updatePersonalInfoForm.get('mobileNumber')!.invalid && (updatePersonalInfoForm.get('mobileNumber')!.dirty || updatePersonalInfoForm.get('mobileNumber')!.touched)">
+            Mobile number is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>GST</mat-label>
+          <input matInput placeholder="" formControlName="gst" [readonly]="!isReadonly">
+          <mat-icon matSuffix>person_pin_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Type of business</mat-label>
+          <mat-select formControlName="businessType"  required>
+            <mat-option value="scrap_dealer">Scrap Dealer</mat-option>
+            <mat-option value="building_contractor">Building Contractor</mat-option>
+            <mat-option value="demolition_contractor">Demolition Contractor</mat-option>
+            <mat-option value="builder">Builder</mat-option>
+            <mat-option value="architect">Architect</mat-option>
+            <mat-option value="engineer">Engineer</mat-option>
+            <mat-option value="other">Other</mat-option>
+          </mat-select>
+          <mat-error *ngIf="updatePersonalInfoForm.get('businessType')!.invalid && (updatePersonalInfoForm.get('businessType')!.dirty || updatePersonalInfoForm.get('businessType')!.touched)">
+            Business Type is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <div class="register-sunmit">
+        <div *ngIf="updatePersonalInfoForm.invalid && (updatePersonalInfoForm.dirty || updatePersonalInfoForm.touched)" id="all-field">
+          <mat-error>
+            Please fill in all the required fields.
+          </mat-error>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Update</button>
+      </div>
+
+    </form>
+  </div>
+</div>

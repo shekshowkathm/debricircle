@@ -43,12 +43,18 @@ import { ProductsModule } from '../products/products.module';
 import { HeaderComponent } from '../products/components/header/header.component';
 import { DebriheaderComponent } from '../common components/debriheader/debriheader.component';
 import { SharedModule } from '../shared.module';
+import { PersonalinfoComponent } from './components/personalinfo/personalinfo.component';
+import { ManageaddressComponent } from './components/manageaddress/manageaddress.component';
+import { UsercredentialsComponent } from './components/usercredentials/usercredentials.component';
 
 
 
 @NgModule({
   declarations: [
     PersonaldetailsComponent,
+    PersonalinfoComponent,
+    ManageaddressComponent,
+    UsercredentialsComponent,
 
   ],
   imports: [

@@ -36,16 +36,7 @@
             </mat-error>
           </mat-form-field>
         </p>
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Address</mat-label>
-            <input matInput placeholder="Enter your address" formControlName="address">
-            <mat-icon matSuffix>person_pin_circle</mat-icon>
-            <mat-error *ngIf="registrationForm.get('address')!.invalid && (registrationForm.get('address')!.dirty || registrationForm.get('address')!.touched)">
-              Address is required.
-            </mat-error>
-          </mat-form-field>
-        </p>
+        
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Location</mat-label>

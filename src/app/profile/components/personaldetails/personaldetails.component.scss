@@ -13,4 +13,69 @@
       height: 40vh;
     }
   }
+  .profile-content{
+    width: 100%;
+    height: 85vh;
+    // border: 2px solid red;
+overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .profile-area{
+      width: 97%;
+      height: 82vh;
+      // border: 2px solid yellow;
+      padding-top: 7px;
+      display: flex;
+      justify-content: space-evenly;
+      .profile-side-content{
+        width: 25%;
+        height: auto;
+        // border: 2px solid black;
+        mat-expansion-panel-header{
+          border-bottom: 1px dotted lightblue;
+          display: flex;
+          justify-content: space-between;
+          img{
+            width: 30px;
+            height: 30px;
+          }
+        }
+        mat-list-item:hover{
+
+          cursor: pointer;
+        }
+
+      }
+      .profile-information{
+        width: 70%;
+        height: auto;
+        background-color: #fff;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        .personal-info{
+          width: 100%;
+          height: auto;
+          // border: 2px solid red;
+        }
+        .manage-address{
+          width: 100%;
+          height: auto;
+          background-color: #fff;
+          // border: 2px solid red;
+        }
+        .user-credentials{
+          width: 100%;
+          height: auto;
+          // border: 2px solid red;
+        }
+        .myorders{
+          width: 100%;
+          height: auto;
+          // border: 2px solid red;
+        }
+      }
+    }
+
+  }
 }

@@ -32,7 +32,6 @@ export class CartComponent {
       console.log(this.cartItems.length);
       this.totalItems=this.cartItems.length
 
-
       // Calculate the sum of productPrice values
       const totalPrice = this.cartItems.reduce((total, item) => total + parseFloat(item.productPrice), 0);
       this.totalPrice = totalPrice.toFixed(2); // Store the total price with 2 decimal places
@@ -53,6 +52,8 @@ export class CartComponent {
       () => {
         console.log("cart removed");
         this.getCarts();
+        let snackBarRef=this.snackBar.open("Product removed from your cart !", "Dismiss",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
+
 
       },
       error => {

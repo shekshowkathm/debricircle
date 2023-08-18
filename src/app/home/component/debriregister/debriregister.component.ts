@@ -23,7 +23,7 @@ export class DebriregisterComponent {
       businessName: ['', Validators.required],
       name: ['', Validators.required],
       mobileNumber: ['', Validators.required],
-      address: ['', Validators.required],
+      
       location: ['', Validators.required],
       gst: ['', ],
       businessType: ['', Validators.required],
