@@ -106,6 +106,7 @@
                   <mat-form-field appearance="outline">
                     <mat-label>Contact number</mat-label>
                     <input matInput placeholder="Enter your contact number" formControlName="number">
+                    
                     <mat-error *ngIf="segregaredForm.get('number')!.invalid && (segregaredForm.get('number')!.dirty || segregaredForm.get('number')!.touched)">
                       Contact number is required
                     </mat-error>
@@ -169,7 +170,7 @@
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Tipping fees</mat-label>
-                    <input matInput placeholder="Your tipping fees">
+                    <input matInput placeholder="Your tipping fees" readonly>
                   </mat-form-field>
 
                 </p>
@@ -177,7 +178,11 @@
                   <mat-error>
                     Please fill in all the required fields.
                   </mat-error>
+                  <mat-error *ngIf="segregaredForm.hasError('atLeastOneFieldRequired')">
+                    Please select at least one volume.
+                  </mat-error>
                 </div>
+
                 <button mat-raised-button type="submit">Submit</button>
               </form>
             </div>

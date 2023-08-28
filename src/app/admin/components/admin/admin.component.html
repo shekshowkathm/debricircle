@@ -1,0 +1,40 @@
+<div class="admin-container">
+  <div class="headers">
+    <app-debriheader></app-debriheader>
+  </div>
+  <div class="admin-panel">
+    <div class="admin-area">
+      <div class="side-bars">
+        <mat-list role="list">
+          <mat-list-item role="listitem" (click)="home()">Home</mat-list-item>
+          <mat-list-item role="listitem" (click)="registerList()">Register list</mat-list-item>
+          <mat-list-item role="listitem" (click)="productList()">Products list</mat-list-item>
+          <mat-list-item role="listitem" (click)="nonSegregated()">Non-segregated waste</mat-list-item>
+          <mat-list-item role="listitem" (click)="segregated()">Segregated waste</mat-list-item>
+          <mat-list-item role="listitem" (click)="wastePlan()">Waste plan</mat-list-item>
+          <mat-list-item role="listitem" (click)="logout()">Logout</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="admin-dashboard" [ngSwitch]="adminDashboard">
+        <div class="home" *ngSwitchCase="'home'">
+          <app-adminhome></app-adminhome>
+        </div>
+        <div class="register-list" *ngSwitchCase="'registerlist'">
+          <app-registerlist></app-registerlist>
+        </div>
+        <div class="product-list" *ngSwitchCase="'productlist'">
+          <app-productlist></app-productlist>
+        </div>
+        <div class="non-segregated" *ngSwitchCase="'nonsegregated'">
+          <app-non-segregated></app-non-segregated>
+        </div>
+        <div class="segregated-waste" *ngSwitchCase="'segregated'">
+          <app-segregated></app-segregated>
+        </div>
+        <div class="waste-plan" *ngSwitchCase="'waste'">
+          <app-wasteplan></app-wasteplan>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

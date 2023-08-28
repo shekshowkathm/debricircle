@@ -42,6 +42,7 @@ header {
       display: flex;
       justify-content: space-around;
       align-items: center;
+      // border: 1px solid red;
 
       @media (max-width: 425px) {
         flex-direction: column; // Change to column layout on mobile
@@ -89,8 +90,10 @@ header {
       }
       .submenu1 {
         display: none;
+        // border: 2px solid gray;
+        margin-top: 35px;
         ul {
-          // border: 2px solid pink;
+          border: 1px solid pink;
           height: 13vh;
           flex-direction: column;
           // margin-left: 10px;
@@ -100,7 +103,7 @@ header {
           // background-color: #ffd8b521;
           border: 1px solid #E3E3E3;
           background-color: #fff;
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.205);
+          box-shadow: 0 7px 7px rgba(0, 0, 0, 0.205);
 
 
           li {

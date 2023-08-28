@@ -1,24 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { provideStorage,getStorage } from '@angular/fire/storage';
-
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { RegisterModule } from './register/register.module';
-import { RegisterComponent } from './register/component/register/register.component';
-
-import { RegisterService } from './register/service/register.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminRoutingModule } from './admin-routing.module';
 
 // Angular material import codes
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -51,32 +34,36 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { HomeModule } from './home/home.module';
-import { ProductsModule } from './products/products.module';
-import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileModule } from './profile/profile.module';
-import { DebriheaderComponent } from './common components/debriheader/debriheader.component';
-import { AdminModule } from './admin/admin.module';
-
+import { AdminComponent } from './components/admin/admin.component';
+import { SharedModule } from '../shared.module';
+import { DebriheaderComponent } from '../common components/debriheader/debriheader.component';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
+import { RegisterlistComponent } from './components/registerlist/registerlist.component';
+import { ProductlistComponent } from './components/productlist/productlist.component';
+import { NonSegregatedComponent } from './components/non-segregated/non-segregated.component';
+import { SegregatedComponent } from './components/segregated/segregated.component';
+import { WasteplanComponent } from './components/wasteplan/wasteplan.component';
+import { PreviewDialogComponent } from './components/preview-dialog/preview-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AdminComponent,
+    AdminhomeComponent,
+    RegisterlistComponent,
+    ProductlistComponent,
+    NonSegregatedComponent,
+    SegregatedComponent,
+    WasteplanComponent,
+    PreviewDialogComponent,
 
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,FormsModule ,
-    ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-
-    AngularFireDatabaseModule,
-    AngularFirestoreModule,AngularFireAuthModule,AngularFireStorageModule,AngularFireModule.initializeApp(environment.firebase), BrowserAnimationsModule,
+    CommonModule,
+    AdminRoutingModule,
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
@@ -106,9 +93,7 @@ import { AdminModule } from './admin/admin.module';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,MatNativeDateModule,
-    MatPaginatorModule,HomeModule,HttpClientModule,AdminModule
-  ],
-  providers: [RegisterService,],
-  bootstrap: [AppComponent]
+    MatPaginatorModule,FormsModule,ReactiveFormsModule,HttpClientModule,SharedModule,
+  ]
 })
-export class AppModule { }
+export class AdminModule { }

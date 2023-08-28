@@ -68,7 +68,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule,MatBadgeModule
+    MatPaginatorModule,MatBadgeModule,
   ],
   exports:[
     DebriheaderComponent

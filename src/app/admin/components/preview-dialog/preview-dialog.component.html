@@ -1,0 +1,27 @@
+<div class="preview-container">
+  <div class="logo">
+    <img src="assets/logo/debri.png" alt="Logo">
+  </div>
+  <div class="totalvolume">
+    <h1>Total volume : {{volumeData.totalVolume}}</h1>
+  </div>
+  <div class="volumes">
+    <div class="volume1">
+      <h4>Concrete :{{volumeData.concrete}}</h4>
+      <h4>Soil : {{volumeData.soil}}</h4>
+      <h4>Packages : {{volumeData.packaging}}</h4>
+      <h4>Bricks : {{volumeData.brick}}</h4>
+    </div>
+    <div class="volume2">
+      <h4>Steel : {{volumeData.steel}}</h4>
+      <h4>Wood : {{volumeData.wood}}</h4>
+      <h4>Plastics : {{volumeData.plastic}}</h4>
+      <h4>Others : {{volumeData.other}}</h4>
+
+    </div>
+  </div>
+  <div class="button">
+    <button mat-stroked-button color="primary" (click)="onCloseClick()">Close</button>
+  </div>
+
+</div>

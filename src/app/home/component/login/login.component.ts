@@ -40,40 +40,14 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       // Handle form submission here
       console.log(this.loginForm.value);
-      // this.homeService.getRegisterList().subscribe((data:any)=>{
-      //   this.getAllData = data.map((item: any) => {
-      //     const id = item.payload.doc.id;
-      //     const docData = item.payload.doc.data();
-      //     return { id, ...docData };
-      //   });
-      //   console.log(this.getAllData);
-      //   const user = this.getAllData.find((u:any) => u.email === this.loginForm.value.email && u.password === this.loginForm.value.password);
-      //   if (user) {
-      //     console.log("Account available");
-      //     Swal.fire(
-      //       'Good job!',
-      //       'Your login success',
-      //       'success'
-      //     )
-      //     localStorage.setItem('email', this.loginForm.value.email);
-      //     this.router.navigate([''])
 
-      //   } else {
-      //     console.log("Account not available");
-      //     Swal.fire({
-      //       icon: 'error',
-      //       title: 'Oops...',
-      //       text: 'Invalid credentials',
-      //     })
-      //   }
-
-      // })
       this.homeService.loginAuthenticate(this.loginForm.value).subscribe((response:any)=>{
         console.log(response);
         localStorage.setItem("token", response.token);
         localStorage.setItem("name", response.name);
         localStorage.setItem("userId", response.userId);
         localStorage.setItem("email", response.email);
+        localStorage.setItem("role", response.role);
         this.router.navigate([''])
       },
       (error) => {

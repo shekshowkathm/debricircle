@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { TippingSegregatedComponent } from '../tipping-segregated/tipping-segregated.component';
 import { TippingNonSegregatedComponent } from '../tipping-non-segregated/tipping-non-segregated.component';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-disposewaste',
@@ -12,8 +13,10 @@ import { TippingNonSegregatedComponent } from '../tipping-non-segregated/tipping
 export class DisposewasteComponent {
   nonsegregaredForm!: FormGroup; // Add the '!' non-null assertion operator here
   segregaredForm!: FormGroup; // Add the '!' non-null assertion operator here
-  constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {}
+  userId: any;
+  constructor(private formBuilder: FormBuilder, private dialog: MatDialog,private productService:ProductService) {}
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
     this.initNonSegregatedForm();
     this.initSegregatedForm();
   }
@@ -25,6 +28,7 @@ export class DisposewasteComponent {
       volume: ['', Validators.required],
       address: ['', Validators.required],
       tippingFees: [null], // Set default value as null
+      userId: [this.userId],
     });
   }
 
@@ -33,15 +37,32 @@ export class DisposewasteComponent {
       location: ['', Validators.required],
       number: ['', Validators.required],
       address: ['', Validators.required],
-      concrete: ['', ],
-      soil: ['', ],
-      packaging: ['', ],
-      other: ['', ],
-      brick: ['', ],
-      steel: ['', ],
-      wood: ['', ],
-      plastic: ['', ],
-    });
+      concrete: [''],
+      soil: [''],
+      packaging: [''],
+      other: [''],
+      brick: [''],
+      steel: [''],
+      wood: [''],
+      plastic: [''],
+      totalVolume: [''],
+      userId: [this.userId],
+
+    },{
+      validator: this.atLeastOneFieldRequired(['concrete', 'soil', 'packaging', 'other', 'brick', 'steel', 'wood', 'plastic'])
+    }
+    );
+  }
+
+  // Custom validator function
+  atLeastOneFieldRequired(fieldNames: string[]) {
+    return (group: FormGroup) => {
+      const filledFields = fieldNames.filter(fieldName => group.get(fieldName)?.value !== '');
+      if (filledFields.length === 0) {
+        return { atLeastOneFieldRequired: true };
+      }
+      return null;
+    };
   }
 
   calculateTippingFees(event: Event) {
@@ -58,7 +79,7 @@ export class DisposewasteComponent {
     const locationValue = this.nonsegregaredForm.get('location')!.value;
 
     if (!isNaN(volumeValue) && locationValue) {
-      const tippingFeesValue = (150 * volumeValue) + (15 * 10);
+      const tippingFeesValue = 150 * volumeValue + 15 * 10;
       console.log(tippingFeesValue);
 
       this.nonsegregaredForm.patchValue({ tippingFees: tippingFeesValue });
@@ -73,9 +94,16 @@ export class DisposewasteComponent {
       this.nonsegregaredForm.controls[controlName].markAsTouched();
     });
     if (this.nonsegregaredForm.valid) {
-
-
       console.log(this.nonsegregaredForm.value);
+      this.productService.createNonSegregated(this.nonsegregaredForm.value).subscribe((response:any)=>{
+        console.log(response);
+
+      },
+      error => {
+        // Handle the error response
+        console.error('POST error:', error);
+      }
+      )
       this.openTippingNonSegregated();
     }
   }
@@ -85,7 +113,31 @@ export class DisposewasteComponent {
       this.segregaredForm.controls[controlName].markAsTouched();
     });
     if (this.segregaredForm.valid) {
+      const concreteVolume = +this.segregaredForm.value.concrete || 0;
+    const soilVolume = +this.segregaredForm.value.soil || 0;
+    const packagingVolume = +this.segregaredForm.value.packaging || 0;
+    const otherVolume = +this.segregaredForm.value.other || 0;
+    const brickVolume = +this.segregaredForm.value.brick || 0;
+    const steelVolume = +this.segregaredForm.value.steel || 0;
+    const woodVolume = +this.segregaredForm.value.wood || 0;
+    const plasticVolume = +this.segregaredForm.value.plastic || 0;
+
+    const totalVolume = concreteVolume + soilVolume + packagingVolume + otherVolume +
+                        brickVolume + steelVolume + woodVolume + plasticVolume;
+
+    // Set the total volume
+   this.segregaredForm.value.totalVolume=totalVolume
       console.log(this.segregaredForm.value);
+      this.productService.createSegregated(this.segregaredForm.value).subscribe((response:any)=>{
+        console.log(response);
+
+      }
+      ,
+      error => {
+        // Handle the error response
+        console.error('POST error:', error);
+      }
+      )
       this.openTippingSegregated();
     }
   }

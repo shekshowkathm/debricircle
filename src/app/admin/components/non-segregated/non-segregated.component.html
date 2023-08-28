@@ -1,0 +1,77 @@
+<div class="nonsegregated-container">
+  <div class="heading">
+    <div class="head">
+      <h2>Total volume of waste : {{nonSegregatedListTotal}}</h2>
+    </div>
+  </div>
+  <div class="nonsegregated-table">
+    <div class="filter">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Search here</mat-label>
+          <input matInput placeholder="" (keyup)="applyFilter($event)">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </p>
+      <mat-table [dataSource]="dataSource" matSort matPaginator>
+
+        <!-- User ID Column -->
+        <ng-container matColumnDef="userId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> User ID </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{ element.userId }} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="location">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.location }} </mat-cell>
+        </ng-container>
+        <!-- email Column -->
+        <ng-container matColumnDef="number">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Contact </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.number }} </mat-cell>
+        </ng-container>
+
+        <!-- Business Name Column -->
+        <ng-container matColumnDef="volume">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Volume  </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{ element.volume }} </mat-cell>
+        </ng-container>
+
+        <!-- location -->
+        <ng-container matColumnDef="address">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.address }} </mat-cell>
+        </ng-container>
+        <!-- contact -->
+        <ng-container matColumnDef="tippingFees">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Tipping fees </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{ element.tippingFees }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="orderDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+          <mat-cell *matCellDef="let element" > {{ element.orderDate }} </mat-cell>
+        </ng-container>
+
+
+
+        <!-- delete -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+
+              <mat-icon (click)="confirmDelete(element)">delete</mat-icon>
+          </mat-cell>
+        </ng-container>
+
+
+        <!-- Specify which columns to display -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[4, 10, 20, 100]" showFirstLastButtons></mat-paginator>
+
+    </div>
+  </div>
+</div>

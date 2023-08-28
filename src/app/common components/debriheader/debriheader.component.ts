@@ -101,6 +101,21 @@ export class DebriheaderComponent {
     }
   }
 
+  isAdminRole(): boolean {
+    const role = localStorage.getItem('role');
+    return role === 'ADMIN';
+  }
+
+
+  admin(){
+    const localStorageEmpty = Object.keys(localStorage).length === 0;
+    if (localStorageEmpty) {
+      this.showRegisterAlert();
+    } else {
+      this.router.navigateByUrl('/admin/admin')
+    }
+  }
+
   private showRegisterAlert() {
     Swal.fire({
       title: 'You need to register',

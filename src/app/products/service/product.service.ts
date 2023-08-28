@@ -18,6 +18,8 @@ export class ProductService {
   sellMaterialsCreateURL = environment.localdomain + '/sellmaterials/createsellmaterials';
   getAllProductsURL=environment.localdomain + '/sellmaterials/claimsellmaterials';
   createCartURL=environment.localdomain + '/addtocart/createcart';
+  createNonSegregatedURL=environment.localdomain + '/nonsegregated/createnonsegregated';
+  createSegregatedURL=environment.localdomain + '/segregated/createsegregated';
 
 
   constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
@@ -93,6 +95,18 @@ export class ProductService {
 
   createCart(cartDetails:any){
     return this.http.post(`${this.createCartURL}`,cartDetails,{
+      headers: this.headers,
+    });
+  }
+
+  createNonSegregated(data: any): Observable<any>{
+    return this.http.post(this.createNonSegregatedURL, data,{
+      headers: this.headers,
+    });
+  }
+
+  createSegregated(data: any): Observable<any>{
+    return this.http.post(this.createSegregatedURL, data,{
       headers: this.headers,
     });
   }

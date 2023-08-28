@@ -1,0 +1,44 @@
+.registerlist-container{
+  width: 100%;
+  height: auto;
+  // border: 2px solid red;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  .heading{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    .head{
+      width: 95%;
+      height: 5vh;
+      // border: 2px solid yellow;
+    }
+  }
+  .register-table{
+    width: 100%;
+    height: auto;
+    // border: 1px solid rgb(38, 0, 255);
+    margin-top: 20px;
+    .filter{
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    mat-table{
+      border: 1px solid #E3E3E3;
+      mat-header-cell{
+        background-color: #FCAE1E;
+        color: white;
+
+      }
+      mat-icon{
+        color: #FCAE1E;
+      }
+      mat-icon:hover{
+        cursor: pointer;
+      }
+    }
+
+  }
+
+}
