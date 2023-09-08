@@ -2,12 +2,12 @@
   <div class="carts">
     <div class="cart-area" >
       <div class="location">
-        <div class="address">
-          <p>Deliver to : <b>Shek Showkath, 606707</b></p>
-          <p>90(1), Mettu Street, Thandarampet, Tiruvannamalai</p>
+        <div class="address" >
+          <p>Deliver to : <b>{{userAddressName}}, {{userAddressPincode}}</b></p>
+          <p>{{userAddressLocality}}, {{userAddressAddress}}, {{userAddressState}}</p>
         </div>
         <div class="change-button">
-          <button mat-stroked-button color="primary">Change</button>
+          <button mat-stroked-button color="primary" (click)="openChangeAddressDialog()">Change</button>
         </div>
       </div>
       <div class="cart-products" *ngFor="let item of cartItems">

@@ -200,6 +200,7 @@ export class ManageaddressComponent {
         console.log(response);
         this.address="addAddress"
         this.getUserAddress();
+        this.addressForm.reset();
         let snackBarRef=this.snackBar.open("Address updated successfully !", "Dismiss",{duration:4000,horizontalPosition: 'start',verticalPosition: 'bottom',});
         snackBarRef.onAction().subscribe(()=>{
           console.log("the undo action is triggered");

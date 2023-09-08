@@ -1,0 +1,33 @@
+.change-address-container {
+  width: 100%;
+  height: auto;
+  border: 2px solid red;
+  .logo {
+    width: 100%;
+    height: 75px;
+    // border: 2px solid yellow;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 70px;
+      height: 75px;
+    }
+  }
+  .heading{
+    height: 7vh;
+    // border: 1px solid yellowgreen;
+  }
+  .details{
+    width: 100%;
+    height: auto;
+    // border: 2px solid pink;
+    h4{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      button{
+        background-color: transparent;
+      }
+    }
+  }
+}

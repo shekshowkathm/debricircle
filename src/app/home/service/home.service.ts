@@ -7,26 +7,28 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeService {
   registerCreateURL = environment.localdomain + '/register/createregister';
   loginURL = environment.localdomain + '/authenticate/login';
   updatePasswordURL = environment.localdomain + '/register/updatepassword';
 
-  constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
+  constructor(
+    private angularFireStore: AngularFirestore,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
-  getRegisterById(id:any){
+  getRegisterById(id: any) {
     return this.angularFireStore
       .collection('debricircle')
       .doc(id)
       .valueChanges();
   }
 
-  getRegisterList(){
-    return this.angularFireStore
-      .collection('debricircle')
-      .snapshotChanges();
+  getRegisterList() {
+    return this.angularFireStore.collection('debricircle').snapshotChanges();
   }
 
   createRegister(registerForm: any) {
@@ -64,7 +66,11 @@ export class HomeService {
             .then(
               (response: any) => {
                 console.log(response);
-                Swal.fire('Good job!', 'Your Registration is success!', 'success');
+                Swal.fire(
+                  'Good job!',
+                  'Your Registration is success!',
+                  'success'
+                );
                 this.router.navigate(['/home/login']);
               },
               (error) => {
@@ -87,21 +93,21 @@ export class HomeService {
         });
       });
   }
-  deleteRegister(registerForm:any){
+  deleteRegister(registerForm: any) {
     return this.angularFireStore
       .collection('debricircle')
       .doc(registerForm.id)
       .delete();
   }
-  updateRegister(registerForm: any, id: any){
+  updateRegister(registerForm: any, id: any) {
     return this.angularFireStore.collection('debricircle').doc(id).update({
-      businessName:registerForm.businessName,
-      name:registerForm.name,
-      mobileNumber:registerForm.mobileNumber,
-      address:registerForm.address,
-      businessType:registerForm.businessType,
-      email:registerForm.email,
-      password:registerForm.password,
+      businessName: registerForm.businessName,
+      name: registerForm.name,
+      mobileNumber: registerForm.mobileNumber,
+      address: registerForm.address,
+      businessType: registerForm.businessType,
+      email: registerForm.email,
+      password: registerForm.password,
     });
   }
 
@@ -112,17 +118,17 @@ export class HomeService {
       .valueChanges();
   }
 
-  registerCreate(formData: any): Observable<any>{
+  registerCreate(formData: any): Observable<any> {
     return this.http.post(this.registerCreateURL, formData);
   }
 
-  loginAuthenticate(data: any){
+  loginAuthenticate(data: any) {
     return this.http.post(`${this.loginURL}`, data, {
       headers: { 'content-Type': 'application/json' },
     });
   }
 
-  updatePassword(updatedData: any): Observable<any>{
+  updatePassword(updatedData: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(this.updatePasswordURL, updatedData, { headers });
   }

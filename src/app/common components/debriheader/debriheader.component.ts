@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import { Router } from '@angular/router';
 import { LogoutDialogComponent } from 'src/app/products/components/logout-dialog/logout-dialog.component';
 import { AddtocartService } from 'src/app/products/service/addtocart.service';
@@ -9,12 +8,16 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-debriheader',
   templateUrl: './debriheader.component.html',
-  styleUrls: ['./debriheader.component.scss']
+  styleUrls: ['./debriheader.component.scss'],
 })
 export class DebriheaderComponent {
   userName: string | null = null;
-  badgeCount=0;
-  constructor(private dialog: MatDialog,private router:Router,private addToCartService:AddtocartService) {
+  badgeCount = 0;
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private addToCartService: AddtocartService
+  ) {
     this.userName = localStorage.getItem('name');
   }
 
@@ -22,28 +25,27 @@ export class DebriheaderComponent {
     this.getBadgeCount();
   }
 
-  getBadgeCount(){
+  getBadgeCount() {
     const userIdUser = localStorage.getItem('userId');
-    this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
-      console.log(response);
-      console.log(response.length);
-      this.badgeCount=response.length
-    },
-    (error) => {
-      console.error('Error fetching product details:', error);
-    }
-    )
+    this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe(
+      (response: any) => {
+        this.badgeCount = response.length;
+      },
+      (error) => {
+        console.error('Error fetching product details:', error);
+      }
+    );
   }
 
   // LOGOUT METHOD
   openLogoutDialog(): void {
     const dialogRef = this.dialog.open(LogoutDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         // Perform logout action here
         this.router.navigateByUrl('/home/login');
-        console.log('Performing logout...');
+
         localStorage.clear();
         // Add your logout function here
       } else {
@@ -53,51 +55,48 @@ export class DebriheaderComponent {
     });
   }
 
-  sellMaterials(){
+  sellMaterials() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/sellmaterials')
+      this.router.navigateByUrl('/sellmaterials');
     }
   }
 
-  disposeWaste(){
+  disposeWaste() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/disposewaste')
+      this.router.navigateByUrl('/disposewaste');
     }
   }
 
-  waste(){
+  waste() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/waste-management')
+      this.router.navigateByUrl('/waste-management');
     }
   }
 
-  addtocart(){
+  addtocart() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
-      this.router.navigateByUrl('/addtocart')
+      this.router.navigateByUrl('/addtocart');
     }
   }
 
-  profile(){
+  profile() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
-      this.router.navigateByUrl('/profile/personal')
+      this.router.navigateByUrl('/profile/personal');
     }
   }
 
@@ -106,13 +105,12 @@ export class DebriheaderComponent {
     return role === 'ADMIN';
   }
 
-
-  admin(){
+  admin() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
-      this.router.navigateByUrl('/admin/admin')
+      this.router.navigateByUrl('/admin/admin');
     }
   }
 
@@ -139,9 +137,7 @@ export class DebriheaderComponent {
       }
     });
   }
-  homePage(){
+  homePage() {
     this.router.navigateByUrl('');
-    console.log("home page");
-
   }
 }

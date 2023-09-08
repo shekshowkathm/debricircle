@@ -1,0 +1,19 @@
+<!-- <p>change-address works!</p> -->
+<!-- <div *ngFor="let item of data; let i = index">
+  <button mat-button (click)="selectAddress(i)">{{ item.name }}</button>
+</div> -->
+<div class="change-address-container">
+  <div class="logo">
+    <img src="assets/logo/debri.png" alt="Logo">
+  </div>
+  <div class="heading">
+    <h3>Change address here</h3>
+  </div>
+  <div class="details" *ngFor="let item of data; let i = index">
+    <h4>
+      <p>{{ item.name }}</p>
+      <p>Address type : {{ item.addressType }}</p>
+      <button mat-button (click)="selectAddress(i)">Select address</button>
+    </h4>
+  </div>
+</div>

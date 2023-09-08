@@ -1,7 +1,7 @@
 <div class="login-container">
   <div class="login-area">
     <div class="img-logo">
-      <img src="assets/logo/debri.png" alt="logo">
+      <img src="assets/logo/debri.png" alt="logo" />
     </div>
     <div class="login-form">
       <p id="heading">Login</p>
@@ -9,9 +9,19 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter your email" formControlName="userName">
+            <input
+              matInput
+              placeholder="Enter your email"
+              formControlName="userName"
+            />
             <mat-icon matSuffix>email</mat-icon>
-            <mat-error *ngIf="loginForm.get('userName')!.invalid && (loginForm.get('userName')!.dirty || loginForm.get('userName')!.touched)">
+            <mat-error
+              *ngIf="
+                loginForm.get('userName')!.invalid &&
+                (loginForm.get('userName')!.dirty ||
+                  loginForm.get('userName')!.touched)
+              "
+            >
               Email required, valid format.
             </mat-error>
           </mat-form-field>
@@ -19,23 +29,45 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Enter your password" formControlName="password">
-            <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="hidePassword ? 'Hide Password' : 'Show Password'">
-              <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            <input
+              matInput
+              [type]="hidePassword ? 'password' : 'text'"
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="togglePasswordVisibility($event)"
+              [attr.aria-label]="
+                hidePassword ? 'Hide Password' : 'Show Password'
+              "
+            >
+              <mat-icon>{{
+                hidePassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
             </button>
-            <mat-error *ngIf="loginForm.get('password')!.invalid && (loginForm.get('password')!.dirty || loginForm.get('password')!.touched)">
+            <mat-error
+              *ngIf="
+                loginForm.get('password')!.invalid &&
+                (loginForm.get('password')!.dirty ||
+                  loginForm.get('password')!.touched)
+              "
+            >
               Password: 8 characters minimum required.
             </mat-error>
           </mat-form-field>
-
         </p>
-        <div *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)" id="all-field">
-          <mat-error>
-            Please fill in all the required fields.
-          </mat-error>
+        <div
+          *ngIf="loginForm.invalid && (loginForm.dirty || loginForm.touched)"
+          id="all-field"
+        >
+          <mat-error> Please fill in all the required fields. </mat-error>
         </div>
         <div class="forgot">
-          <p id="forgot-password" routerLink="/home/forgot-password">Forgot password ?</p>
+          <p id="forgot-password" routerLink="/home/forgot-password">
+            Forgot password ?
+          </p>
           <p routerLink="/home/registers" id="register">Are you new user ?</p>
         </div>
         <div id="register-submit">

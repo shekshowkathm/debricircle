@@ -68,24 +68,20 @@ header {
       }
 
       li {
-
         // border: 1px solid red;
         font-size: 20px;
-        color: #0B0B0B;
+        color: #0b0b0b;
         text-decoration: none;
-
       }
-      li:hover{
-        color: #F4922D;
+      li:hover {
+        color: #f4922d;
       }
       li:hover .submenu1 {
         display: block;
-        color: #F4922D;
-
+        color: #f4922d;
       }
 
-
-      mat-icon:hover{
+      mat-icon:hover {
         cursor: pointer;
       }
       .submenu1 {
@@ -101,10 +97,9 @@ header {
           padding: 5px;
           border-radius: 2px;
           // background-color: #ffd8b521;
-          border: 1px solid #E3E3E3;
+          border: 1px solid #e3e3e3;
           background-color: #fff;
           box-shadow: 0 7px 7px rgba(0, 0, 0, 0.205);
-
 
           li {
             width: 100%;
@@ -113,15 +108,14 @@ header {
             height: 5vh;
             font-size: 18px;
           }
-          li:hover{
+          li:hover {
             cursor: pointer;
           }
         }
       }
     }
-    ul:hover{
+    ul:hover {
       cursor: pointer;
     }
-
   }
 }

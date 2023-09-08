@@ -4,76 +4,122 @@
   </div>
   <div class="sellmaterials-form">
     <div class="form-area">
-      <p id="heading">Sell your materials here</p >
+      <p id="heading">Sell your materials here</p>
       <form [formGroup]="sellMaterialForm" (ngSubmit)="onSellSubmit()">
         <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Material type</mat-label>
-          <mat-select placeholder="Select material type" formControlName="materialtype">
-            <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
-            <mat-option value="Fine aggregate">Fine aggregate</mat-option>
-            <mat-option value="Bricks">Bricks</mat-option>
-            <mat-option value="Blocks">Blocks</mat-option>
-            <mat-option value="Wood">Wood</mat-option>
-            <mat-option value="Steel">Steel</mat-option>
-            <mat-option value="Plastics">Plastics</mat-option>
-            <mat-option value="Cement Bag">Cement Bag</mat-option>
-            <mat-option value="Cardboard and other packaging waste">Cardboard and other packaging waste</mat-option>
-            <mat-option value="Pipes and plastics">Pipes and plastics</mat-option>
-            <mat-option value="Tiles">Tiles</mat-option>
-            <mat-option value="Granite">Granite</mat-option>
-            <mat-option value="Others">Others</mat-option>
-          </mat-select>
-          <mat-error *ngIf="sellMaterialForm.get('materialtype')!.invalid && (sellMaterialForm.get('materialtype')!.dirty || sellMaterialForm.get('materialtype')!.touched)">
-            Material type is required
-          </mat-error>
-        </mat-form-field>
-        <!-- second -->
-        <mat-form-field appearance="outline">
-          <mat-label>Category</mat-label>
-          <mat-select placeholder="Enter your category" formControlName="category">
-            <mat-option value="Recycled">Recycled</mat-option>
-            <mat-option value="Used">Used</mat-option>
-            <mat-option value="New/Surplus">New/Surplus</mat-option>
-          </mat-select>
-          <mat-error *ngIf="sellMaterialForm.get('category')!.invalid && (sellMaterialForm.get('category')!.dirty || sellMaterialForm.get('category')!.touched)">
-            Category is required
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Material type</mat-label>
+            <mat-select
+              placeholder="Select material type"
+              formControlName="materialtype"
+            >
+              <mat-option value="Coarse aggregate">Coarse aggregate</mat-option>
+              <mat-option value="Fine aggregate">Fine aggregate</mat-option>
+              <mat-option value="Bricks">Bricks</mat-option>
+              <mat-option value="Blocks">Blocks</mat-option>
+              <mat-option value="Wood">Wood</mat-option>
+              <mat-option value="Steel">Steel</mat-option>
+              <mat-option value="Plastics">Plastics</mat-option>
+              <mat-option value="Cement Bag">Cement Bag</mat-option>
+              <mat-option value="Cardboard and other packaging waste"
+                >Cardboard and other packaging waste</mat-option
+              >
+              <mat-option value="Pipes and plastics"
+                >Pipes and plastics</mat-option
+              >
+              <mat-option value="Tiles">Tiles</mat-option>
+              <mat-option value="Granite">Granite</mat-option>
+              <mat-option value="Others">Others</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('materialtype')!.invalid &&
+                (sellMaterialForm.get('materialtype')!.dirty ||
+                  sellMaterialForm.get('materialtype')!.touched)
+              "
+            >
+              Material type is required
+            </mat-error>
+          </mat-form-field>
+          <!-- second -->
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select
+              placeholder="Enter your category"
+              formControlName="category"
+            >
+              <mat-option value="Recycled">Recycled</mat-option>
+              <mat-option value="Used">Used</mat-option>
+              <mat-option value="New/Surplus">New/Surplus</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('category')!.invalid &&
+                (sellMaterialForm.get('category')!.dirty ||
+                  sellMaterialForm.get('category')!.touched)
+              "
+            >
+              Category is required
+            </mat-error>
+          </mat-form-field>
         </p>
         <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Availability</mat-label>
-          <mat-select placeholder="Enter your availability" formControlName="availability" (selectionChange)="onAvailabilityChange()">
-            <mat-option value="Immediate">Immediate</mat-option>
-            <mat-option value="date">Date</mat-option>
-          </mat-select>
-          <mat-error *ngIf="sellMaterialForm.get('availability')!.invalid && (sellMaterialForm.get('availability')!.dirty || sellMaterialForm.get('availability')!.touched)">
-            Availability is required
-          </mat-error>
-        </mat-form-field>
-        <!-- second -->
-        <mat-form-field appearance="outline">
-          <mat-label>Quality</mat-label>
-          <mat-select placeholder="Enter your quality here" formControlName="quality">
-            <mat-option value="Verified">Verified</mat-option>
-            <mat-option value="Denied">Denied</mat-option>
-          </mat-select>
-          <mat-error *ngIf="sellMaterialForm.get('quality')!.invalid && (sellMaterialForm.get('quality')!.dirty || sellMaterialForm.get('quality')!.touched)">
-            Quality is required
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Availability</mat-label>
+            <mat-select
+              placeholder="Enter your availability"
+              formControlName="availability"
+              (selectionChange)="onAvailabilityChange()"
+            >
+              <mat-option value="Immediate">Immediate</mat-option>
+              <mat-option value="date">Date</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('availability')!.invalid &&
+                (sellMaterialForm.get('availability')!.dirty ||
+                  sellMaterialForm.get('availability')!.touched)
+              "
+            >
+              Availability is required
+            </mat-error>
+          </mat-form-field>
+          <!-- second -->
+          <mat-form-field appearance="outline">
+            <mat-label>Quality</mat-label>
+            <mat-select
+              placeholder="Enter your quality here"
+              formControlName="quality"
+            >
+              <mat-option value="Verified">Verified</mat-option>
+              <mat-option value="Denied">Denied</mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('quality')!.invalid &&
+                (sellMaterialForm.get('quality')!.dirty ||
+                  sellMaterialForm.get('quality')!.touched)
+              "
+            >
+              Quality is required
+            </mat-error>
+          </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Location</mat-label>
-            <mat-select placeholder="Enter your product location" formControlName="location">
+            <mat-select
+              placeholder="Enter your product location"
+              formControlName="location"
+            >
               <mat-option value="Thiruvotriyur">Thiruvotriyur</mat-option>
               <mat-option value="Manali">Manali</mat-option>
               <mat-option value="Madhavaram">Madhavaram</mat-option>
               <mat-option value="Tondiarpet">Tondiarpet</mat-option>
               <mat-option value="Royapuram">Royapuram</mat-option>
-              <mat-option value="THIRU-VI-KA Nagar">THIRU-VI-KA Nagar</mat-option>
+              <mat-option value="THIRU-VI-KA Nagar"
+                >THIRU-VI-KA Nagar</mat-option
+              >
               <mat-option value="Ambattur">Ambattur</mat-option>
               <mat-option value="Anna Nagar">Anna Nagar</mat-option>
               <mat-option value="Teynampet">TEYNAMPET</mat-option>
@@ -84,14 +130,30 @@
               <mat-option value="Perungudi">Perungudi</mat-option>
               <mat-option value="Sozhanganallur">SOZHANGANALLUR</mat-option>
             </mat-select>
-            <mat-error *ngIf="sellMaterialForm.get('location')!.invalid && (sellMaterialForm.get('location')!.dirty || sellMaterialForm.get('location')!.touched)">
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('location')!.invalid &&
+                (sellMaterialForm.get('location')!.dirty ||
+                  sellMaterialForm.get('location')!.touched)
+              "
+            >
               Location is required
             </mat-error>
           </mat-form-field>
-          <mat-form-field appearance="outline" >
+          <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
-            <input matInput placeholder="Enter your description" formControlName="description">
-            <mat-error *ngIf="sellMaterialForm.get('description')!.invalid && (sellMaterialForm.get('description')!.dirty || sellMaterialForm.get('description')!.touched)">
+            <input
+              matInput
+              placeholder="Enter your description"
+              formControlName="description"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('description')!.invalid &&
+                (sellMaterialForm.get('description')!.dirty ||
+                  sellMaterialForm.get('description')!.touched)
+              "
+            >
               Description is required
             </mat-error>
           </mat-form-field>
@@ -99,15 +161,37 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Contact number</mat-label>
-            <input matInput placeholder="Enter your contact number" formControlName="mobileNumber">
-            <mat-error *ngIf="sellMaterialForm.get('mobileNumber')!.invalid && (sellMaterialForm.get('mobileNumber')!.dirty || sellMaterialForm.get('mobileNumber')!.touched)">
+            <input
+              matInput
+              placeholder="Enter your contact number"
+              formControlName="mobileNumber"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('mobileNumber')!.invalid &&
+                (sellMaterialForm.get('mobileNumber')!.dirty ||
+                  sellMaterialForm.get('mobileNumber')!.touched)
+              "
+            >
               Mobile Number is required
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Product price</mat-label>
-            <input matInput type="number" step="0.01" placeholder="Enter your product price" formControlName="productPrice">
-            <mat-error *ngIf="sellMaterialForm.get('productPrice')!.invalid && (sellMaterialForm.get('productPrice')!.dirty || sellMaterialForm.get('productPrice')!.touched)">
+            <input
+              matInput
+              type="number"
+              step="0.01"
+              placeholder="Enter your product price"
+              formControlName="productPrice"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('productPrice')!.invalid &&
+                (sellMaterialForm.get('productPrice')!.dirty ||
+                  sellMaterialForm.get('productPrice')!.touched)
+              "
+            >
               Product Price is required
             </mat-error>
           </mat-form-field>
@@ -115,51 +199,96 @@
         <p>
           <mat-form-field appearance="outline">
             <mat-label>Quantity</mat-label>
-            <input matInput placeholder="Enter your quantity in tonne" formControlName="quantity">
-            <mat-error *ngIf="sellMaterialForm.get('quantity')!.invalid && (sellMaterialForm.get('quantity')!.dirty || sellMaterialForm.get('quantity')!.touched)">
+            <input
+              matInput
+              placeholder="Enter your quantity in tonne"
+              formControlName="quantity"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('quantity')!.invalid &&
+                (sellMaterialForm.get('quantity')!.dirty ||
+                  sellMaterialForm.get('quantity')!.touched)
+              "
+            >
               Quantity is required
             </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Address</mat-label>
-            <input matInput placeholder="Enter your address" formControlName="address">
-            <mat-error *ngIf="sellMaterialForm.get('address')!.invalid && (sellMaterialForm.get('address')!.dirty || sellMaterialForm.get('address')!.touched)">
+            <input
+              matInput
+              placeholder="Enter your address"
+              formControlName="address"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('address')!.invalid &&
+                (sellMaterialForm.get('address')!.dirty ||
+                  sellMaterialForm.get('address')!.touched)
+              "
+            >
               Address is required
             </mat-error>
           </mat-form-field>
-
         </p>
         <div id="picture-area">
           <div class="area">
-              <input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="image">
-            <mat-error *ngIf="sellMaterialForm.get('image')!.invalid && (sellMaterialForm.get('image')!.dirty || sellMaterialForm.get('image')!.touched)">
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              formControlName="image"
+            />
+            <mat-error
+              *ngIf="
+                sellMaterialForm.get('image')!.invalid &&
+                (sellMaterialForm.get('image')!.dirty ||
+                  sellMaterialForm.get('image')!.touched)
+              "
+            >
               Image is required
             </mat-error>
-            <div *ngIf="errorMessage"><p>{{ errorMessage }}</p></div>
-              <div *ngIf="selectedImage" id="preview">
-                <img [src]="previewImage" alt="Preview" style="max-width: 200px;">
-              </div>
+            <div *ngIf="errorMessage">
+              <p>{{ errorMessage }}</p>
+            </div>
+            <div *ngIf="selectedImage" id="preview">
+              <img
+                [src]="previewImage"
+                alt="Preview"
+                style="max-width: 200px"
+              />
+            </div>
           </div>
           <mat-form-field appearance="outline" *ngIf="showDatePicker" id="date">
-            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="selectedDate">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              placeholder="Choose a date"
+              formControlName="selectedDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
-        <div *ngIf="sellMaterialForm.invalid && (sellMaterialForm.dirty || sellMaterialForm.touched)" id="all-field">
-          <mat-error>
-            Please fill in all the required fields.
-          </mat-error>
+        <div
+          *ngIf="
+            sellMaterialForm.invalid &&
+            (sellMaterialForm.dirty || sellMaterialForm.touched)
+          "
+          id="all-field"
+        >
+          <mat-error> Please fill in all the required fields. </mat-error>
         </div>
         <div id="register-submit">
-          <button mat-raised-button color="primary" type="submit">Submit</button>
+          <button mat-raised-button color="primary" type="submit">
+            Submit
+          </button>
         </div>
-
-
       </form>
-
     </div>
-
   </div>
-
 </div>

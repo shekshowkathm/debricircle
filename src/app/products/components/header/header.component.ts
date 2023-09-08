@@ -7,78 +7,74 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   userName: string | null = null;
-  constructor(private dialog: MatDialog,private router:Router) {
+  constructor(private dialog: MatDialog, private router: Router) {
     this.userName = localStorage.getItem('name');
   }
-
 
   // LOGOUT METHOD
   openLogoutDialog(): void {
     const dialogRef = this.dialog.open(LogoutDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         // Perform logout action here
         this.router.navigateByUrl('/home/login');
-        console.log('Performing logout...');
+
         localStorage.clear();
         // Add your logout function here
       } else {
         // User canceled the logout
-        console.log('Logout canceled.');
+        
       }
     });
   }
 
-  sellMaterials(){
+  sellMaterials() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/sellmaterials')
+      this.router.navigateByUrl('/sellmaterials');
     }
   }
 
-  disposeWaste(){
+  disposeWaste() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/disposewaste')
+      this.router.navigateByUrl('/disposewaste');
     }
   }
 
-  waste(){
+  waste() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
-
     } else {
-      this.router.navigateByUrl('/waste-management')
+      this.router.navigateByUrl('/waste-management');
     }
   }
 
-  addtocart(){
+  addtocart() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
-      this.router.navigateByUrl('/addtocart')
+      this.router.navigateByUrl('/addtocart');
     }
   }
 
-  profile(){
+  profile() {
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
-      this.router.navigateByUrl('/profile/personal')
+      this.router.navigateByUrl('/profile/personal');
     }
   }
 

@@ -7,36 +7,37 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization', `Bearer ${this.gettingToken()}`);
 
-  sellMaterialsCreateURL = environment.localdomain + '/sellmaterials/createsellmaterials';
-  getAllProductsURL=environment.localdomain + '/sellmaterials/claimsellmaterials';
-  createCartURL=environment.localdomain + '/addtocart/createcart';
-  createNonSegregatedURL=environment.localdomain + '/nonsegregated/createnonsegregated';
-  createSegregatedURL=environment.localdomain + '/segregated/createsegregated';
+  sellMaterialsCreateURL =
+    environment.localdomain + '/sellmaterials/createsellmaterials';
+  getAllProductsURL =
+    environment.localdomain + '/sellmaterials/claimsellmaterials';
+  createCartURL = environment.localdomain + '/addtocart/createcart';
+  createNonSegregatedURL =
+    environment.localdomain + '/nonsegregated/createnonsegregated';
+  createSegregatedURL =
+    environment.localdomain + '/segregated/createsegregated';
 
-
-  constructor(private angularFireStore: AngularFirestore,private router:Router,private http: HttpClient) { }
+  constructor(
+    private angularFireStore: AngularFirestore,
+    private router: Router,
+    private http: HttpClient
+  ) {}
   gettingToken() {
     console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
   getProductById(id: any) {
-    return this.angularFireStore
-      .collection('products')
-      .doc(id)
-      .valueChanges();
+    return this.angularFireStore.collection('products').doc(id).valueChanges();
   }
   getProductList() {
-    return this.angularFireStore
-      .collection('products')
-      .snapshotChanges();
+    return this.angularFireStore.collection('products').snapshotChanges();
   }
   createProduct(productForm: any) {
     return new Promise<any>((resolve, reject) => {
@@ -50,17 +51,17 @@ export class ProductService {
               'Good job!',
               'Your product uploaded successfully!',
               'success'
-            )
-            this.router.navigate([''])
+            );
+            this.router.navigate(['']);
           },
           (error) => {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
               text: 'Something went wrong!',
-
-            })
-            reject(error)}
+            });
+            reject(error);
+          }
         );
     });
   }
@@ -72,43 +73,40 @@ export class ProductService {
   }
   updateProduct(productForm: any, id: any) {
     return this.angularFireStore.collection('products').doc(id).update({
-      user:productForm.user,
-      age:productForm.age
+      user: productForm.user,
+      age: productForm.age,
     });
   }
-  createSellMaterials(sellMaterialsData:any){
-    console.log(sellMaterialsData);
+  createSellMaterials(sellMaterialsData: any) {
     const token = this.gettingToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     });
-
-    return this.http.post(`${this.sellMaterialsCreateURL}`,sellMaterialsData,{ headers })
+    return this.http.post(`${this.sellMaterialsCreateURL}`, sellMaterialsData, {
+      headers,
+    });
   }
 
   getAllProducts(): Observable<any> {
-    return this.http.get(`${this.getAllProductsURL}`,{
-
-    });
+    return this.http.get(`${this.getAllProductsURL}`, {});
   }
 
-  createCart(cartDetails:any){
-    return this.http.post(`${this.createCartURL}`,cartDetails,{
+  createCart(cartDetails: any) {
+    return this.http.post(`${this.createCartURL}`, cartDetails, {
       headers: this.headers,
     });
   }
 
-  createNonSegregated(data: any): Observable<any>{
-    return this.http.post(this.createNonSegregatedURL, data,{
+  createNonSegregated(data: any): Observable<any> {
+    return this.http.post(this.createNonSegregatedURL, data, {
       headers: this.headers,
     });
   }
 
-  createSegregated(data: any): Observable<any>{
-    return this.http.post(this.createSegregatedURL, data,{
+  createSegregated(data: any): Observable<any> {
+    return this.http.post(this.createSegregatedURL, data, {
       headers: this.headers,
     });
   }
-
 }

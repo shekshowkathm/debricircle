@@ -1,11 +1,11 @@
-.register-container{
+.register-container {
   width: 100%;
   height: 220vh;
   background-color: #d3eaf2b2;
   display: flex;
   justify-content: center; /* Center the child horizontally */
   align-items: center; /* Center the child vertically */
-  .register-area{
+  .register-area {
     width: 40%;
     height: 185vh;
     background-color: #fff;
@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the children horizontally */
-    .img-logo{
+    .img-logo {
       width: 25%;
       height: 21vh;
       display: flex;
       justify-content: center; /* Center the child horizontally */
       align-items: center; /* Center the child vertically */
-      img{
+      img {
         width: 100%;
         height: 21vh;
       }
@@ -35,57 +35,56 @@
         text-align: center;
         font-size: 24px;
       }
-      form{
+      form {
         width: 100%;
         height: 100%;
         flex-grow: 1; /* Add this line to make the form take up remaining space */
 
         padding-top: 8px;
-        p{
+        p {
           display: flex;
           flex-direction: column;
           align-items: center;
           margin-top: 30px;
-          mat-form-field{
+          mat-form-field {
             width: 80%;
             height: 9vh;
           }
-          mat-icon{
-            color: #F5922D;
+          mat-icon {
+            color: #f5922d;
           }
         }
-        #all-field{
+        #all-field {
           padding-top: 30px;
           text-align: center;
         }
-        mat-error{
+        mat-error {
           color: red;
         }
-        .forgot{
+        .forgot {
           display: flex;
           justify-content: space-evenly;
 
-          #login:hover{
+          #login:hover {
             cursor: pointer;
             font-weight: bolder;
           }
         }
-        #register-submit{
+        #register-submit {
           margin-top: 20px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          button{
-
+          button {
             width: 80%;
             height: 6vh;
             background-color: rgba(255, 166, 0, 0.692);
             color: #fff;
             font-size: 20px;
           }
-          button:hover{
+          button:hover {
             cursor: pointer;
-            background-color: #F5922D;
+            background-color: #f5922d;
           }
         }
       }
@@ -99,11 +98,7 @@
       width: 60%; /* Reduce the width of the registration area for tablet view */
       height: 220vh;
 
-
-
-
       .register-form {
-
         height: 220vh;
         form {
           /* Adjust the height of the form for tablet view */
@@ -124,8 +119,7 @@
           font-size: 26px;
         }
 
-        #all-field{
-
+        #all-field {
           padding-top: 30px;
         }
 
@@ -137,7 +131,6 @@
     }
   }
 }
-
 
 /* Mobile view */
 @media screen and (max-width: 767px) {
@@ -160,7 +153,6 @@
       }
 
       .register-form {
-
         height: 220vh; /* Adjust the height to fit the content in mobile view */
 
         #heading {
@@ -191,7 +183,7 @@
               font-size: 14px; /* Adjust font size for better visibility */
             }
           }
-          #all-field{
+          #all-field {
             padding-top: 50px;
             text-align: center;
           }
@@ -211,5 +203,3 @@
     }
   }
 }
-
-

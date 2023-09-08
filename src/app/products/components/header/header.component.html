@@ -1,20 +1,22 @@
 <header>
   <nav>
     <div class="logo">
-      <img src="assets/logo/debri.png" alt="Logo">
+      <img src="assets/logo/debri.png" alt="Logo" />
     </div>
     <div class="nav-links">
       <ul id="main-ul">
         <li id="main-list">About US</li>
-        <li id="main-list">Market  place
+        <li id="main-list">
+          Market place
           <div class="submenu1">
             <ul>
-              <li routerLink="">Buy materials </li>
+              <li routerLink="">Buy materials</li>
               <li (click)="sellMaterials()">Sell materials</li>
             </ul>
           </div>
         </li>
-        <li id="main-list">Waste management service
+        <li id="main-list">
+          Waste management service
           <div class="submenu1">
             <ul>
               <li (click)="disposeWaste()">Dispose waste</li>
@@ -22,8 +24,12 @@
             </ul>
           </div>
         </li>
-        <li id="main-list" (click)="addtocart()"><mat-icon>add_shopping_cart</mat-icon></li>
-        <li id="main-list" (click)="profile()"><mat-icon>account_circle</mat-icon></li>
+        <li id="main-list" (click)="addtocart()">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </li>
+        <li id="main-list" (click)="profile()">
+          <mat-icon>account_circle</mat-icon>
+        </li>
       </ul>
     </div>
   </nav>

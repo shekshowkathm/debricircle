@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AddtocartService } from '../../service/addtocart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { AddressserviceService } from 'src/app/profile/service/addressservice.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangeAddressComponent } from '../change-address/change-address.component';
 
 
 @Component({
@@ -14,12 +16,30 @@ export class CartComponent {
   cartItems: any[] = []; // Declare an array to store cart items
   totalPrice: any;
   totalItems: number = 0;
+  userAddress:any;
+  recentAddress: any[] = [];
+  indexValue!:number;
+  userAddressName:string=""
+  userAddressPincode:string=""
+  userAddressLocality:string=""
+  userAddressAddress:string=""
+  userAddressState:string=""
 
-
-  constructor(private addToCartService:AddtocartService,private snackBar:MatSnackBar){}
+  constructor(private addToCartService:AddtocartService,private snackBar:MatSnackBar,private addressService:AddressserviceService,private dialog: MatDialog){
+    // this.addToCartService.currentAddress$.subscribe((value:number)=>{
+    //   this.indexValue=value
+    //   console.log(this.indexValue);
+    // })
+    const storedIndex = localStorage.getItem("index");
+    if (storedIndex !== null){
+      const indexAsNumber = parseInt(storedIndex, 10);
+      this.indexValue=indexAsNumber
+    }
+  }
 
   ngOnInit(): void {
     this.getCarts();
+    this.getUserAddress();
   }
 
 
@@ -107,6 +127,52 @@ export class CartComponent {
       console.error('Not incremented', error);
     }
     )
+  }
+
+  getUserAddress(){
+    const userIdFromLocalStorage = localStorage.getItem("userId");
+    this.addressService.getAddressByUserID(userIdFromLocalStorage).subscribe((response:any)=>{
+      console.log(response);
+      this.userAddress=response.reverse();
+      console.log(this.userAddress);
+      console.log(this.indexValue);
+
+      this.recentAddress=this.userAddress[localStorage.getItem("index")||""]
+      this.userAddressName=this.userAddress[localStorage.getItem("index")||""].name
+      this.userAddressPincode=this.userAddress[localStorage.getItem("index")||""].pincode
+      this.userAddressLocality=this.userAddress[localStorage.getItem("index")||""].locality
+      this.userAddressAddress=this.userAddress[localStorage.getItem("index")||""].address
+      this.userAddressState=this.userAddress[localStorage.getItem("index")||""].state
+
+      console.log(this.recentAddress);
+
+
+    },
+    (error) => {
+      console.error('Error retrieving user data:', error);
+      // Handle error
+    }
+    )
+  }
+
+  openChangeAddressDialog(): void {
+    const dialogRef = this.dialog.open(ChangeAddressComponent, {
+      width: '450px', // Adjust the width as needed
+      height:'auto',
+      data: this.userAddress // Pass the array to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'closedWithSuccess') {
+        this.callMethodInYourComponent();
+      }
+    });
+  }
+
+  callMethodInYourComponent(): void {
+    // This method will be triggered when the dialog is closed with success
+    this.getUserAddress();
+    console.log('Dialog closed with success. Calling method in your component.');
   }
 
 
