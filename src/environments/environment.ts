@@ -8,7 +8,8 @@ export const environment = {
     authDomain: 'debricircle.firebaseapp.com',
     messagingSenderId: '875478465511',
   },
-  localdomain: 'http://localhost:8080',
+  // localdomain: 'http://localhost:8080',
+  localdomain: 'http://65.2.171.217:8080',
 
 
 };

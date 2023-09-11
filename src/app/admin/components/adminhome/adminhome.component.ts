@@ -76,7 +76,7 @@ export class AdminhomeComponent {
   }
 
   homeDashboard() {
-    this.adminService.updateLocation('home');
+    this.adminService.updateLocation('registerlist');
   }
   productlist() {
     this.adminService.updateLocation('productlist');
