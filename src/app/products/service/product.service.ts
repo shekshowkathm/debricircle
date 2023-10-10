@@ -23,6 +23,7 @@ export class ProductService {
     environment.localdomain + '/nonsegregated/createnonsegregated';
   createSegregatedURL =
     environment.localdomain + '/segregated/createsegregated';
+    private baseUrl = 'http://localhost:8080/pg';
 
   constructor(
     private angularFireStore: AngularFirestore,
@@ -93,8 +94,14 @@ export class ProductService {
   }
 
   createCart(cartDetails: any) {
+    const token = this.gettingToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
     return this.http.post(`${this.createCartURL}`, cartDetails, {
-      headers: this.headers,
+      headers
+     
     });
   }
 
@@ -108,5 +115,10 @@ export class ProductService {
     return this.http.post(this.createSegregatedURL, data, {
       headers: this.headers,
     });
+  }
+
+  createOrder(orderRequest: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(`${this.baseUrl}/createOrder`, orderRequest, { headers });
   }
 }

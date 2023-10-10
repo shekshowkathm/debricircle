@@ -29,6 +29,7 @@ export class BuymaterialsComponent {
   filterText: string = '';
   cartItems: any[] = []; // Declare an array to store cart items
   productIDOfCarts: string[] = [];
+  
   constructor(
     private productsService: ProductService,
     private router: Router,
@@ -43,8 +44,6 @@ export class BuymaterialsComponent {
     this.getAllSellMaterials();
 
   }
-
-
 
 
 formatDate(date: Date): string {
@@ -218,6 +217,7 @@ formatDate(date: Date): string {
     this.addToCart.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
       console.log(response);
       this.cartItems = response.reverse();
+      
       console.log(this.cartItems);
       this.productIDOfCarts=this.cartItems.map(item => item.productID);
       console.log(this.productIDOfCarts);
@@ -229,7 +229,6 @@ formatDate(date: Date): string {
     }
     )
     }
-
 
   }
 

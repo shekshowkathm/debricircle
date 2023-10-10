@@ -4,6 +4,23 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddressserviceService } from 'src/app/profile/service/addressservice.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeAddressComponent } from '../change-address/change-address.component';
+import { ProductService } from '../../service/product.service';
+declare var Razorpay: any;
+//payment
+interface IRazorpayConfig {
+  key_id: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  handler: (response: any) => void;
+  prefill: {
+    name: string |null;
+    email: string | null;
+    contact: string | null;
+  };
+}
 
 
 @Component({
@@ -14,7 +31,7 @@ import { ChangeAddressComponent } from '../change-address/change-address.compone
 export class CartComponent {
   panelOpenState = false;
   cartItems: any[] = []; // Declare an array to store cart items
-  totalPrice: any;
+  totalPrice: number=0;
   totalItems: number = 0;
   userAddress:any;
   recentAddress: any[] = [];
@@ -24,12 +41,10 @@ export class CartComponent {
   userAddressLocality:string=""
   userAddressAddress:string=""
   userAddressState:string=""
+  phonenumber: string = '';
 
-  constructor(private addToCartService:AddtocartService,private snackBar:MatSnackBar,private addressService:AddressserviceService,private dialog: MatDialog){
-    // this.addToCartService.currentAddress$.subscribe((value:number)=>{
-    //   this.indexValue=value
-    //   console.log(this.indexValue);
-    // })
+  constructor(private addToCartService:AddtocartService,private snackBar:MatSnackBar,private addressService:AddressserviceService,private dialog: MatDialog, private productsService: ProductService,){
+  
     const storedIndex = localStorage.getItem("index");
     if (storedIndex !== null){
       const indexAsNumber = parseInt(storedIndex, 10);
@@ -46,16 +61,13 @@ export class CartComponent {
   getCarts(){
     const userIdUser = localStorage.getItem('userId');
     this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
-      console.log(response);
+      this.phonenumber = response[0]?.mobileNumber;
       this.cartItems = response.reverse();
-      console.log(this.cartItems);
-      console.log(this.cartItems.length);
       this.totalItems=this.cartItems.length
-
+      
       // Calculate the sum of productPrice values
-      const totalPrice = this.cartItems.reduce((total, item) => total + parseFloat(item.productPrice), 0);
-      this.totalPrice = totalPrice.toFixed(2); // Store the total price with 2 decimal places
-      console.log(this.totalPrice);
+      const totalPrice = this.cartItems.reduce((total, item) => total + parseFloat(item.productPrice), 0);     
+      this.totalPrice = +totalPrice.toFixed(2); // Store the total price with 2 decimal places     
 
     },
     (error) => {
@@ -175,5 +187,48 @@ export class CartComponent {
     console.log('Dialog closed with success. Calling method in your component.');
   }
 
+//payment
+createRazorpayOrder() {
+ 
+  const orderRequest = {
+   
+    customerName: localStorage.getItem('name'),
+    email: localStorage.getItem('email'),
+    phoneNumber: this.phonenumber,
+    amount:this.totalPrice // Convert amount to paise if using INR
+  };
 
+  this.productsService.createOrder(orderRequest).subscribe(
+    (response) => {
+      const razorpayOptions: IRazorpayConfig = {
+        key_id: response.secretKey,
+        amount: response.amount,
+        currency: 'INR', // Change to your desired currency
+        name: 'Your Company Name',
+        description: 'Payment for Your Product/Service',
+        order_id: response.razorpayOrderId,
+        handler: (response: any) => {
+          console.log('Payment success:', response);
+          // Handle payment success here
+        },
+        prefill: {
+          name: orderRequest.customerName,
+          email: orderRequest.email,
+          contact: orderRequest.phoneNumber
+        }
+      };
+
+      const rzp = new Razorpay(razorpayOptions);
+      rzp.on('payment.failed', function (response: any) {
+        console.error('Payment failed:', response);
+        // Handle payment failure here
+      });
+      rzp.open();
+    },
+    (error) => {
+      console.error('Error creating Razorpay order:', error);
+      // Handle error
+    }
+  );
+}
 }
