@@ -118,7 +118,11 @@ export class ProductService {
   }
 
   createOrder(orderRequest: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const token = this.gettingToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
     return this.http.post(`${this.baseUrl}/createOrder`, orderRequest, { headers });
   }
 }

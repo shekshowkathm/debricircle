@@ -6,6 +6,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { HomeService } from 'src/app/home/service/home.service';
 import { AddtocartService } from '../../service/addtocart.service';
+declare var Razorpay: any;
+//payment
+interface IRazorpayConfig {
+  key_id: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  handler: (response: any) => void;
+  prefill: {
+    name: string | null;
+    email: string | null;
+    contact: string | null;
+  };
+}
 
 @Component({
   selector: 'app-buymaterials',
@@ -29,14 +45,16 @@ export class BuymaterialsComponent {
   filterText: string = '';
   cartItems: any[] = []; // Declare an array to store cart items
   productIDOfCarts: string[] = [];
-  
+  phonenumber: string = '';
+  amount: number = 0;
+
   constructor(
     private productsService: ProductService,
     private router: Router,
     private homeService: HomeService,
-    private addToCart:AddtocartService,
-    private snackBar:MatSnackBar
-  ) {}
+    private addToCart: AddtocartService,
+    private snackBar: MatSnackBar
+  ) { }
   ngOnInit() {
     // this.getAllProductsDetails();
     this.localStorageEmpty = Object.keys(localStorage).length === 0;
@@ -46,12 +64,12 @@ export class BuymaterialsComponent {
   }
 
 
-formatDate(date: Date): string {
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear().toString();
-  return `${day}/${month}/${year}`;
-}
+  formatDate(date: Date): string {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear().toString();
+    return `${day}/${month}/${year}`;
+  }
 
 
 
@@ -122,16 +140,16 @@ formatDate(date: Date): string {
     }
   }
 
-  getAllSellMaterials(){
-    this.productsService.getAllProducts().subscribe((response:any)=>{
-      this.sellMaterilasproducts=this.formatDates(response);
+  getAllSellMaterials() {
+    this.productsService.getAllProducts().subscribe((response: any) => {
+      this.sellMaterilasproducts = this.formatDates(response);
       console.log(this.sellMaterilasproducts);
       this.products = this.sellMaterilasproducts.reverse();
       console.log(this.products);
     },
-    (error: any) => {
-      console.error(error);
-    }
+      (error: any) => {
+        console.error(error);
+      }
     )
   }
   formatDates(data: any[]): any[] {
@@ -155,13 +173,15 @@ formatDate(date: Date): string {
     );
   }
 
-  addtocart(product:any){
+  addtocart(product: any) {
     const selectedProduct = product;
     console.log('Selected Product:', selectedProduct);
-
+    this.amount = +selectedProduct.productPrice;
+    console.log(this.amount, typeof(this.amount),"amounthsjkd");
+    
     const userIdUser = localStorage.getItem('userId');
-    selectedProduct.userId=userIdUser;
-    console.log("User id setted "+selectedProduct);
+    selectedProduct.userId = userIdUser;
+    console.log("User id setted " + selectedProduct);
 
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
@@ -169,44 +189,38 @@ formatDate(date: Date): string {
     } else {
       console.log("create cart trigger");
 
-      this.productsService.createCart(selectedProduct).subscribe((response:any)=>{
-        let snackBarRef=this.snackBar.open("Product added to your cart !", "Close",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
+      this.productsService.createCart(selectedProduct).subscribe((response: any) => {
+        let snackBarRef = this.snackBar.open("Product added to your cart !", "Close", { duration: 2000, horizontalPosition: 'end', verticalPosition: 'bottom', });
         this.router.navigateByUrl('/addtocart');
         console.log(response);
 
-      snackBarRef.onAction().subscribe(()=>{
-        console.log("the undo action is triggered");
+        snackBarRef.onAction().subscribe(() => {
+          console.log("the undo action is triggered");
 
 
-      });
-      snackBarRef.afterDismissed().subscribe(()=>{
-        console.log("the snack bar dismissed");
-      })
+        });
+        snackBarRef.afterDismissed().subscribe(() => {
+          console.log("the snack bar dismissed");
+        })
 
       },
-      (error) => {
-        console.log('Error:', error);
-        if (error.status==403) {
+        (error) => {
+          console.log('Error:', error);
+          if (error.status == 403) {
 
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong !',
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong !',
 
-          })
+            })
+          }
         }
-      }
 
       )
     }
-
-
-
   }
-
-
-
-  getCarts(){
+  getCarts() {
 
     const localStorageEmpty = Object.keys(localStorage).length === 0;
     if (localStorageEmpty) {
@@ -214,26 +228,71 @@ formatDate(date: Date): string {
 
     } else {
       const userIdUser = localStorage.getItem('userId');
-    this.addToCart.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
-      console.log(response);
-      this.cartItems = response.reverse();
-      
-      console.log(this.cartItems);
-      this.productIDOfCarts=this.cartItems.map(item => item.productID);
-      console.log(this.productIDOfCarts);
+      this.addToCart.getCartDetailsByUserID(userIdUser).subscribe((response: any) => {
+        console.log(response, "jhsjkdhs");
+        this.cartItems = response.reverse();
+        this.phonenumber = response[0].mobileNumber;
+        console.log(this.cartItems);
+        this.productIDOfCarts = this.cartItems.map(item => item.productID);
+        console.log(this.productIDOfCarts);
 
 
-    },
-    (error) => {
-      console.error('Error fetching product details:', error);
-    }
-    )
+      },
+        (error) => {
+          console.error('Error fetching product details:', error);
+        }
+      )
     }
 
   }
 
   isProductInCart(id: string): boolean {
     return this.productIDOfCarts.includes(id);
+  }
+
+  //payment
+  createRazorpayOrder(product:any) {
+
+    const orderRequest = {
+
+      customerName: localStorage.getItem('name'),
+      email: localStorage.getItem('email'),
+      phoneNumber: this.phonenumber,
+      amount: product.productPrice// Convert amount to paise if using INR
+    };
+
+    this.productsService.createOrder(orderRequest).subscribe(
+      (response) => {
+        const razorpayOptions: IRazorpayConfig = {
+          key_id: response.secretKey,
+          amount: response.amount,
+          currency: 'INR', // Change to your desired currency
+          name: 'Your Company Name',
+          description: 'Payment for Your Product/Service',
+          order_id: response.razorpayOrderId,
+          handler: (response: any) => {
+            console.log('Payment success:', response);
+            // Handle payment success here
+          },
+          prefill: {
+            name: orderRequest.customerName,
+            email: orderRequest.email,
+            contact: orderRequest.phoneNumber
+          }
+        };
+
+        const rzp = new Razorpay(razorpayOptions);
+        rzp.on('payment.failed', function (response: any) {
+          console.error('Payment failed:', response);
+          // Handle payment failure here
+        });
+        rzp.open();
+      },
+      (error) => {
+        console.error('Error creating Razorpay order:', error);
+        // Handle error
+      }
+    );
   }
 
 }
