@@ -16,7 +16,7 @@ interface IRazorpayConfig {
   order_id: string;
   handler: (response: any) => void;
   prefill: {
-    name: string |null;
+    name: string | null;
     email: string | null;
     contact: string | null;
   };
@@ -31,24 +31,25 @@ interface IRazorpayConfig {
 export class CartComponent {
   panelOpenState = false;
   cartItems: any[] = []; // Declare an array to store cart items
-  totalPrice: number=0;
+  totalPrice: number = 0;
   totalItems: number = 0;
-  userAddress:any;
+  userAddress: any;
   recentAddress: any[] = [];
-  indexValue!:number;
-  userAddressName:string=""
-  userAddressPincode:string=""
-  userAddressLocality:string=""
-  userAddressAddress:string=""
-  userAddressState:string=""
+  indexValue!: number;
+  userAddressName: string = ""
+  userAddressPincode: string = ""
+  userAddressLocality: string = ""
+  userAddressAddress: string = ""
+  userAddressState: string = ""
   phonenumber: string = '';
+  Total: number = 0;
 
-  constructor(private addToCartService:AddtocartService,private snackBar:MatSnackBar,private addressService:AddressserviceService,private dialog: MatDialog, private productsService: ProductService,){
-  
+  constructor(private addToCartService: AddtocartService, private snackBar: MatSnackBar, private addressService: AddressserviceService, private dialog: MatDialog, private productsService: ProductService,) {
+
     const storedIndex = localStorage.getItem("index");
-    if (storedIndex !== null){
+    if (storedIndex !== null) {
       const indexAsNumber = parseInt(storedIndex, 10);
-      this.indexValue=indexAsNumber
+      this.indexValue = indexAsNumber
     }
   }
 
@@ -58,33 +59,33 @@ export class CartComponent {
   }
 
 
-  getCarts(){
+  getCarts() {
     const userIdUser = localStorage.getItem('userId');
-    this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe((response:any)=>{
+    this.addToCartService.getCartDetailsByUserID(userIdUser).subscribe((response: any) => {
       this.phonenumber = response[0]?.mobileNumber;
       this.cartItems = response.reverse();
-      this.totalItems=this.cartItems.length
-      
-      // Calculate the sum of productPrice values
-      const totalPrice = this.cartItems.reduce((total, item) => total + parseFloat(item.productPrice), 0);     
-      this.totalPrice = +totalPrice.toFixed(2); // Store the total price with 2 decimal places     
+      this.totalItems = this.cartItems.length
 
+      // Calculate the sum of productPrice values
+      const totalPrice = this.cartItems.reduce((total, item) => total + parseFloat(item.productPrice), 0);
+      this.totalPrice = + totalPrice.toFixed(2); // Store the total price with 2 decimal places     
+      this.Total = this.totalPrice + 530 + 560;
     },
-    (error) => {
-      console.error('Error fetching product details:', error);
-    }
+      (error) => {
+        console.error('Error fetching product details:', error);
+      }
     )
   }
 
 
-  removeFromCart(userId:string,productId:string){
+  removeFromCart(userId: string, productId: string) {
     console.log(userId);
     console.log(productId);
-    this.addToCartService.deleteCartItem(userId,productId).subscribe(
+    this.addToCartService.deleteCartItem(userId, productId).subscribe(
       () => {
         console.log("cart removed");
         this.getCarts();
-        let snackBarRef=this.snackBar.open("Product removed from your cart !", "Dismiss",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
+        let snackBarRef = this.snackBar.open("Product removed from your cart !", "Dismiss", { duration: 2000, horizontalPosition: 'end', verticalPosition: 'bottom', });
 
 
       },
@@ -96,81 +97,81 @@ export class CartComponent {
 
   }
 
-  decrementProductPiece(item:any){
+  decrementProductPiece(item: any) {
     console.log(item);
-    this.addToCartService.decrementPieceOfProduct(item).subscribe((response:any)=>{
+    this.addToCartService.decrementPieceOfProduct(item).subscribe((response: any) => {
       console.log(response);
       this.getCarts();
-      let snackBarRef=this.snackBar.open("Piece of quantity decremented !", "Undo",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
-      snackBarRef.onAction().subscribe(()=>{
+      let snackBarRef = this.snackBar.open("Piece of quantity decremented !", "Undo", { duration: 2000, horizontalPosition: 'end', verticalPosition: 'bottom', });
+      snackBarRef.onAction().subscribe(() => {
         console.log("the undo action is triggered");
         this.incrementProductPiece(response);
 
       });
-      snackBarRef.afterDismissed().subscribe(()=>{
+      snackBarRef.afterDismissed().subscribe(() => {
         console.log("the snack bar dismissed");
       })
 
     },
-    (error) => {
-      console.error('Not incremented', error);
-    }
+      (error) => {
+        console.error('Not incremented', error);
+      }
     )
 
   }
 
-  incrementProductPiece(item:any){
+  incrementProductPiece(item: any) {
     console.log(item);
-    this.addToCartService.incrementPieceOfProduct(item).subscribe((response:any)=>{
+    this.addToCartService.incrementPieceOfProduct(item).subscribe((response: any) => {
       console.log(response);
       this.getCarts();
-      let snackBarRef=this.snackBar.open("Piece of quantity incremented !", "Undo",{duration:2000,horizontalPosition: 'end',verticalPosition: 'bottom',});
-      snackBarRef.onAction().subscribe(()=>{
+      let snackBarRef = this.snackBar.open("Piece of quantity incremented !", "Undo", { duration: 2000, horizontalPosition: 'end', verticalPosition: 'bottom', });
+      snackBarRef.onAction().subscribe(() => {
         console.log("the undo action is triggered");
         this.decrementProductPiece(response);
 
       });
-      snackBarRef.afterDismissed().subscribe(()=>{
+      snackBarRef.afterDismissed().subscribe(() => {
         console.log("the snack bar dismissed");
       })
 
     },
-    (error) => {
-      console.error('Not incremented', error);
-    }
+      (error) => {
+        console.error('Not incremented', error);
+      }
     )
   }
 
-  getUserAddress(){
+  getUserAddress() {
     const userIdFromLocalStorage = localStorage.getItem("userId");
-    this.addressService.getAddressByUserID(userIdFromLocalStorage).subscribe((response:any)=>{
+    this.addressService.getAddressByUserID(userIdFromLocalStorage).subscribe((response: any) => {
       console.log(response);
-      this.userAddress=response.reverse();
+      this.userAddress = response.reverse();
       console.log(this.userAddress);
       console.log(this.indexValue);
 
-      this.recentAddress=this.userAddress[localStorage.getItem("index")||""]
-      this.userAddressName=this.userAddress[localStorage.getItem("index")||""].name
-      this.userAddressPincode=this.userAddress[localStorage.getItem("index")||""].pincode
-      this.userAddressLocality=this.userAddress[localStorage.getItem("index")||""].locality
-      this.userAddressAddress=this.userAddress[localStorage.getItem("index")||""].address
-      this.userAddressState=this.userAddress[localStorage.getItem("index")||""].state
+      this.recentAddress = this.userAddress[localStorage.getItem("index") || ""]
+      this.userAddressName = this.userAddress[localStorage.getItem("index") || ""].name
+      this.userAddressPincode = this.userAddress[localStorage.getItem("index") || ""].pincode
+      this.userAddressLocality = this.userAddress[localStorage.getItem("index") || ""].locality
+      this.userAddressAddress = this.userAddress[localStorage.getItem("index") || ""].address
+      this.userAddressState = this.userAddress[localStorage.getItem("index") || ""].state
 
       console.log(this.recentAddress);
 
 
     },
-    (error) => {
-      console.error('Error retrieving user data:', error);
-      // Handle error
-    }
+      (error) => {
+        console.error('Error retrieving user data:', error);
+        // Handle error
+      }
     )
   }
 
   openChangeAddressDialog(): void {
     const dialogRef = this.dialog.open(ChangeAddressComponent, {
       width: '450px', // Adjust the width as needed
-      height:'auto',
+      height: 'auto',
       data: this.userAddress // Pass the array to the dialog
     });
 
@@ -187,48 +188,48 @@ export class CartComponent {
     console.log('Dialog closed with success. Calling method in your component.');
   }
 
-//payment
-createRazorpayOrder() {
- 
-  const orderRequest = {
-   
-    customerName: localStorage.getItem('name'),
-    email: localStorage.getItem('email'),
-    phoneNumber: this.phonenumber,
-    amount:this.totalPrice // Convert amount to paise if using INR
-  };
+  //payment
+  createRazorpayOrder() {
 
-  this.productsService.createOrder(orderRequest).subscribe(
-    (response) => {
-      const razorpayOptions: IRazorpayConfig = {
-        key_id: response.secretKey,
-        amount: response.amount,
-        currency: 'INR', // Change to your desired currency
-        name: 'Your Company Name',
-        description: 'Payment for Your Product/Service',
-        order_id: response.razorpayOrderId,
-        handler: (response: any) => {
-          console.log('Payment success:', response);
-          // Handle payment success here
-        },
-        prefill: {
-          name: orderRequest.customerName,
-          email: orderRequest.email,
-          contact: orderRequest.phoneNumber
-        }
-      };
+    const orderRequest = {
 
-      const rzp = new Razorpay(razorpayOptions);
-      rzp.on('payment.failed', function (response: any) {
-        console.error('Payment failed:', response);
-        // Handle payment failure here
-      });
-      rzp.open();
-    },
-    (error) => {
-      console.error('Error creating Razorpay order:', error);
-      // Handle error
-    }
-  );
-}
+      customerName: localStorage.getItem('name'),
+      email: localStorage.getItem('email'),
+      phoneNumber: this.phonenumber,
+      amount: this.Total // Convert amount to paise if using INR
+    };
+
+    this.productsService.createOrder(orderRequest).subscribe(
+      (response) => {
+        const razorpayOptions: IRazorpayConfig = {
+          key_id: response.secretKey,
+          amount: response.amount,
+          currency: 'INR', // Change to your desired currency
+          name: 'Your Company Name',
+          description: 'Payment for Your Product/Service',
+          order_id: response.razorpayOrderId,
+          handler: (response: any) => {
+            console.log('Payment success:', response);
+            // Handle payment success here
+          },
+          prefill: {
+            name: orderRequest.customerName,
+            email: orderRequest.email,
+            contact: orderRequest.phoneNumber
+          }
+        };
+
+        const rzp = new Razorpay(razorpayOptions);
+        rzp.on('payment.failed', function (response: any) {
+          console.error('Payment failed:', response);
+          // Handle payment failure here
+        });
+        rzp.open();
+      },
+      (error) => {
+        console.error('Error creating Razorpay order:', error);
+        // Handle error
+      }
+    );
+  }
 }
