@@ -74,8 +74,8 @@ export class BuymaterialsComponent {
 
 
   togglePhoneNumber(index: number) {
-    const localStorageEmpty = Object.keys(localStorage).length === 0;
-
+    const localStorageEmpty =localStorage.length<=3;
+    
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
@@ -183,7 +183,7 @@ export class BuymaterialsComponent {
     selectedProduct.userId = userIdUser;
     console.log("User id setted " + selectedProduct);
 
-    const localStorageEmpty = Object.keys(localStorage).length === 0;
+    const localStorageEmpty =localStorage.length<=3;
     if (localStorageEmpty) {
       this.showRegisterAlert();
     } else {
@@ -206,14 +206,9 @@ export class BuymaterialsComponent {
       },
         (error) => {
           console.log('Error:', error);
-          if (error.status == 403) {
+          if (localStorageEmpty) {
 
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong !',
-
-            })
+            this.showRegisterAlert;
           }
         }
 
@@ -252,7 +247,10 @@ export class BuymaterialsComponent {
 
   //payment
   createRazorpayOrder(product:any) {
-
+    const localStorageEmpty =localStorage.length<=3;
+    if (localStorageEmpty) {
+      this.showRegisterAlert();
+    }else{
     const orderRequest = {
 
       customerName: localStorage.getItem('name'),
@@ -294,5 +292,6 @@ export class BuymaterialsComponent {
       }
     );
   }
+}
 
 }

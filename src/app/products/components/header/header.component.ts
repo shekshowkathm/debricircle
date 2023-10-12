@@ -22,9 +22,11 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         // Perform logout action here
+        localStorage.clear();
+        localStorage.removeItem('rzp_device_id');
         this.router.navigateByUrl('/home/login');
 
-        localStorage.clear();
+       
         // Add your logout function here
       } else {
         // User canceled the logout

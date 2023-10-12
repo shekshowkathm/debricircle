@@ -43,10 +43,10 @@ export class DebriheaderComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
+        localStorage.clear();
+        localStorage.removeItem('rzp_device_id');
         // Perform logout action here
         this.router.navigateByUrl('/home/login');
-
-        localStorage.clear();
         // Add your logout function here
       } else {
         // User canceled the logout
