@@ -52,6 +52,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { DebriheaderComponent } from '../common components/debriheader/debriheader.component';
 import { SharedModule } from '../shared.module';
 import { ChangeAddressComponent } from './components/change-address/change-address.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 
 
@@ -70,6 +71,7 @@ import { ChangeAddressComponent } from './components/change-address/change-addre
     AddtocartComponent,
     CartComponent,
     ChangeAddressComponent,
+    AboutusComponent,
 
   ],
   imports: [
