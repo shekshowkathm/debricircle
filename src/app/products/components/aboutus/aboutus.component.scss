@@ -2,19 +2,20 @@
     display: flex;
     justify-content:space-around;
     flex-direction: column;
-  
+    background-color: #F5F6F7;
+
     .ab_flx {
       width: 80%;
       margin: 0 auto;
       margin-bottom: 40px;
     }
     .aboutit {
-      border: 2px solid black;
+      border: 2px solid rgb(223, 218, 218);
       background-image: url(../../../../assets/aboutus/archabout-us.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.7);
       background-blend-mode: color-burn;
       padding: 30px;
       // margin: 20px;
@@ -71,22 +72,23 @@
       }
     }
     .vision {
-      border: 2px solid black;
+      border: 2px solid rgb(223, 218, 218);
       background-image: url(../../../../assets/aboutus/archabout-us.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.7);
       background-blend-mode: color-burn;
       padding: 30px;
       // margin: 20px;
+      height: 500px;
       .visionimgflex {
         display: flex;
         justify-content: space-between;
         .visionlogo {
           height: 100px;
           width: 100px;
-  
+
           img {
             height: 100%;
             width: 90%;
@@ -95,7 +97,7 @@
         .visionimg {
           width: 300px;
           height: 200px;
-  
+
           img {
             width: 100%;
             height: 100%;
@@ -120,7 +122,7 @@
         }
       }
     }
-  
+
     .ourcommitments {
       .ourcommitmentsheader {
         h2 {
@@ -131,13 +133,13 @@
           padding: 3px;
         }
       }
-  
-      border: 2px solid black;
+
+      border: 2px solid rgb(223, 218, 218);
       background-image: url(../../../../assets/aboutus/archabout-us.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.7);
       background-blend-mode: color-burn;
       padding: 30px;
       // margin: 20px;
@@ -204,14 +206,14 @@
         }
       }
     }
-  
+
     .contactus {
-      border: 2px solid black;
+      border: 2px solid rgb(223, 218, 218);
       background-image: url(../../../../assets/aboutus/archabout-us.jpg);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.7);
       background-blend-mode: color-burn;
       padding: 30px;
       // margin: 20px;
@@ -299,7 +301,7 @@
       }
     }
   }
-  
+
   @media (max-width: 576px) {
     .about-us {
       .ab_flx {
@@ -357,7 +359,7 @@
           .contentpartnerwithus {
             width: 80%;
             margin: 0 auto;
-  
+
           }
           .imagepartnerwithus {
             align-items: center;
@@ -370,4 +372,3 @@
       }
     }
   }
-  
