@@ -38,11 +38,9 @@
         <div class="verified">
           <mat-icon *ngIf="item.quality !== 'Denied'">verified_user</mat-icon>
         </div>
-
+        
       </div>
-      <div class="place-order">
-        <button mat-raised-button color="primary" (click)="createRazorpayOrder()">Place order</button>
-      </div>
+     
 
     </div>
     <div class="order-summary">
@@ -72,7 +70,13 @@
         <div class="delivery-notes">
           <p>The cost of delivery is contingent on your specific location.</p>
         </div>
+
+        <div class="place-order">
+          <button mat-raised-button color="primary" (click)="createRazorpayOrder()">Place order</button>
+        </div>
       </div>
+     
     </div>
+    
   </div>
 </div>
