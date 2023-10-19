@@ -10,5 +10,5 @@ export const environment = {
     // measurementId: "G-J29QRHMVMD"
   },
   // localdomain: 'http://localhost:8080',
-  localdomain: 'http://43.204.148.119:8080',
+  localdomain: 'http://65.2.98.89:8080',
 };
