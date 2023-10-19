@@ -1,15 +1,14 @@
 export const environment = {
   production: true,
   firebase: {
-    projectId: 'debricircle',
-    appId: '1:875478465511:web:4f901d357cc7d5eaf85b42',
-    storageBucket: 'debricircle.appspot.com',
-    apiKey: 'AIzaSyDF78_g7SWUzslyXNZpG7r0ys9e44qrumA',
-    authDomain: 'debricircle.firebaseapp.com',
-    messagingSenderId: '875478465511',
+    projectId: 'debricircle-6140e',
+    appId: '1:751221839032:web:98735decd975727b2c104d',
+    storageBucket: 'debricircle-6140e.appspot.com',
+    apiKey: 'AIzaSyBQRVk_cTkM8fGYEQRSWC0yqIDIYTFJRpA',
+    authDomain: 'debricircle-6140e.firebaseapp.com',
+    messagingSenderId: '751221839032',
+    // measurementId: "G-J29QRHMVMD"
   },
   // localdomain: 'http://localhost:8080',
   localdomain: 'http://43.204.148.119:8080',
-
-
 };
